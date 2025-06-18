@@ -70,15 +70,6 @@ const VideoSection = () => {
               </div>
             </div>
 
-            <div className="absolute bottom-4 left-4 right-4 opacity-60 group-hover:opacity-80 transition-opacity duration-300">
-              <div className="bg-black/50 backdrop-blur-sm rounded-lg p-3">
-                <div className="flex justify-between items-center text-white text-sm">
-                  <span>Real Madrid vs Barcelona</span>
-                  <span className="font-bold">2 - 1</span>
-                </div>
-              </div>
-            </div>
-
             {/* Hover overlay */}
             <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </div>
