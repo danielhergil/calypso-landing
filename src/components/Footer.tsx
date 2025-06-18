@@ -12,7 +12,11 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center">
-                <span className="text-white font-bold text-lg">CP</span>
+                <img
+                  src="/logo_calypso.png"
+                  alt="Logo de Calypso"
+                  className="w-10 h-10 rounded-full object-cover shadow-lg"
+                />
               </div>
               <div>
                 <h3 className="text-xl font-bold text-white">Calypso</h3>
@@ -20,76 +24,52 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
-              La aplicación definitiva para streaming deportivo profesional 
-              desde tu dispositivo móvil. Completamente gratuita.
+              The ultimate professional sports streaming app from your mobile device. Completely free.
             </p>
           </div>
 
           {/* Features */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-white">Características</h4>
+            <h4 className="text-lg font-semibold text-white">Features</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li className="hover:text-white transition-colors duration-200 cursor-pointer">
-                Streaming HD
-              </li>
-              <li className="hover:text-white transition-colors duration-200 cursor-pointer">
-                Gestión de Equipos
-              </li>
-              <li className="hover:text-white transition-colors duration-200 cursor-pointer">
-                Marcadores en Vivo
-              </li>
-              <li className="hover:text-white transition-colors duration-200 cursor-pointer">
-                Configuración RTMP
-              </li>
-              <li className="hover:text-white transition-colors duration-200 cursor-pointer">
-                Grabación Local
-              </li>
+              <li className="hover:text-white transition-colors duration-200 cursor-pointer">HD Streaming</li>
+              <li className="hover:text-white transition-colors duration-200 cursor-pointer">Team Management</li>
+              <li className="hover:text-white transition-colors duration-200 cursor-pointer">Live Scores</li>
+              <li className="hover:text-white transition-colors duration-200 cursor-pointer">RTMP Configuration</li>
+              <li className="hover:text-white transition-colors duration-200 cursor-pointer">Local Recording</li>
             </ul>
           </div>
 
           {/* Platforms */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-white">Plataformas</h4>
+            <h4 className="text-lg font-semibold text-white">Platforms</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li className="hover:text-white transition-colors duration-200 cursor-pointer">
-                YouTube Live
-              </li>
-              <li className="hover:text-white transition-colors duration-200 cursor-pointer">
-                Twitch
-              </li>
-              <li className="hover:text-white transition-colors duration-200 cursor-pointer">
-                Facebook Live
-              </li>
-              <li className="hover:text-white transition-colors duration-200 cursor-pointer">
-                Servidor RTMP Personalizado
-              </li>
+              <li className="hover:text-white transition-colors duration-200 cursor-pointer">YouTube Live</li>
+              <li className="hover:text-white transition-colors duration-200 cursor-pointer">Twitch</li>
+              <li className="hover:text-white transition-colors duration-200 cursor-pointer">Facebook Live</li>
+              <li className="hover:text-white transition-colors duration-200 cursor-pointer">Custom RTMP Server</li>
             </ul>
           </div>
 
-          {/* Contact & Legal */}
+          {/* Support & Legal */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-white">Soporte</h4>
+            <h4 className="text-lg font-semibold text-white">Support</h4>
             <div className="space-y-3">
-              <a 
-                href="mailto:support@calypso.app" 
+              <a
+                href="mailto:support@calypso.app"
                 className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-200 text-sm"
               >
                 <Mail size={16} />
-                <span>support@calypso.app</span>
+                <span>calypso.sport.stream@gmail.com</span>
               </a>
-              <a 
-                href="#" 
-                className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-200 text-sm"
-              >
-                <Globe size={16} />
-                <span>calypso.app/help</span>
-              </a>
-              <a 
-                href="#" 
+              <a
+                href="https://danielhergil.github.io/calypso/privacy.html"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-200 text-sm"
               >
                 <Shield size={16} />
-                <span>Política de Privacidad</span>
+                <span>Privacy Policy</span>
               </a>
             </div>
           </div>
@@ -99,13 +79,13 @@ const Footer = () => {
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-gray-400 text-sm text-center md:text-left">
-              © {currentYear} Calypso Sports Streaming. Todos los derechos reservados.
+              © {currentYear} Calypso Sports Streaming. All rights reserved.
             </p>
-            
+
             <div className="flex items-center space-x-2 text-gray-400 text-sm">
-              <span>Hecho con</span>
+              <span>Made with</span>
               <Heart size={16} className="text-red-500" />
-              <span>para streamers deportivos</span>
+              <span>for sports streamers</span>
             </div>
           </div>
         </div>
