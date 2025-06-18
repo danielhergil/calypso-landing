@@ -129,7 +129,7 @@ const Screenshots = () => {
 
                 {currentIndex === 2 && (
                   <div className="absolute inset-0 bg-gray-900 p-4 space-y-4">
-                    {['Alcorcon', 'Lubians', 'Fuenlabrada', 'Mostoles'].map((team, idx) => (
+                    {['Team 1', 'Team 2', 'Team 3', 'Team 4'].map((team, idx) => (
                       <div key={idx} className="bg-gray-800 rounded-xl p-4 flex items-center space-x-4">
                         <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-green-500 rounded-lg"></div>
                         <span className="text-white font-medium">{team}</span>
