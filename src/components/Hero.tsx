@@ -34,10 +34,10 @@ const Hero = () => {
               </div>
               
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
-                <span className="text-white">Stream it</span>
+                <span className="text-white">Stream Smart</span>
                 <br />
                 <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
-                  Make it easy
+                  Make It Flow
                 </span>
               </h1>
 

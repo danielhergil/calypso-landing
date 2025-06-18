@@ -136,11 +136,6 @@ const Screenshots = () => {
                         <div className="ml-auto text-gray-400">›</div>
                       </div>
                     ))}
-                    <div className="fixed bottom-8 right-8">
-                      <div className="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center">
-                        <span className="text-white text-xl">+</span>
-                      </div>
-                    </div>
                   </div>
                 )}
 
