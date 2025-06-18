@@ -83,36 +83,40 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-gray-900/98 backdrop-blur-md border-t border-gray-800">
-            <div className="px-4 py-6 space-y-4">
-              <button
-                onClick={() => scrollToSection('features')}
-                className="block w-full text-left text-gray-300 hover:text-white py-2 transition-colors duration-200"
-              >
-                Features
-              </button>
-              <button
-                onClick={() => scrollToSection('video')}
-                className="block w-full text-left text-gray-300 hover:text-white py-2 transition-colors duration-200"
-              >
-                Demo
-              </button>
-              <button
-                onClick={() => scrollToSection('screenshots')}
-                className="block w-full text-left text-gray-300 hover:text-white py-2 transition-colors duration-200"
-              >
-                Screenshots
-              </button>
-              <button
-                onClick={() => scrollToSection('download')}
-                className="w-full bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-full font-medium transition-all duration-200 flex items-center justify-center space-x-2 mt-4"
-              >
-                <Download size={16} />
-                <span>Download Free</span>
-              </button>
-            </div>
+        <div className="md:hidden absolute top-full inset-x-0 bg-gray-900/95 backdrop-blur-md border-t border-gray-800 z-50">
+          <div
+            className="px-4 py-6 space-y-4 overflow-y-auto"
+            style={{ maxHeight: 'calc(100vh - 4rem)' }}
+          >
+            <button
+              onClick={() => scrollToSection('features')}
+              className="block w-full text-left text-gray-300 hover:text-white py-2 transition-colors duration-200"
+            >
+              Features
+            </button>
+            <button
+              onClick={() => scrollToSection('video')}
+              className="block w-full text-left text-gray-300 hover:text-white py-2 transition-colors duration-200"
+            >
+              Demo
+            </button>
+            <button
+              onClick={() => scrollToSection('screenshots')}
+              className="block w-full text-left text-gray-300 hover:text-white py-2 transition-colors duration-200"
+            >
+              Screenshots
+            </button>
+            <button
+              onClick={() => scrollToSection('download')}
+              className="w-full bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-full font-medium transition-all duration-200 flex items-center justify-center space-x-2 mt-4"
+            >
+              <Download size={16} />
+              <span>Download Free</span>
+            </button>
           </div>
-        )}
+        </div>
+      )}
+
       </div>
     </header>
   );

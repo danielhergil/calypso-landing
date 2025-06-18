@@ -65,14 +65,24 @@ const Screenshots = () => {
             <div className="w-80 h-[640px] bg-gradient-to-b from-gray-800 to-gray-900 rounded-[3rem] p-2 shadow-2xl">
               <div className="w-full h-full bg-black rounded-[2.5rem] overflow-hidden relative">
                 {/* Mock screenshot content based on current index */}
-                {currentIndex === 0 && (
+                {currentIndex === 1 && (
                   <div className="absolute inset-0 bg-gradient-to-b from-gray-900 to-black flex flex-col items-center justify-center space-y-8 p-8">
                     <div className="w-20 h-20 rounded-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center">
-                      <span className="text-white font-bold text-2xl">CP</span>
+                      <img
+                        src="/logo_calypso.png"
+                        alt="Logo de Calypso"
+                        className="w-20 h-20 rounded-full object-cover shadow-lg"
+                      />
                     </div>
                     <div className="space-y-6 w-full">
                       <div className="bg-gray-800 rounded-xl p-4 flex items-center space-x-4">
-                        <div className="w-8 h-8 bg-red-500 rounded-lg"></div>
+                        <div className="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center">
+                          <img
+                            src="/ic_camara.png"
+                            alt="Camera icon"
+                            className="w-5 h-5 object-contain filter invert"
+                          />
+                        </div>
                         <span className="text-white font-medium">Camera</span>
                       </div>
                       <div className="bg-gray-800 rounded-xl p-4 flex items-center space-x-4">
@@ -85,7 +95,7 @@ const Screenshots = () => {
                   </div>
                 )}
 
-                {currentIndex === 1 && (
+                {currentIndex === 0 && (
                   <div className="absolute inset-0 bg-gradient-to-b from-gray-900 to-black flex flex-col items-center justify-center space-y-8 p-8">
                     <div className="w-16 h-16 rounded-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center">
                       <img
