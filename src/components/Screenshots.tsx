@@ -6,14 +6,14 @@ const Screenshots = () => {
 
   const screenshots = [
     {
-      title: 'Main Screen',
-      description: 'Main interface with quick access to camera and team management',
-      features: ['Calypso Logo', 'Camera Access', 'Team Management']
-    },
-    {
       title: 'Sign In',
       description: 'Free registration and Google access for greater convenience',
       features: ['Free Registration', 'Google Login', 'Clean Interface']
+    },
+    {
+      title: 'Main Screen',
+      description: 'Main interface with quick access to camera and team management',
+      features: ['Camera Access', 'Team Management', 'User Settings']
     },
     {
       title: 'Team Management',
@@ -91,6 +91,16 @@ const Screenshots = () => {
                         </div>
                         <span className="text-white font-medium">Add Team</span>
                       </div>
+                      <div className="bg-gray-800 rounded-xl p-4 flex items-center space-x-4">
+                        <div className="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center">
+                          <img
+                            src="/ic_settings.png"
+                            alt="Settings icon"
+                            className="w-5 h-5 object-contain filter invert"
+                          />
+                        </div>
+                        <span className="text-white font-medium">Settings</span>
+                      </div>
                     </div>
                   </div>
                 )}
@@ -142,7 +152,7 @@ const Screenshots = () => {
                 {currentIndex === 3 && (
                   <div className="absolute inset-0 p-4">
                     <img
-                      src="/camera_screenshot.jpeg"
+                      src="/calypso_basket.png"
                       alt="Live streaming interface"
                       className="w-full max-h-[800px] object-cover rounded-xl shadow-lg"
                     />
