@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Smartphone } from 'lucide-react';
 
 const Screenshots = () => {
@@ -40,28 +41,58 @@ const Screenshots = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900 to-gray-800"></div>
       
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center space-y-6 mb-16 lg:mb-24">
-          <div className="inline-flex items-center bg-red-500/10 text-red-400 px-4 py-2 rounded-full text-sm font-medium">
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center space-y-6 mb-16 lg:mb-24"
+        >
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center bg-red-500/10 text-red-400 px-4 py-2 rounded-full text-sm font-medium"
+          >
             <Smartphone size={16} className="mr-2" />
             Screenshots
-          </div>
+          </motion.div>
           
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+          <motion.h2 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white"
+          >
             Intuitive and
             <span className="block bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
               Professional Interface
             </span>
-          </h2>
+          </motion.h2>
           
-          <p className="text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto">
+          <motion.p 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto"
+          >
             Explore every screen of Calypso and discover how easy it is to create 
             professional quality sports broadcasts.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
           {/* Phone Mockup */}
-          <div className="relative flex-shrink-0">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            viewport={{ once: true }}
+            className="relative flex-shrink-0"
+          >
             <div className="w-80 h-[640px] bg-gradient-to-b from-gray-800 to-gray-900 rounded-[3rem] p-2 shadow-2xl">
               <div className="w-full h-full bg-black rounded-[2.5rem] overflow-hidden relative">
                 {/* Mock screenshot content based on current index */}
@@ -161,23 +192,29 @@ const Screenshots = () => {
               </div>
             </div>
 
-            {/* Navigation buttons */}
+              {/* Navigation buttons - Outside the phone */}
             <button
               onClick={prevSlide}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-gray-800/80 hover:bg-gray-700 rounded-full flex items-center justify-center text-white transition-all duration-200 hover:scale-110"
+              className="absolute -left-16 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-gray-800/80 hover:bg-purple-600 rounded-full flex items-center justify-center text-white transition-all duration-200 hover:scale-110 shadow-lg"
             >
               <ChevronLeft size={20} />
             </button>
             <button
               onClick={nextSlide}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-gray-800/80 hover:bg-gray-700 rounded-full flex items-center justify-center text-white transition-all duration-200 hover:scale-110"
+              className="absolute -right-16 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-gray-800/80 hover:bg-purple-600 rounded-full flex items-center justify-center text-white transition-all duration-200 hover:scale-110 shadow-lg"
             >
               <ChevronRight size={20} />
             </button>
-          </div>
+          </motion.div>
 
           {/* Content */}
-          <div className="flex-1 space-y-8 text-center lg:text-left">
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            viewport={{ once: true }}
+            className="flex-1 space-y-8 text-center lg:text-left"
+          >
             <div className="space-y-4">
               <h3 className="text-2xl lg:text-3xl font-bold text-white">
                 {screenshots[currentIndex].title}
@@ -211,7 +248,7 @@ const Screenshots = () => {
                 />
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

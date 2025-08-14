@@ -37,11 +37,47 @@ const Wishlist = () => {
   };
 
   return (
-    <section className="py-20 lg:py-32 relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-gray-900 to-pink-900/20"></div>
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl"></div>
+    <section id="wishlist" className="py-20 lg:py-32 relative overflow-hidden">
+      {/* Enhanced Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/30 via-gray-900 to-pink-900/30"></div>
+      <motion.div 
+        animate={{ 
+          scale: [1, 1.2, 1],
+          opacity: [0.2, 0.4, 0.2]
+        }}
+        transition={{ 
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-purple-500/30 to-blue-500/20 rounded-full blur-3xl"
+      />
+      <motion.div 
+        animate={{ 
+          scale: [1, 1.3, 1],
+          opacity: [0.15, 0.35, 0.15]
+        }}
+        transition={{ 
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 2
+        }}
+        className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-tr from-pink-500/30 to-red-500/20 rounded-full blur-3xl"
+      />
+      <motion.div 
+        animate={{ 
+          x: [0, 100, -100, 0],
+          y: [0, -50, 50, 0],
+          opacity: [0.1, 0.25, 0.1]
+        }}
+        transition={{ 
+          duration: 15,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-r from-cyan-500/20 to-green-500/15 rounded-full blur-2xl"
+      />
 
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
@@ -84,8 +120,9 @@ const Wishlist = () => {
               viewport={{ once: true }}
               className="text-lg lg:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed"
             >
-              Join thousands of streamers already on our wishlist and get exclusive early access 
-              to the most advanced mobile streaming platform.
+              Join over <span className="text-purple-400 font-semibold">10,000+ creators</span> already 
+              on our wishlist! Be the first to experience revolutionary mobile streaming technology 
+              that's about to change the game forever.
             </motion.p>
           </div>
 
@@ -167,9 +204,9 @@ const Wishlist = () => {
             className="mt-16 grid sm:grid-cols-3 gap-6 lg:gap-8"
           >
             {[
-              { title: 'Early Access', desc: 'Be among the first to use Calypso' },
-              { title: 'Exclusive Updates', desc: 'Get insider news and development updates' },
-              { title: 'Special Launch Price', desc: 'Unlock premium features at launch' }
+              { title: '🚀 VIP Early Access', desc: 'Experience Calypso weeks before public launch' },
+              { title: '📱 Beta Testing', desc: 'Help shape the future with exclusive beta access' },
+              { title: '💎 Launch Rewards', desc: 'Exclusive badges and special recognition' }
             ].map((feature, index) => (
               <motion.div
                 key={index}

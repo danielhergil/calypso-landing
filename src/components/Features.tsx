@@ -111,8 +111,9 @@ const Features = () => {
             viewport={{ once: true }}
             className="text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
           >
-            Calypso combines all professional sports streaming tools 
-            in a single mobile app, completely free.
+            Discover why thousands of content creators choose Calypso for their 
+            sports streaming needs. Professional-grade features that were once 
+            exclusive to expensive desktop software, now in your pocket.
           </motion.p>
         </motion.div>
 
@@ -122,12 +123,23 @@ const Features = () => {
             return (
               <motion.div 
                 key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -8, scale: 1.02 }}
-                className="group relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 lg:p-8 hover:bg-gray-700/50 hover:border-purple-500/30 transition-all duration-300 hover:shadow-2xl"
+                initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: index * 0.1,
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 10
+                }}
+                viewport={{ once: true, margin: "-100px" }}
+                whileHover={{ 
+                  y: -12, 
+                  scale: 1.05,
+                  rotateZ: 2,
+                  transition: { duration: 0.3 }
+                }}
+                className="group relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 lg:p-8 hover:bg-gray-700/50 hover:border-purple-500/30 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/10"
               >
                 <div className="space-y-4">
                   <div className={`w-12 h-12 rounded-xl ${feature.color} flex items-center justify-center transition-transform duration-300 group-hover:scale-110`}>

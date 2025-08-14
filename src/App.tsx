@@ -25,15 +25,31 @@ function App() {
       transition={{ duration: 0.5 }}
       className="min-h-screen bg-gray-900 text-white overflow-x-hidden"
     >
-      {/* Animated background gradient */}
-      <div className="fixed inset-0 bg-gradient-to-br from-gray-900 via-gray-900 to-purple-900/30 -z-10" />
+      {/* Enhanced animated background gradient */}
+      <div className="fixed inset-0 bg-gradient-to-br from-gray-900 via-purple-900/40 to-pink-900/40 -z-10" />
+      <motion.div
+        animate={{ 
+          background: [
+            "radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%)",
+            "radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%)",
+            "radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.3) 0%, transparent 50%)",
+            "radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%)"
+          ]
+        }}
+        transition={{ 
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="fixed inset-0 -z-10"
+      />
       
       <Header />
       <Hero />
+      <Wishlist />
       <Features />
       <VideoSection />
       <Screenshots />
-      <Wishlist />
       <Download />
       <Footer />
     </motion.div>

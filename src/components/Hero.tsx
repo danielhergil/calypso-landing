@@ -17,6 +17,13 @@ const Hero = () => {
     }
   };
 
+  const scrollToWishlist = () => {
+    const element = document.getElementById('wishlist');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative pt-20 lg:pt-32 pb-16 lg:pb-24 overflow-hidden">
       {/* Enhanced Background Elements */}
@@ -99,9 +106,9 @@ const Hero = () => {
                 transition={{ duration: 0.8, delay: 0.6 }}
                 className="text-lg lg:text-xl text-gray-300 max-w-2xl leading-relaxed"
               >
-                The ultimate app for sports streaming from your mobile. 
-                Create teams, manage scoreboards and stream live to 
-                YouTube, Twitch and more platforms.
+                Transform your phone into a professional broadcasting studio. 
+                Create stunning sports streams with HD quality, real-time scoreboards, 
+                and seamless integration with YouTube, Twitch, and all major platforms.
               </motion.p>
             </div>
 
@@ -138,10 +145,15 @@ const Hero = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={scrollToDownload}
-                className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:from-purple-600 hover:via-pink-600 hover:to-red-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-200 shadow-2xl"
+                onClick={scrollToWishlist}
+                className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:from-purple-600 hover:via-pink-600 hover:to-red-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-200 shadow-2xl relative overflow-hidden"
               >
-                Download Free
+                <span className="relative z-10">🚀 Join Wishlist</span>
+                <motion.div
+                  animate={{ x: [0, 100, -100, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12"
+                />
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}

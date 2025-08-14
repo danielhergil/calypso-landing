@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Play, X } from 'lucide-react';
 
 const VideoSection = () => {
@@ -26,23 +27,52 @@ const VideoSection = () => {
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-red-500/10 rounded-full blur-3xl"></div>
 
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center space-y-6 mb-12 lg:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center space-y-6 mb-12 lg:mb-16"
+        >
+          <motion.h2 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white"
+          >
             See Calypso in
             <span className="block bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
               Action
             </span>
-          </h2>
+          </motion.h2>
           
-          <p className="text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto">
+          <motion.p 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto"
+          >
             Discover how Calypso transforms your sports streaming experience 
             with professional tools at your fingertips.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Video Preview */}
-        <div className="relative max-w-4xl mx-auto">
-          <div className="relative aspect-video bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl group cursor-pointer" onClick={openVideo}>
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="relative max-w-4xl mx-auto"
+        >
+          <motion.div 
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.3 }}
+            className="relative aspect-video bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl group cursor-pointer" 
+            onClick={openVideo}
+          >
             {/* Thumbnail - Replace with your video thumbnail */}
             <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 to-gray-900 flex items-center justify-center">
               <div className="text-center space-y-6">
@@ -72,12 +102,12 @@ const VideoSection = () => {
 
             {/* Hover overlay */}
             <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          </div>
+          </motion.div>
 
           {/* Features around video */}
           <div className="absolute -top-8 -left-8 w-16 h-16 bg-blue-500/20 rounded-full blur-xl animate-pulse hidden lg:block"></div>
           <div className="absolute -bottom-8 -right-8 w-20 h-20 bg-green-500/20 rounded-full blur-xl animate-pulse delay-1000 hidden lg:block"></div>
-        </div>
+        </motion.div>
 
         {/* Additional info */}
         <div className="grid sm:grid-cols-3 gap-8 mt-16 lg:mt-24 max-w-3xl mx-auto">

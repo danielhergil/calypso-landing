@@ -64,6 +64,13 @@ const Header = () => {
               Screenshots
             </button>
             <button
+              onClick={() => scrollToSection('wishlist')}
+              className="text-gray-300 hover:text-purple-400 transition-colors duration-200 relative"
+            >
+              Wishlist
+              <div className="absolute -top-1 -right-1 w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full animate-pulse"></div>
+            </button>
+            <button
               onClick={() => scrollToSection('download')}
               className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-6 py-2 rounded-full font-medium transition-all duration-200 transform hover:scale-105 shadow-lg flex items-center space-x-2"
             >
@@ -105,6 +112,15 @@ const Header = () => {
               className="block w-full text-left text-gray-300 hover:text-white py-2 transition-colors duration-200"
             >
               Screenshots
+            </button>
+            <button
+              onClick={() => scrollToSection('wishlist')}
+              className="block w-full text-left text-gray-300 hover:text-purple-400 py-2 transition-colors duration-200 relative"
+            >
+              <span className="flex items-center">
+                Wishlist
+                <div className="ml-2 w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full animate-pulse"></div>
+              </span>
             </button>
             <button
               onClick={() => scrollToSection('download')}
