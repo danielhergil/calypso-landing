@@ -65,7 +65,7 @@ const Header = () => {
             </button>
             <button
               onClick={() => scrollToSection('download')}
-              className="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-full font-medium transition-all duration-200 transform hover:scale-105 shadow-lg flex items-center space-x-2"
+              className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-6 py-2 rounded-full font-medium transition-all duration-200 transform hover:scale-105 shadow-lg flex items-center space-x-2"
             >
               <Download size={16} />
               <span>Download</span>
@@ -108,7 +108,7 @@ const Header = () => {
             </button>
             <button
               onClick={() => scrollToSection('download')}
-              className="w-full bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-full font-medium transition-all duration-200 flex items-center justify-center space-x-2 mt-4"
+              className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-6 py-3 rounded-full font-medium transition-all duration-200 flex items-center justify-center space-x-2 mt-4"
             >
               <Download size={16} />
               <span>Download Free</span>

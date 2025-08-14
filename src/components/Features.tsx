@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Video, Users, Settings, Podcast as Broadcast, Trophy, Smartphone, Zap, Shield } from 'lucide-react';
 
 const Features = () => {
@@ -54,43 +55,86 @@ const Features = () => {
   ];
 
   return (
-    <section id="features" className="py-20 lg:py-32 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900"></div>
+    <section id="features" className="py-20 lg:py-32 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-purple-900/10 to-gray-900"></div>
+      
+      {/* Animated background elements */}
+      <motion.div
+        animate={{ 
+          scale: [1, 1.1, 1],
+          opacity: [0.1, 0.2, 0.1]
+        }}
+        transition={{ 
+          duration: 12,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="absolute top-1/4 right-0 w-80 h-80 bg-gradient-to-l from-blue-500/10 to-purple-500/10 rounded-full blur-3xl"
+      />
       
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center space-y-6 mb-16 lg:mb-24">
-          <div className="inline-flex items-center bg-red-500/10 text-red-400 px-4 py-2 rounded-full text-sm font-medium">
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center space-y-6 mb-16 lg:mb-24"
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300 px-6 py-3 rounded-full text-sm font-medium border border-purple-500/30"
+          >
             <Zap size={16} className="mr-2" />
             Key features
-          </div>
+          </motion.div>
           
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+          <motion.h2 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white"
+          >
             Everything you need to
-            <span className="block bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 bg-clip-text text-transparent">
               stream like a professional
             </span>
-          </h2>
+          </motion.h2>
           
-          <p className="text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto">
+          <motion.p 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+          >
             Calypso combines all professional sports streaming tools 
             in a single mobile app, completely free.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
-              <div 
+              <motion.div 
                 key={index}
-                className="group relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 lg:p-8 hover:bg-gray-700/50 hover:border-red-500/30 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="group relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 lg:p-8 hover:bg-gray-700/50 hover:border-purple-500/30 transition-all duration-300 hover:shadow-2xl"
               >
                 <div className="space-y-4">
                   <div className={`w-12 h-12 rounded-xl ${feature.color} flex items-center justify-center transition-transform duration-300 group-hover:scale-110`}>
                     <Icon size={24} />
                   </div>
                   
-                  <h3 className="text-xl font-bold text-white group-hover:text-red-400 transition-colors duration-200">
+                  <h3 className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors duration-200">
                     {feature.title}
                   </h3>
                   
@@ -100,22 +144,42 @@ const Features = () => {
                 </div>
 
                 {/* Hover effect overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-red-500/0 to-red-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-              </div>
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-pink-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+              </motion.div>
             );
           })}
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-16 lg:mt-24">
-          <p className="text-gray-400 mb-6">Ready to start streaming?</p>
-          <button 
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mt-16 lg:mt-24"
+        >
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="text-gray-400 mb-6"
+          >
+            Ready to start streaming?
+          </motion.p>
+          <motion.button 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => document.getElementById('download')?.scrollIntoView({ behavior: 'smooth' })}
-            className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-200 transform hover:scale-105 shadow-xl"
+            className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:from-purple-600 hover:via-pink-600 hover:to-red-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-200 shadow-2xl"
           >
             Download Calypso Free
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
       </div>
     </section>
   );
