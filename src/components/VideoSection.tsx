@@ -7,7 +7,7 @@ const VideoSection = () => {
   const [videoUrl, setVideoUrl] = useState('');
 
   // Placeholder for YouTube video - replace with your actual video ID
-  const youtubeVideoId = 'dQw4w9WgXcQ'; // Replace with your actual YouTube video ID
+  const youtubeVideoId = 'dgZtXBVLy1k'; // Replace with your actual YouTube video ID
 
   const openVideo = () => {
     setVideoUrl(`https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&rel=0`);
