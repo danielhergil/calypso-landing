@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, CheckCircle, AlertCircle, Sparkles } from 'lucide-react';
-import { collection, addDoc, doc, setDoc } from 'firebase/firestore';
+import { doc, setDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 
 const Wishlist = () => {
@@ -37,7 +37,7 @@ const Wishlist = () => {
   };
 
   return (
-    <section id="wishlist" className="py-20 lg:py-32 relative overflow-hidden">
+    <section id="wishlist" className="py-16 lg:py-24 relative overflow-hidden border-t border-gray-800/50">
       {/* Enhanced Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-purple-900/30 via-gray-900 to-pink-900/30"></div>
       <motion.div 
@@ -97,7 +97,7 @@ const Wishlist = () => {
               className="inline-flex items-center bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300 px-6 py-3 rounded-full text-sm font-medium border border-purple-500/30"
             >
               <Sparkles size={16} className="mr-2" />
-              Coming Soon
+              Join Early Access
             </motion.div>
             
             <motion.h2 
@@ -107,10 +107,11 @@ const Wishlist = () => {
               viewport={{ once: true }}
               className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white"
             >
-              Be the first to know when{' '}
+              Get{' '}
               <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 bg-clip-text text-transparent">
-                Calypso launches
+                Early Access
               </span>
+              {' '}to Calypso
             </motion.h2>
             
             <motion.p 
@@ -120,10 +121,20 @@ const Wishlist = () => {
               viewport={{ once: true }}
               className="text-lg lg:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed"
             >
-              Join over <span className="text-purple-400 font-semibold">10,000+ creators</span> already 
-              on our wishlist! Be the first to experience revolutionary mobile streaming technology 
-              that's about to change the game forever.
+              Join over <span className="text-purple-400 font-semibold">10,000+ creators</span> getting
+              exclusive early access! Experience revolutionary mobile streaming technology
+              before anyone else and help shape the future of sports broadcasting.
             </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center bg-red-500/20 text-red-300 px-4 py-2 rounded-full text-sm font-medium border border-red-500/40 animate-pulse"
+            >
+              🔥 Limited Early Access Spots Available
+            </motion.div>
           </div>
 
           {/* Email Form */}
@@ -132,7 +143,7 @@ const Wishlist = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
             viewport={{ once: true }}
-            className="max-w-md mx-auto"
+            className="max-w-lg mx-auto"
           >
             {status === 'success' ? (
               <motion.div
@@ -143,7 +154,7 @@ const Wishlist = () => {
                 <CheckCircle size={48} className="text-green-400 mx-auto" />
                 <p className="text-green-400 font-medium">{message}</p>
                 <div className="text-sm text-gray-400">
-                  Follow us on social media for updates!
+                  Check your email for early access details!
                 </div>
               </motion.div>
             ) : (
@@ -156,9 +167,9 @@ const Wishlist = () => {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email address"
+                    placeholder="Enter your email for early access"
                     disabled={status === 'loading'}
-                    className="w-full pl-12 pr-4 py-4 bg-gray-800/50 border border-gray-700/50 rounded-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 text-lg"
+                    className="w-full pl-12 pr-4 py-5 bg-gray-800/60 border-2 border-gray-600/60 rounded-full text-white placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-purple-500/50 focus:border-purple-500 transition-all duration-200 text-xl shadow-2xl"
                   />
                 </div>
                 
@@ -167,10 +178,10 @@ const Wishlist = () => {
                   disabled={status === 'loading'}
                   whileHover={{ scale: status === 'loading' ? 1 : 1.05 }}
                   whileTap={{ scale: status === 'loading' ? 1 : 0.95 }}
-                  className="w-full bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:from-purple-600 hover:via-pink-600 hover:to-red-600 disabled:opacity-50 disabled:cursor-not-allowed text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-200 shadow-2xl relative overflow-hidden"
+                  className="w-full bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:from-purple-600 hover:via-pink-600 hover:to-red-600 disabled:opacity-50 disabled:cursor-not-allowed text-white px-8 py-5 rounded-full font-bold text-xl transition-all duration-200 shadow-2xl relative overflow-hidden hover:shadow-purple-500/25 hover:shadow-3xl"
                 >
                   <span className="relative z-10">
-                    {status === 'loading' ? 'Joining Wishlist...' : 'Join the Wishlist'}
+                    {status === 'loading' ? 'Securing Access...' : 'Get Early Access'}
                   </span>
                   {status === 'loading' && (
                     <motion.div
@@ -204,9 +215,9 @@ const Wishlist = () => {
             className="mt-16 grid sm:grid-cols-3 gap-6 lg:gap-8"
           >
             {[
-              { title: '🚀 VIP Early Access', desc: 'Experience Calypso weeks before public launch' },
-              { title: '📱 Beta Testing', desc: 'Help shape the future with exclusive beta access' },
-              { title: '💎 Launch Rewards', desc: 'Exclusive badges and special recognition' }
+              { title: '🚀 Priority Access', desc: 'Get Calypso weeks before public release' },
+              { title: '🎯 Exclusive Features', desc: 'Access premium features only for early adopters' },
+              { title: '💎 Founder Status', desc: 'Special recognition as an early supporter' }
             ].map((feature, index) => (
               <motion.div
                 key={index}

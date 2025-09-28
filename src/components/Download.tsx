@@ -1,5 +1,5 @@
 import React from 'react';
-import { Download as DownloadIcon, Star, Shield, Zap } from 'lucide-react';
+import { Star, Shield, Zap } from 'lucide-react';
 
 const Download = () => {
   return (

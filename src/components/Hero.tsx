@@ -1,14 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Play, Star, Users, Zap, Sparkles } from 'lucide-react';
+import { Play, Star, Sparkles } from 'lucide-react';
 
 const Hero = () => {
-  const scrollToDownload = () => {
-    const element = document.getElementById('download');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   const scrollToVideo = () => {
     const element = document.getElementById('video');
@@ -84,7 +78,7 @@ const Hero = () => {
                 className="inline-flex items-center bg-gradient-to-r from-red-500/20 to-pink-500/20 text-transparent bg-clip-text px-4 py-2 rounded-full text-sm font-medium border border-red-500/30"
               >
                 <Sparkles size={16} className="mr-2 text-red-400" />
-                <span className="text-red-400">Professional sports streaming</span>
+                <span className="text-red-400">Early Access Available Now</span>
               </motion.div>
               
               <motion.h1 
@@ -106,9 +100,9 @@ const Hero = () => {
                 transition={{ duration: 0.8, delay: 0.6 }}
                 className="text-lg lg:text-xl text-gray-300 max-w-2xl leading-relaxed"
               >
-                Transform your phone into a professional broadcasting studio. 
-                Create stunning sports streams with HD quality, real-time scoreboards, 
-                and seamless integration with YouTube, Twitch, and all major platforms.
+                Transform your phone into a professional broadcasting studio.
+                Join thousands of creators already streaming with early access to Calypso's
+                revolutionary mobile streaming technology.
               </motion.p>
             </div>
 
@@ -148,7 +142,7 @@ const Hero = () => {
                 onClick={scrollToWishlist}
                 className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:from-purple-600 hover:via-pink-600 hover:to-red-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-200 shadow-2xl relative overflow-hidden"
               >
-                <span className="relative z-10">🚀 Join Wishlist</span>
+                <span className="relative z-10">🚀 Get Early Access</span>
                 <motion.div
                   animate={{ x: [0, 100, -100, 0] }}
                   transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
