@@ -104,6 +104,6 @@ const PhoneModel: React.FC<PhoneModelProps> = ({
 export { TextureDebugPanel };
 
 // Preload the model
-useGLTF.preload('/src/models/samsung_s24_ultra.glb');
+useGLTF.preload('/models/samsung_s24_ultra.glb');
 
 export default PhoneModel;

@@ -205,7 +205,7 @@ const Hero = () => {
 
                   {/* Phone Model */}
                   <PhoneModel
-                    modelPath="/src/models/samsung_s24_ultra.glb"
+                    modelPath="/models/samsung_s24_ultra.glb"
                     rotation={rotation}
                     repeatX={repeatX}
                     repeatY={repeatY}
