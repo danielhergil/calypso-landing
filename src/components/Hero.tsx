@@ -1,8 +1,31 @@
-import React from 'react';
+import React, { Suspense, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Play, Star, Sparkles } from 'lucide-react';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls, Environment } from '@react-three/drei';
+import PhoneModel, { TextureDebugPanel } from './PhoneModel';
+import * as THREE from 'three';
 
 const Hero = () => {
+  // Texture adjustment state (only for dev mode)
+  const [rotation, setRotation] = useState(-Math.PI / 2); // -90 degrees
+  const [repeatX, setRepeatX] = useState(5.00);
+  const [repeatY, setRepeatY] = useState(4.50);
+  const [offsetX, setOffsetX] = useState(-0.60);
+  const [offsetY, setOffsetY] = useState(-0.04);
+  const [flipY, setFlipY] = useState(true);
+
+  // Lighting state
+  const [ambientIntensity, setAmbientIntensity] = useState(0.4);
+  const [spotIntensity, setSpotIntensity] = useState(0);
+  const [pointIntensity, setPointIntensity] = useState(0);
+  const [envIntensity, setEnvIntensity] = useState(0.65);
+  const [toneMappingExposure, setToneMappingExposure] = useState(1.2);
+
+  // Material state
+  const [roughness, setRoughness] = useState(0);
+  const [metalness, setMetalness] = useState(0);
+  const [envMapIntensity, setEnvMapIntensity] = useState(0.2);
 
   const scrollToVideo = () => {
     const element = document.getElementById('video');
@@ -161,69 +184,95 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Phone Mockup */}
-          <motion.div 
+          {/* 3D Phone Model */}
+          <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative flex justify-center lg:justify-end"
           >
-            <motion.div 
-              animate={{ 
-                y: [0, -10, 0],
-                rotate: [0, 1, 0, -1, 0]
-              }}
-              transition={{ 
-                duration: 6,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              className="relative"
-            >
-              {/* Phone Frame */}
-              <div className="w-80 h-[640px] bg-gradient-to-b from-gray-800 to-gray-900 rounded-[3rem] p-2 shadow-2xl">
-                <div className="w-full h-full bg-black rounded-[2.5rem] overflow-hidden relative">
-                  {/* Screen Content */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-gray-900 to-black flex flex-col items-center justify-center p-8 space-y-8">
-                    {/* Logo */}
-                    <div className="w-24 h-24 rounded-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center shadow-xl">
-                      <img
-                        src="/logo_calypso.png"
-                        alt="Logo de Calypso"
-                        className="w-24 h-24 rounded-full object-cover shadow-lg"
-                      />
-                    </div>
-                    
-                    <div className="text-center space-y-4">
-                      <h2 className="text-white text-3xl font-bold">Calypso</h2>
-                      <p className="text-gray-400 text-lg">Sports Streaming</p>
-                    </div>
+            <div className="relative w-full h-[500px] lg:h-[600px]">
+              <Canvas
+                camera={{ position: [0, 0, 10], fov: 35 }}
+                style={{ background: 'transparent' }}
+                gl={{ toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure }}
+              >
+                <Suspense fallback={null}>
+                  {/* Lighting - adjustable via debug panel */}
+                  <ambientLight intensity={ambientIntensity} />
+                  <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={spotIntensity} />
+                  <pointLight position={[-10, -10, -10]} intensity={pointIntensity} />
 
-                    {/* Mock Buttons */}
-                    <div className="space-y-4 w-full">
-                      <div className="bg-red-500 hover:bg-red-600 text-white py-4 px-6 rounded-2xl text-center font-semibold transition-colors duration-200">
-                        Sign up free
-                      </div>
-                      <div className="border-2 border-gray-600 text-white py-4 px-6 rounded-2xl text-center font-semibold flex items-center justify-center space-x-2">
-                        <img
-                          src="/google_logo.png"
-                          alt="Logo de Google"
-                          className="w-5 h-5 object-contain"
-                        />
-                        <span>Continue with Google</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                  {/* Phone Model */}
+                  <PhoneModel
+                    modelPath="/src/models/samsung_s24_ultra.glb"
+                    rotation={rotation}
+                    repeatX={repeatX}
+                    repeatY={repeatY}
+                    offsetX={offsetX}
+                    offsetY={offsetY}
+                    flipY={flipY}
+                    roughness={roughness}
+                    metalness={metalness}
+                    envMapIntensity={envMapIntensity}
+                  />
+
+                  {/* Environment for reflections */}
+                  <Environment preset="city" environmentIntensity={envIntensity} />
+
+                  {/* Controls for rotation */}
+                  <OrbitControls
+                    enableZoom={false}
+                    enablePan={false}
+                    minPolarAngle={Math.PI / 4}
+                    maxPolarAngle={Math.PI / 1.5}
+                    autoRotate
+                    autoRotateSpeed={1}
+                  />
+                </Suspense>
+              </Canvas>
 
               {/* Floating Elements */}
-              <div className="absolute -top-4 -right-4 w-16 h-16 bg-red-500/20 rounded-full blur-xl animate-pulse"></div>
-              <div className="absolute -bottom-4 -left-4 w-20 h-20 bg-blue-500/20 rounded-full blur-xl animate-pulse delay-1000"></div>
-            </motion.div>
+              <div className="absolute -top-4 -right-4 w-16 h-16 bg-red-500/20 rounded-full blur-xl animate-pulse pointer-events-none"></div>
+              <div className="absolute -bottom-4 -left-4 w-20 h-20 bg-blue-500/20 rounded-full blur-xl animate-pulse delay-1000 pointer-events-none"></div>
+            </div>
           </motion.div>
         </div>
       </div>
+
+      {/* Debug Panel - Outside Canvas, only in dev */}
+      {import.meta.env.DEV && (
+        <TextureDebugPanel
+          rotation={rotation}
+          setRotation={setRotation}
+          repeatX={repeatX}
+          setRepeatX={setRepeatX}
+          repeatY={repeatY}
+          setRepeatY={setRepeatY}
+          offsetX={offsetX}
+          setOffsetX={setOffsetX}
+          offsetY={offsetY}
+          setOffsetY={setOffsetY}
+          flipY={flipY}
+          setFlipY={setFlipY}
+          ambientIntensity={ambientIntensity}
+          setAmbientIntensity={setAmbientIntensity}
+          spotIntensity={spotIntensity}
+          setSpotIntensity={setSpotIntensity}
+          pointIntensity={pointIntensity}
+          setPointIntensity={setPointIntensity}
+          envIntensity={envIntensity}
+          setEnvIntensity={setEnvIntensity}
+          toneMappingExposure={toneMappingExposure}
+          setToneMappingExposure={setToneMappingExposure}
+          roughness={roughness}
+          setRoughness={setRoughness}
+          metalness={metalness}
+          setMetalness={setMetalness}
+          envMapIntensity={envMapIntensity}
+          setEnvMapIntensity={setEnvMapIntensity}
+        />
+      )}
     </section>
   );
 };
