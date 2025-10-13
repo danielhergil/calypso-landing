@@ -93,7 +93,7 @@ const PhoneModel: React.FC<PhoneModelProps> = ({
     <group
       ref={groupRef}
       scale={[1.1, 1.1, 1.1]}
-      rotation={[0.1, 0.3, 0]}
+      rotation={[0.1, Math.PI, 0]}
       position={[0, 0, 0]}
     >
       <primitive object={clonedScene} />
