@@ -42,7 +42,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative pt-20 lg:pt-32 pb-16 lg:pb-24 overflow-hidden">
+    <section className="relative pt-20 lg:pt-32 pb-16 lg:pb-24 overflow-hidden" aria-label="Hero section">
       {/* Enhanced Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-purple-900/20 to-pink-900/20"></div>
       <motion.div 

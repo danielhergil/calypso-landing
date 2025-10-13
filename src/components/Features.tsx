@@ -55,7 +55,7 @@ const Features = () => {
   ];
 
   return (
-    <section id="features" className="py-20 lg:py-32 relative overflow-hidden">
+    <section id="features" className="py-20 lg:py-32 relative overflow-hidden" aria-labelledby="features-heading">
       <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-purple-900/10 to-gray-900"></div>
       
       {/* Animated background elements */}
@@ -91,7 +91,8 @@ const Features = () => {
             Key features
           </motion.div>
           
-          <motion.h2 
+          <motion.h2
+            id="features-heading"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}

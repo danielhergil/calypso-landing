@@ -37,7 +37,7 @@ const Screenshots = () => {
   };
 
   return (
-    <section id="screenshots" className="py-20 lg:py-32 relative">
+    <section id="screenshots" className="py-20 lg:py-32 relative" aria-labelledby="screenshots-heading">
       <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900 to-gray-800"></div>
       
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
@@ -59,7 +59,8 @@ const Screenshots = () => {
             Screenshots
           </motion.div>
           
-          <motion.h2 
+          <motion.h2
+            id="screenshots-heading"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -101,7 +102,7 @@ const Screenshots = () => {
                     <div className="w-20 h-20 rounded-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center">
                       <img
                         src="/logo_calypso.png"
-                        alt="Logo de Calypso"
+                        alt="Calypso sports streaming app logo"
                         className="w-20 h-20 rounded-full object-cover shadow-lg"
                       />
                     </div>
@@ -110,7 +111,7 @@ const Screenshots = () => {
                         <div className="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center">
                           <img
                             src="/ic_camara.png"
-                            alt="Camera icon"
+                            alt="Camera icon for live streaming"
                             className="w-5 h-5 object-contain filter invert"
                           />
                         </div>
@@ -126,7 +127,7 @@ const Screenshots = () => {
                         <div className="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center">
                           <img
                             src="/ic_settings.png"
-                            alt="Settings icon"
+                            alt="Settings icon for app configuration"
                             className="w-5 h-5 object-contain filter invert"
                           />
                         </div>
@@ -141,7 +142,7 @@ const Screenshots = () => {
                     <div className="w-16 h-16 rounded-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center">
                       <img
                         src="/logo_calypso.png"
-                        alt="Logo de Calypso"
+                        alt="Calypso sports streaming app logo"
                         className="w-16 h-16 rounded-full object-cover shadow-lg"
                       />
                     </div>
@@ -156,7 +157,7 @@ const Screenshots = () => {
                       <div className="border border-gray-600 py-3 px-6 rounded-xl text-center text-white font-medium flex items-center justify-center space-x-2">
                         <img
                           src="/google_logo.png"
-                          alt="Logo de Google"
+                          alt="Google logo for sign in with Google"
                           className="w-4 h-4 object-contain"
                         />
                         <span>Continue with Google</span>
@@ -184,7 +185,7 @@ const Screenshots = () => {
                   <div className="absolute inset-0 p-4">
                     <img
                       src="/calypso_basket.png"
-                      alt="Live streaming interface"
+                      alt="Calypso live streaming interface showing basketball game with HD camera controls"
                       className="w-full max-h-[800px] object-cover rounded-xl shadow-lg"
                     />
                   </div>

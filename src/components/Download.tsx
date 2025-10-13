@@ -3,7 +3,7 @@ import { Star, Shield, Zap } from 'lucide-react';
 
 const Download = () => {
   return (
-    <section id="download" className="py-20 lg:py-32 relative overflow-hidden">
+    <section id="download" className="py-20 lg:py-32 relative overflow-hidden" aria-labelledby="download-heading">
       <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-gray-900 to-black"></div>
       
       {/* Background Elements */}
@@ -19,7 +19,7 @@ const Download = () => {
               100% Free and Secure
             </div>
             
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+            <h2 id="download-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
               Download
               <span className="block bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
                 Calypso Now
@@ -41,7 +41,7 @@ const Download = () => {
             >
               <img
                 src="/google_play_logo.png"
-                alt="Logo de Calypso"
+                alt="Download Calypso on Google Play Store"
                 className="w-10 h-10 rounded-full object-cover shadow-lg"
               />
               <div className="text-left">
