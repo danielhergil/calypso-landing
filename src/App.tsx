@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Features from './components/Features';
+import Pricing from './components/Pricing';
 import VideoSection from './components/VideoSection';
 import Screenshots from './components/Screenshots';
 import Wishlist from './components/Wishlist';
@@ -36,14 +37,17 @@ function App() {
         }}
         className="fixed inset-0 -z-10"
       />
-      
+
       <Header />
-      <Hero />
-      <Wishlist />
-      <Features />
-      <VideoSection />
-      <Screenshots />
-      <Download />
+      <main id="main-content">
+        <Hero />
+        <Features />
+        <Pricing />
+        <VideoSection />
+        <Screenshots />
+        <Wishlist />
+        <Download />
+      </main>
       <Footer />
     </motion.div>
   );

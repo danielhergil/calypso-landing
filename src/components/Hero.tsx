@@ -98,10 +98,10 @@ const Hero = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="inline-flex items-center bg-gradient-to-r from-red-500/20 to-pink-500/20 text-transparent bg-clip-text px-4 py-2 rounded-full text-sm font-medium border border-red-500/30"
+                className="inline-flex items-center bg-gradient-to-r from-purple-500/20 to-pink-500/20 px-4 py-2 rounded-full text-sm font-medium border border-purple-500/30"
               >
-                <Sparkles size={16} className="mr-2 text-red-400" />
-                <span className="text-red-400">Early Access Available Now</span>
+                <Sparkles size={16} className="mr-2 text-purple-400" />
+                <span className="text-purple-300">BETA • Free Forever While in Beta</span>
               </motion.div>
               
               <motion.h1 
@@ -117,15 +117,15 @@ const Hero = () => {
                 </span>
               </motion.h1>
 
-              <motion.p 
+              <motion.p
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
                 className="text-lg lg:text-xl text-gray-300 max-w-2xl leading-relaxed"
               >
                 Transform your phone into a professional broadcasting studio.
-                Join thousands of creators already streaming with early access to Calypso's
-                revolutionary mobile streaming technology.
+                <strong className="text-white"> Join our beta and get all Pro features completely free</strong> while
+                helping us build the future of mobile sports streaming.
               </motion.p>
             </div>
 
@@ -136,12 +136,12 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.8 }}
               className="flex flex-wrap justify-center lg:justify-start gap-6 text-center"
             >
-              <motion.div 
+              <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="flex items-center space-x-2 bg-yellow-500/10 px-4 py-2 rounded-full border border-yellow-500/30"
+                className="flex items-center space-x-2 bg-green-500/10 px-4 py-2 rounded-full border border-green-500/30"
               >
-                <Star className="text-yellow-400" size={20} />
-                <span className="text-white font-semibold">100% Free</span>
+                <Star className="text-green-400" size={20} />
+                <span className="text-white font-semibold">Beta - Free Forever</span>
               </motion.div>
               <motion.div 
                 whileHover={{ scale: 1.05 }}
@@ -165,7 +165,7 @@ const Hero = () => {
                 onClick={scrollToWishlist}
                 className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:from-purple-600 hover:via-pink-600 hover:to-red-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-200 shadow-2xl relative overflow-hidden"
               >
-                <span className="relative z-10">🚀 Get Early Access</span>
+                <span className="relative z-10">🎉 Join Beta - Get Pro Free</span>
                 <motion.div
                   animate={{ x: [0, 100, -100, 0] }}
                   transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
