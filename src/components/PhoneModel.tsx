@@ -55,7 +55,8 @@ const PhoneModel: React.FC<PhoneModelProps> = ({
 
     cloned.traverse((child) => {
       if (child instanceof THREE.Mesh) {
-        const materialName = (child.material as any)?.name?.toLowerCase() || '';
+        const material = Array.isArray(child.material) ? child.material[0] : child.material;
+        const materialName = material?.name?.toLowerCase() ?? '';
 
         // Only apply texture to the main front screen (Object_9)
         if (child.name === 'Object_9' && materialName.includes('screen')) {

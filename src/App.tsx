@@ -8,11 +8,12 @@ import Screenshots from './components/Screenshots';
 import Wishlist from './components/Wishlist';
 import Download from './components/Download';
 import Footer from './components/Footer';
+import SeoSection from './components/SeoSection';
 
 function App() {
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
@@ -21,7 +22,7 @@ function App() {
       {/* Enhanced animated background gradient */}
       <div className="fixed inset-0 bg-gradient-to-br from-gray-900 via-purple-900/40 to-pink-900/40 -z-10" />
       <motion.div
-        animate={{ 
+        animate={{
           background: [
             "radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%)",
             "radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%)",
@@ -36,14 +37,24 @@ function App() {
         }}
         className="fixed inset-0 -z-10"
       />
-      
+
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:m-4 focus:rounded-full focus:bg-white focus:px-6 focus:py-3 focus:text-gray-900"
+      >
+        Skip to main content
+      </a>
+
       <Header />
-      <Hero />
-      <Wishlist />
-      <Features />
-      <VideoSection />
-      <Screenshots />
-      <Download />
+      <main id="main-content" className="flex flex-col gap-12 lg:gap-20">
+        <Hero />
+        <Features />
+        <VideoSection />
+        <Screenshots />
+        <Wishlist />
+        <SeoSection />
+        <Download />
+      </main>
       <Footer />
     </motion.div>
   );
