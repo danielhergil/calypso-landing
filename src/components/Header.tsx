@@ -52,23 +52,16 @@ const Header = () => {
               Features
             </button>
             <button
+              onClick={() => scrollToSection('pricing')}
+              className="text-gray-300 hover:text-white transition-colors duration-200"
+            >
+              Pricing
+            </button>
+            <button
               onClick={() => scrollToSection('video')}
               className="text-gray-300 hover:text-white transition-colors duration-200"
             >
               Demo
-            </button>
-            <button
-              onClick={() => scrollToSection('screenshots')}
-              className="text-gray-300 hover:text-white transition-colors duration-200"
-            >
-              Screenshots
-            </button>
-            <button
-              onClick={() => scrollToSection('wishlist')}
-              className="text-gray-300 hover:text-purple-400 transition-colors duration-200 relative"
-            >
-              Wishlist
-              <div className="absolute -top-1 -right-1 w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full animate-pulse"></div>
             </button>
             <button
               onClick={() => scrollToSection('download')}
@@ -102,25 +95,16 @@ const Header = () => {
               Features
             </button>
             <button
+              onClick={() => scrollToSection('pricing')}
+              className="block w-full text-left text-gray-300 hover:text-white py-2 transition-colors duration-200"
+            >
+              Pricing
+            </button>
+            <button
               onClick={() => scrollToSection('video')}
               className="block w-full text-left text-gray-300 hover:text-white py-2 transition-colors duration-200"
             >
               Demo
-            </button>
-            <button
-              onClick={() => scrollToSection('screenshots')}
-              className="block w-full text-left text-gray-300 hover:text-white py-2 transition-colors duration-200"
-            >
-              Screenshots
-            </button>
-            <button
-              onClick={() => scrollToSection('wishlist')}
-              className="block w-full text-left text-gray-300 hover:text-purple-400 py-2 transition-colors duration-200 relative"
-            >
-              <span className="flex items-center">
-                Wishlist
-                <div className="ml-2 w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full animate-pulse"></div>
-              </span>
             </button>
             <button
               onClick={() => scrollToSection('download')}
