@@ -35,8 +35,10 @@ const Download = () => {
           {/* Download Buttons */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center max-w-2xl mx-auto">
             {/* Google Play Button */}
-            <a 
-              href="#" 
+            <a
+              href="https://play.google.com/store/apps/details?id=com.danihg.calypso"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group flex items-center space-x-4 bg-black hover:bg-gray-900 text-white px-8 py-4 rounded-xl font-medium text-lg transition-all duration-200 transform hover:scale-105 shadow-xl border border-gray-700 hover:border-red-500/50 w-full sm:w-auto justify-center"
             >
               <img

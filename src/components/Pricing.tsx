@@ -169,7 +169,7 @@ const Pricing = () => {
                 </div>
                 <div className="flex items-start space-x-3">
                   <Check className="text-purple-400 flex-shrink-0 mt-1" size={20} />
-                  <span className="text-gray-300">Early access to new features</span>
+                  <span className="text-gray-300">Beta features access</span>
                 </div>
                 <div className="flex items-start space-x-3">
                   <Check className="text-purple-400 flex-shrink-0 mt-1" size={20} />
