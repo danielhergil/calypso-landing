@@ -136,7 +136,7 @@ const Pricing = () => {
                 <h3 className="text-2xl font-bold text-white mb-2">Pro Plan</h3>
                 <p className="text-gray-400 mb-4">Available after beta ends</p>
                 <div className="flex items-baseline justify-center space-x-2">
-                  <span className="text-5xl font-bold text-white">$4.99</span>
+                  <span className="text-5xl font-bold text-white">$2.99</span>
                   <span className="text-gray-400">/month</span>
                 </div>
                 <p className="text-gray-400 text-sm mt-2">Everything you need to stream like a pro</p>
