@@ -81,11 +81,11 @@ const Hero = () => {
                 <span className="text-purple-300">BETA • Free Forever While in Beta</span>
               </motion.div>
               
-              <motion.h1 
+              <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight"
+                className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight font-heading"
               >
                 <span className="text-white">Stream Smart</span>
                 <br />
@@ -140,20 +140,25 @@ const Hero = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={scrollToWishlist}
-                className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:from-purple-600 hover:via-pink-600 hover:to-red-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-200 shadow-2xl relative overflow-hidden"
+                className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:from-purple-600 hover:via-pink-600 hover:to-red-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-200 shadow-2xl relative overflow-hidden cursor-pointer flex items-center justify-center gap-2"
               >
-                <span className="relative z-10">🎉 Join Beta - Get Pro Free</span>
+                <Sparkles size={20} className="relative z-10" />
+                <span className="relative z-10">Join Beta - Get Pro Free</span>
                 <motion.div
                   animate={{ x: [0, 100, -100, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12"
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 motion-safe:animate-none"
                 />
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={scrollToVideo}
-                className="border-2 border-gray-600 hover:border-purple-500 text-white hover:text-purple-400 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-200 flex items-center justify-center space-x-2 backdrop-blur-sm"
+                className="border-2 border-gray-600 hover:border-purple-500 text-white hover:text-purple-400 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-200 flex items-center justify-center space-x-2 backdrop-blur-sm cursor-pointer"
               >
                 <Play size={20} />
                 <span>Watch Demo</span>

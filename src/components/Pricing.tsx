@@ -28,7 +28,7 @@ const Pricing = () => {
             <Sparkles className="text-purple-400" size={16} />
             <span className="text-purple-300 text-sm font-medium">Limited Time Beta Access</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent font-heading">
             Simple, Transparent Pricing
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
@@ -52,7 +52,7 @@ const Pricing = () => {
               {/* Beta Badge */}
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                 <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg flex items-center space-x-2">
-                  <Zap size={16} className="animate-pulse" />
+                  <Zap size={16} />
                   <span>BETA - AVAILABLE NOW</span>
                 </div>
               </div>
@@ -104,7 +104,7 @@ const Pricing = () => {
 
               <button
                 onClick={scrollToDownload}
-                className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-4 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg"
+                className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-4 rounded-xl transition-colors duration-200 shadow-lg cursor-pointer"
               >
                 Download Free Now
               </button>
@@ -200,7 +200,7 @@ const Pricing = () => {
           className="mt-16 text-center"
         >
           <div className="inline-block bg-gradient-to-r from-purple-900/30 to-pink-900/30 border border-purple-500/20 rounded-2xl p-8 max-w-3xl">
-            <h3 className="text-2xl font-bold text-white mb-4">
+            <h3 className="text-2xl font-bold text-white mb-4 font-heading">
               Why Join the Beta?
             </h3>
             <div className="grid md:grid-cols-3 gap-6 text-left">
@@ -208,7 +208,7 @@ const Pricing = () => {
                 <div className="bg-purple-500/10 w-12 h-12 rounded-lg flex items-center justify-center mb-3">
                   <Sparkles className="text-purple-400" size={24} />
                 </div>
-                <h4 className="font-semibold text-white mb-2">Free Forever Access</h4>
+                <h4 className="font-semibold text-white mb-2 font-heading">Free Forever Access</h4>
                 <p className="text-gray-400 text-sm">
                   All beta testers get the Pro features completely free while helping us improve the app.
                 </p>
@@ -217,7 +217,7 @@ const Pricing = () => {
                 <div className="bg-pink-500/10 w-12 h-12 rounded-lg flex items-center justify-center mb-3">
                   <Zap className="text-pink-400" size={24} />
                 </div>
-                <h4 className="font-semibold text-white mb-2">Early Bird Pricing</h4>
+                <h4 className="font-semibold text-white mb-2 font-heading">Early Bird Pricing</h4>
                 <p className="text-gray-400 text-sm">
                   Beta users receive exclusive discounts on Pro plans when beta ends.
                 </p>
@@ -226,7 +226,7 @@ const Pricing = () => {
                 <div className="bg-blue-500/10 w-12 h-12 rounded-lg flex items-center justify-center mb-3">
                   <Check className="text-blue-400" size={24} />
                 </div>
-                <h4 className="font-semibold text-white mb-2">Shape the Future</h4>
+                <h4 className="font-semibold text-white mb-2 font-heading">Shape the Future</h4>
                 <p className="text-gray-400 text-sm">
                   Your feedback directly influences new features and improvements.
                 </p>
@@ -244,7 +244,7 @@ const Pricing = () => {
           className="mt-12 text-center"
         >
           <div className="bg-gray-800/30 border border-gray-700 rounded-xl p-6 max-w-3xl mx-auto">
-            <h4 className="text-lg font-semibold text-white mb-3">Free Plan After Beta</h4>
+            <h4 className="text-lg font-semibold text-white mb-3 font-heading">Free Plan After Beta</h4>
             <p className="text-gray-400 text-sm mb-4">
               Even after beta ends, you can continue using Calypso for free with these features:
             </p>

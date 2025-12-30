@@ -97,7 +97,7 @@ const Features = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white font-heading"
           >
             Everything you need to
             <span className="block bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 bg-clip-text text-transparent">
@@ -122,32 +122,26 @@ const Features = () => {
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
-              <motion.div 
+              <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 50, scale: 0.9 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ 
-                  duration: 0.6, 
+                transition={{
+                  duration: 0.6,
                   delay: index * 0.1,
                   type: "spring",
                   stiffness: 100,
                   damping: 10
                 }}
                 viewport={{ once: true, margin: "-100px" }}
-                whileHover={{ 
-                  y: -12, 
-                  scale: 1.05,
-                  rotateZ: 2,
-                  transition: { duration: 0.3 }
-                }}
-                className="group relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 lg:p-8 hover:bg-gray-700/50 hover:border-purple-500/30 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/10"
+                className="group relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 lg:p-8 hover:bg-gray-700/50 hover:border-purple-500/30 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/10 cursor-pointer"
               >
                 <div className="space-y-4">
                   <div className={`w-12 h-12 rounded-xl ${feature.color} flex items-center justify-center transition-transform duration-300 group-hover:scale-110`}>
                     <Icon size={24} />
                   </div>
                   
-                  <h3 className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors duration-200">
+                  <h3 className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors duration-200 font-heading">
                     {feature.title}
                   </h3>
                   
@@ -180,7 +174,7 @@ const Features = () => {
           >
             Ready to start streaming?
           </motion.p>
-          <motion.button 
+          <motion.button
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -188,7 +182,7 @@ const Features = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => document.getElementById('download')?.scrollIntoView({ behavior: 'smooth' })}
-            className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:from-purple-600 hover:via-pink-600 hover:to-red-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-200 shadow-2xl"
+            className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:from-purple-600 hover:via-pink-600 hover:to-red-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-200 shadow-2xl cursor-pointer"
           >
             Download Calypso Free
           </motion.button>

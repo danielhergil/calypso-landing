@@ -23,7 +23,7 @@ const Header = () => {
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <header className={`fixed top-4 left-4 right-4 z-50 transition-all duration-300 rounded-2xl ${
       isScrolled ? 'bg-gray-900/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
     }`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -47,25 +47,25 @@ const Header = () => {
           <nav className="hidden md:flex items-center space-x-8">
             <button
               onClick={() => scrollToSection('features')}
-              className="text-gray-300 hover:text-white transition-colors duration-200"
+              className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer"
             >
               Features
             </button>
             <button
               onClick={() => scrollToSection('pricing')}
-              className="text-gray-300 hover:text-white transition-colors duration-200"
+              className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer"
             >
               Pricing
             </button>
             <button
               onClick={() => scrollToSection('video')}
-              className="text-gray-300 hover:text-white transition-colors duration-200"
+              className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer"
             >
               Demo
             </button>
             <button
               onClick={() => scrollToSection('download')}
-              className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-6 py-2 rounded-full font-medium transition-all duration-200 transform hover:scale-105 shadow-lg flex items-center space-x-2"
+              className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-6 py-2 rounded-full font-medium transition-colors duration-200 shadow-lg flex items-center space-x-2 cursor-pointer"
             >
               <Download size={16} />
               <span>Download</span>
@@ -75,7 +75,7 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors duration-200"
+            className="md:hidden p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors duration-200 cursor-pointer"
           >
             {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -90,25 +90,25 @@ const Header = () => {
           >
             <button
               onClick={() => scrollToSection('features')}
-              className="block w-full text-left text-gray-300 hover:text-white py-2 transition-colors duration-200"
+              className="block w-full text-left text-gray-300 hover:text-white py-2 transition-colors duration-200 cursor-pointer"
             >
               Features
             </button>
             <button
               onClick={() => scrollToSection('pricing')}
-              className="block w-full text-left text-gray-300 hover:text-white py-2 transition-colors duration-200"
+              className="block w-full text-left text-gray-300 hover:text-white py-2 transition-colors duration-200 cursor-pointer"
             >
               Pricing
             </button>
             <button
               onClick={() => scrollToSection('video')}
-              className="block w-full text-left text-gray-300 hover:text-white py-2 transition-colors duration-200"
+              className="block w-full text-left text-gray-300 hover:text-white py-2 transition-colors duration-200 cursor-pointer"
             >
               Demo
             </button>
             <button
               onClick={() => scrollToSection('download')}
-              className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-6 py-3 rounded-full font-medium transition-all duration-200 flex items-center justify-center space-x-2 mt-4"
+              className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-6 py-3 rounded-full font-medium transition-colors duration-200 flex items-center justify-center space-x-2 mt-4 cursor-pointer"
             >
               <Download size={16} />
               <span>Download Free</span>
