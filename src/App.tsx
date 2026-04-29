@@ -9,11 +9,42 @@ import Screenshots from './components/Screenshots';
 import Wishlist from './components/Wishlist';
 import Download from './components/Download';
 import Footer from './components/Footer';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import TermsOfService from './components/TermsOfService';
 
 function App() {
+  const path = typeof window !== 'undefined' ? window.location.pathname : '/';
+
+  if (path === '/privacy' || path === '/privacy/') {
+    return (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="min-h-screen bg-gray-900 text-white"
+      >
+        <PrivacyPolicy />
+        <Footer />
+      </motion.div>
+    );
+  }
+
+  if (path === '/terms' || path === '/terms/') {
+    return (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="min-h-screen bg-gray-900 text-white"
+      >
+        <TermsOfService />
+        <Footer />
+      </motion.div>
+    );
+  }
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}

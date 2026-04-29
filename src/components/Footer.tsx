@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, Mail, Shield } from 'lucide-react';
+import { Heart, Mail, Shield, FileText } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -63,13 +63,18 @@ const Footer = () => {
                 <span>calypso.sport.stream@gmail.com</span>
               </a>
               <a
-                href="https://danielhergil.github.io/calypso/privacy.html"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/privacy"
                 className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-200 text-sm"
               >
                 <Shield size={16} />
                 <span>Privacy Policy</span>
+              </a>
+              <a
+                href="/terms"
+                className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+              >
+                <FileText size={16} />
+                <span>Terms of Service</span>
               </a>
             </div>
           </div>
