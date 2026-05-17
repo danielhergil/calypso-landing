@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -11,9 +11,21 @@ import Download from './components/Download';
 import Footer from './components/Footer';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsOfService from './components/TermsOfService';
+import BillingResult from './components/BillingResult';
+import AccountPage from './components/AccountPage';
 
 function App() {
-  const path = typeof window !== 'undefined' ? window.location.pathname : '/';
+  const [path, setPath] = useState(typeof window !== 'undefined' ? window.location.pathname : '/');
+
+  useEffect(() => {
+    const syncPath = () => setPath(window.location.pathname);
+    window.addEventListener('popstate', syncPath);
+    window.addEventListener('app:navigate', syncPath);
+    return () => {
+      window.removeEventListener('popstate', syncPath);
+      window.removeEventListener('app:navigate', syncPath);
+    };
+  }, []);
 
   if (path === '/privacy' || path === '/privacy/') {
     return (
@@ -41,6 +53,38 @@ function App() {
         <Footer />
       </motion.div>
     );
+  }
+
+  if (path === '/billing/success' || path === '/billing/success/') {
+    return (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="min-h-screen bg-gray-900 text-white"
+      >
+        <BillingResult mode="success" />
+        <Footer />
+      </motion.div>
+    );
+  }
+
+  if (path === '/billing/cancel' || path === '/billing/cancel/') {
+    return (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="min-h-screen bg-gray-900 text-white"
+      >
+        <BillingResult mode="cancel" />
+        <Footer />
+      </motion.div>
+    );
+  }
+
+  if (path === '/account' || path === '/account/') {
+    return <AccountPage />;
   }
 
   return (
