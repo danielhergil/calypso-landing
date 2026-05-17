@@ -101,6 +101,7 @@ const AccountPage = () => {
     try {
       await applyPersistence();
       const provider = new GoogleAuthProvider();
+      provider.setCustomParameters({ prompt: 'select_account' });
       const credential = await signInWithPopup(auth, provider);
       const idToken = await credential.user.getIdToken();
       setClientAuthContext({ uid: credential.user.uid, idToken });
