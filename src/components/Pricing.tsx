@@ -3,9 +3,10 @@ import { Check, Sparkles, Zap, Lock } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { doc, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase';
-import { createCheckoutSession, createPortalSession, fetchBillingMe, type BillingMe, type BillingPlan } from '../lib/billingApi';
+import { createPortalSession, fetchBillingMe, type BillingMe, type BillingPlan } from '../lib/billingApi';
 import { getClientAuthContext } from '../lib/authContext';
-import { writeBillingSnapshot, writeCheckoutAttempt, writeCheckoutError } from '../lib/subscriptionLedger';
+import { writeBillingSnapshot } from '../lib/subscriptionLedger';
+import { navigateTo } from '../lib/navigation';
 
 const Pricing = () => {
   const [isLoadingPlan, setIsLoadingPlan] = useState<null | BillingPlan | 'portal'>(null);
@@ -70,25 +71,9 @@ const Pricing = () => {
     }
   };
 
-  const startCheckout = async (plan: BillingPlan) => {
-    if (!auth) {
-      setStatusMessage('Sign in from the Calypso app first to upgrade your plan.');
-      return;
-    }
-
-    try {
-      setIsLoadingPlan(plan);
-      setStatusMessage('');
-      await writeCheckoutAttempt(auth.uid, plan);
-      const { url } = await createCheckoutSession(auth, plan);
-      window.location.href = url;
-    } catch (error) {
-      const reason = error instanceof Error ? error.message : 'checkout_failed';
-      await writeCheckoutError(auth.uid, plan, reason);
-      setStatusMessage('We could not create the checkout session. Try again in a moment.');
-    } finally {
-      setIsLoadingPlan(null);
-    }
+  const goToAccountForCheckout = (plan: BillingPlan) => {
+    setStatusMessage(`Continue in Account to choose ${plan === 'pro' ? 'Pro' : 'Max'} after login.`);
+    navigateTo('/account');
   };
 
   const openPortal = async () => {
@@ -234,11 +219,10 @@ const Pricing = () => {
               </div>
 
               <button
-                onClick={() => startCheckout('pro')}
-                disabled={isLoadingPlan !== null}
-                className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold py-4 rounded-xl transition-colors duration-200 shadow-lg cursor-pointer"
+                onClick={() => goToAccountForCheckout('pro')}
+                className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-4 rounded-xl transition-colors duration-200 shadow-lg cursor-pointer"
               >
-                {isLoadingPlan === 'pro' ? 'Redirecting...' : 'Choose Pro'}
+                Choose Pro
               </button>
 
               <p className="text-center text-sm text-gray-400 mt-4">Upgrade takes effect immediately</p>
@@ -289,11 +273,10 @@ const Pricing = () => {
               </div>
 
               <button
-                onClick={() => startCheckout('max')}
-                disabled={isLoadingPlan !== null}
-                className="w-full bg-gray-700 hover:bg-gray-600 disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold py-4 rounded-xl transition-colors duration-200 cursor-pointer"
+                onClick={() => goToAccountForCheckout('max')}
+                className="w-full bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 rounded-xl transition-colors duration-200 cursor-pointer"
               >
-                {isLoadingPlan === 'max' ? 'Redirecting...' : 'Choose Max'}
+                Choose Max
               </button>
 
               <p className="text-center text-sm text-gray-500 mt-4">Built for teams and frequent events</p>
