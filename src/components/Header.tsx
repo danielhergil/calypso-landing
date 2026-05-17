@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Download } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import { navigateTo } from '../lib/navigation';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,6 +21,11 @@ const Header = () => {
       element.scrollIntoView({ behavior: 'smooth' });
       setIsMenuOpen(false);
     }
+  };
+
+  const goToAccount = () => {
+    navigateTo('/account');
+    setIsMenuOpen(false);
   };
 
   return (
@@ -65,10 +71,15 @@ const Header = () => {
             </button>
             <button
               onClick={() => scrollToSection('download')}
+              className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer"
+            >
+              Download
+            </button>
+            <button
+              onClick={goToAccount}
               className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-6 py-2 rounded-full font-medium transition-colors duration-200 shadow-lg flex items-center space-x-2 cursor-pointer"
             >
-              <Download size={16} />
-              <span>Download</span>
+              <span>Account</span>
             </button>
           </nav>
 
@@ -108,10 +119,15 @@ const Header = () => {
             </button>
             <button
               onClick={() => scrollToSection('download')}
+              className="block w-full text-left text-gray-300 hover:text-white py-2 transition-colors duration-200 cursor-pointer"
+            >
+              Download
+            </button>
+            <button
+              onClick={goToAccount}
               className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-6 py-3 rounded-full font-medium transition-colors duration-200 flex items-center justify-center space-x-2 mt-4 cursor-pointer"
             >
-              <Download size={16} />
-              <span>Download Free</span>
+              <span>Account</span>
             </button>
           </div>
         </div>
