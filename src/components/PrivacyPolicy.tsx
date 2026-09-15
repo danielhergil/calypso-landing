@@ -119,8 +119,8 @@ const PrivacyPolicy = () => {
               >
                 permissions page of your Google Account
               </a>
-              . Once revoked, our token stops working immediately. You can also disconnect the
-              channel from within the app, which deletes the stored token.
+              . Once revoked, our token stops working immediately. Deleting your account, as
+              described below, also deletes every stored token.
             </p>
           </section>
 
