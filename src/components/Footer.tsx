@@ -56,7 +56,7 @@ const Footer = () => {
             <h4 className="text-lg font-semibold text-white">Support</h4>
             <div className="space-y-3">
               <a
-                href="mailto:support@calypso.app"
+                href="mailto:calypso.sport.stream@gmail.com"
                 className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-200 text-sm"
               >
                 <Mail size={16} />
