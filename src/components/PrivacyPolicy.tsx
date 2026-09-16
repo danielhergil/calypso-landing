@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowLeft } from 'lucide-react';
 
 const PrivacyPolicy = () => {
-  const lastUpdated = 'September 15, 2026';
+  const lastUpdated = 'September 16, 2026';
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
@@ -125,7 +125,74 @@ const PrivacyPolicy = () => {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-3">5. Third-Party Services</h2>
+            <h2 className="text-2xl font-semibold text-white mb-3">5. How We Protect Your Data</h2>
+            <p className="text-gray-300 leading-relaxed">
+              We apply the following measures to every piece of Google user data the app handles,
+              including the YouTube data described above:
+            </p>
+            <ul className="list-disc list-inside text-gray-300 space-y-2 mt-3">
+              <li>
+                <strong className="text-white">Encryption in transit.</strong> All communication between the app,
+                our backend and Google&apos;s APIs travels over TLS (HTTPS). The app makes no
+                plain-text connection to our services.
+              </li>
+              <li>
+                <strong className="text-white">Encryption at rest.</strong> Data is stored in Google Cloud
+                and encrypted at rest by Google Cloud using AES-256 with Google-managed keys. Your
+                account data and any Google token are held in Firestore and Cloud Functions located
+                in the European Union. Images you upload, such as team badges, are stored in a
+                Cloud Storage bucket located in the United States; that transfer is covered by
+                Google Cloud&apos;s standard contractual clauses.
+              </li>
+              <li>
+                <strong className="text-white">Tokens never reach the device.</strong> The Google refresh token
+                is held only on our backend. It is never sent to the app, never written to a log and
+                never included in analytics or crash reports.
+              </li>
+              <li>
+                <strong className="text-white">Only genuine installations can reach our backend.</strong> The app
+                is protected with Firebase App Check and Google Play Integrity, so requests from
+                modified or forged clients are rejected.
+              </li>
+              <li>
+                <strong className="text-white">Least-privilege access.</strong> Our backend runs with service
+                accounts scoped to the minimum permissions they need, and administrative access to
+                the Google Cloud and Firebase projects is limited to the developer account.
+              </li>
+              <li>
+                <strong className="text-white">Deletion.</strong> Revoking access from your Google Account, or
+                deleting your Calypso account, deletes the stored token. Nothing is retained after
+                that for the purpose of accessing your YouTube channel.
+              </li>
+            </ul>
+            <p className="text-gray-300 leading-relaxed">
+              If we ever become aware of a security incident affecting your data, we will notify
+              affected users and the competent supervisory authority as required by the GDPR.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold text-white mb-3">6. Limited Use of Google User Data</h2>
+            <p className="text-gray-300 leading-relaxed">
+              Calypso&apos;s use and transfer of information received from Google APIs adheres to
+              the{' '}
+              <a
+                href="https://developers.google.com/terms/api-services-user-data-policy"
+                className="text-red-400 hover:text-red-300 underline"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Google API Services User Data Policy
+              </a>
+              , including the Limited Use requirements. We do not use this data to serve
+              advertising, we do not sell it, and we do not allow humans to read it except with your
+              explicit consent, to resolve a support request you have raised, for security purposes,
+              or where required by law.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold text-white mb-3">7. Third-Party Services</h2>
             <p>Calypso relies on the following providers:</p>
             <ul className="list-disc list-inside space-y-2 mt-2">
               <li>
@@ -140,7 +207,7 @@ const PrivacyPolicy = () => {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-3">6. Data Retention</h2>
+            <h2 className="text-2xl font-semibold text-white mb-3">8. Data Retention</h2>
             <p>
               Account data and uploaded content are kept while your account is active. You can
               delete your team content at any time from within the app. To delete your account and
@@ -149,7 +216,7 @@ const PrivacyPolicy = () => {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-3">7. Your Rights</h2>
+            <h2 className="text-2xl font-semibold text-white mb-3">9. Your Rights</h2>
             <p>
               You have the right to access, correct, export or delete your personal data, and to
               withdraw consent at any time. To exercise these rights, email us at the address
@@ -158,7 +225,7 @@ const PrivacyPolicy = () => {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-3">8. Children's Privacy</h2>
+            <h2 className="text-2xl font-semibold text-white mb-3">10. Children's Privacy</h2>
             <p>
               Calypso is not directed to children under 13. We do not knowingly collect personal
               data from children under 13.
@@ -166,7 +233,7 @@ const PrivacyPolicy = () => {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-3">9. Changes to This Policy</h2>
+            <h2 className="text-2xl font-semibold text-white mb-3">11. Changes to This Policy</h2>
             <p>
               We may update this Privacy Policy from time to time. The date at the top of this page
               indicates when it was last revised. Continued use of the app after changes means you
@@ -175,7 +242,7 @@ const PrivacyPolicy = () => {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-3">10. Contact</h2>
+            <h2 className="text-2xl font-semibold text-white mb-3">12. Contact</h2>
             <p>
               For any privacy-related question, write to{' '}
               <a
