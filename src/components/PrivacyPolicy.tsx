@@ -156,8 +156,9 @@ const PrivacyPolicy = () => {
               </li>
               <li>
                 <strong className="text-white">Least-privilege access.</strong> Our backend runs with service
-                accounts scoped to the minimum permissions they need, and administrative access to
-                the Google Cloud and Firebase projects is limited to the developer account.
+                accounts scoped to the minimum permissions they need. Administrative access to the
+                Google Cloud and Firebase projects is limited to the developer account, which is
+                protected with two-step verification.
               </li>
               <li>
                 <strong className="text-white">Deletion.</strong> Revoking access from your Google Account, or
