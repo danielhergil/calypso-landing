@@ -121,7 +121,7 @@ const VideoSection = () => {
           </div>
           <div className="text-center space-y-2">
             <div className="text-2xl lg:text-3xl font-bold text-green-400">$0</div>
-            <p className="text-gray-400">Completely Free</p>
+            <p className="text-gray-400">To get started</p>
           </div>
         </div>
       </div>
