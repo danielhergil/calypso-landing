@@ -24,7 +24,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
-              The ultimate professional sports streaming app from your mobile device. Completely free.
+              The ultimate professional sports streaming app from your mobile device. Free to start.
             </p>
           </div>
 

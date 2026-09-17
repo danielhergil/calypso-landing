@@ -16,7 +16,7 @@ const Download = () => {
           <div className="space-y-6">
             <div className="inline-flex items-center bg-green-500/10 text-green-400 px-4 py-2 rounded-full text-sm font-medium">
               <Shield size={16} className="mr-2" />
-              100% Free and Secure
+              Free to Start, No Card Required
             </div>
             
             <h2 id="download-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
@@ -59,9 +59,9 @@ const Download = () => {
               <div className="w-16 h-16 bg-green-500/10 rounded-2xl flex items-center justify-center mx-auto">
                 <Shield size={32} className="text-green-400" />
               </div>
-              <h3 className="text-xl font-bold text-white">100% Free</h3>
+              <h3 className="text-xl font-bold text-white">Free to Start</h3>
               <p className="text-gray-400">
-                No hidden costs, no subscriptions. All features available for free.
+                Stream on the free plan without a card. Upgrade only if you need more.
               </p>
             </div>
 
@@ -102,7 +102,7 @@ const Download = () => {
             </div>
             <div className="text-center">
               <div className="text-2xl lg:text-3xl font-bold text-yellow-400 mb-2">$0</div>
-              <p className="text-gray-400 text-sm">Total cost</p>
+              <p className="text-gray-400 text-sm">To get started</p>
             </div>
           </div>
 

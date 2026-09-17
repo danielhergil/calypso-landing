@@ -48,8 +48,8 @@ const Features = () => {
     },
     {
       icon: Shield,
-      title: '100% Free',
-      description: 'All features are available at no cost. No hidden subscriptions.',
+      title: 'Free to Start',
+      description: 'Stream on the free plan without a card. Paid plans add capacity.',
       color: 'text-emerald-400 bg-emerald-400/10'
     }
   ];
