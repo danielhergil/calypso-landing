@@ -112,9 +112,9 @@ const Pricing = () => {
                 <h3 className="text-2xl font-bold text-white mb-2">Basic</h3>
                 <p className="text-gray-400 mb-4">For testing and occasional use</p>
                 <div className="flex items-baseline justify-center space-x-2">
-                  <span className="text-5xl font-bold text-white">$0.00</span>
-                  <span className="text-gray-400">/month</span>
+                  <span className="text-5xl font-bold text-white">0 €</span>
                 </div>
+                <p className="text-sm text-gray-400 mt-2">Free forever</p>
               </div>
 
               <div className="space-y-4 mb-8">
@@ -167,9 +167,13 @@ const Pricing = () => {
                 <h3 className="text-2xl font-bold text-white mb-2">Pro</h3>
                 <p className="text-gray-400 mb-4">For active weekly creators</p>
                 <div className="flex items-baseline justify-center space-x-2">
-                  <span className="text-5xl font-bold text-white">$2.99</span>
+                  <span className="text-5xl font-bold text-white">5,99 €</span>
                   <span className="text-gray-400">/month</span>
                 </div>
+                <p className="text-sm text-gray-400 mt-2">
+                  or <strong className="text-white">49,99 €/year</strong>
+                  <span className="text-pink-400"> · save 30%</span>
+                </p>
               </div>
 
               <div className="space-y-4 mb-8">
@@ -223,9 +227,13 @@ const Pricing = () => {
                 <h3 className="text-2xl font-bold text-white mb-2">Max</h3>
                 <p className="text-gray-400 mb-4">For intensive operations</p>
                 <div className="flex items-baseline justify-center space-x-2">
-                  <span className="text-5xl font-bold text-white">$9.99</span>
+                  <span className="text-5xl font-bold text-white">12,99 €</span>
                   <span className="text-gray-400">/month</span>
                 </div>
+                <p className="text-sm text-gray-400 mt-2">
+                  or <strong className="text-white">109,99 €/year</strong>
+                  <span className="text-purple-400"> · save 29%</span>
+                </p>
               </div>
 
               <div className="space-y-4 mb-8">
@@ -282,10 +290,16 @@ const Pricing = () => {
                 </thead>
                 <tbody className="text-gray-300">
                   <tr className="border-b border-gray-800">
-                    <td className="py-3">Price</td>
-                    <td className="py-3">$0.00</td>
-                    <td className="py-3">$2.99</td>
-                    <td className="py-3">$9.99</td>
+                    <td className="py-3">Price / month</td>
+                    <td className="py-3">0 €</td>
+                    <td className="py-3">5,99 €</td>
+                    <td className="py-3">12,99 €</td>
+                  </tr>
+                  <tr className="border-b border-gray-800">
+                    <td className="py-3">Price / year</td>
+                    <td className="py-3">—</td>
+                    <td className="py-3">49,99 €</td>
+                    <td className="py-3">109,99 €</td>
                   </tr>
                   <tr className="border-b border-gray-800">
                     <td className="py-3">Total streams</td>

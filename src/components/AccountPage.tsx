@@ -223,8 +223,8 @@ const AccountPage = () => {
                       className={`relative text-left border rounded-2xl p-5 transition-colors cursor-pointer ${selectedPlan === 'basic' ? 'border-green-400 bg-green-900/20' : 'border-gray-700 bg-gray-800/50 hover:bg-gray-700/60'}`}
                     >
                       <div className="absolute -top-3 left-4 text-xs px-3 py-1 rounded-full bg-gray-700 text-gray-200">BASIC</div>
-                      <p className="text-3xl font-bold text-white mt-3">$0.00</p>
-                      <p className="text-xs text-gray-400 mb-4">/month</p>
+                      <p className="text-3xl font-bold text-white mt-3">0 €</p>
+                      <p className="text-xs text-gray-400 mb-4">free forever</p>
                       <div className="space-y-2 text-sm text-gray-300">
                         <p className="flex items-start gap-2"><span className="text-green-400">✓</span><span>Total streams: 2</span></p>
                         <p className="flex items-start gap-2"><span className="text-green-400">✓</span><span>Streams per month: 2</span></p>
@@ -241,8 +241,8 @@ const AccountPage = () => {
                       className={`relative border rounded-2xl p-5 text-left transition-colors cursor-pointer ${selectedPlan === 'pro' ? 'border-purple-400 bg-purple-900/20' : 'border-gray-700 bg-gray-800/50 hover:bg-gray-700/60'}`}
                     >
                       <div className="absolute -top-3 left-4 text-xs px-3 py-1 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white">MOST POPULAR</div>
-                      <p className="text-3xl font-bold text-white mt-3">$2.99</p>
-                      <p className="text-xs text-gray-400 mb-4">/month</p>
+                      <p className="text-3xl font-bold text-white mt-3">5,99 €</p>
+                      <p className="text-xs text-gray-400 mb-4">/month · 49,99 €/year</p>
                       <div className="space-y-2 text-sm text-gray-300">
                         <p className="flex items-start gap-2"><span className="text-purple-400">✓</span><span>Total streams: Unlimited</span></p>
                         <p className="flex items-start gap-2"><span className="text-purple-400">✓</span><span>Streams per month: 20</span></p>
@@ -259,8 +259,8 @@ const AccountPage = () => {
                       className={`relative border rounded-2xl p-5 text-left transition-colors cursor-pointer ${selectedPlan === 'max' ? 'border-pink-400 bg-pink-900/20' : 'border-gray-700 bg-gray-800/50 hover:bg-gray-700/60'}`}
                     >
                       <div className="absolute -top-3 left-4 text-xs px-3 py-1 rounded-full bg-gray-700 text-gray-200">HIGH VOLUME</div>
-                      <p className="text-3xl font-bold text-white mt-3">$9.99</p>
-                      <p className="text-xs text-gray-400 mb-4">/month</p>
+                      <p className="text-3xl font-bold text-white mt-3">12,99 €</p>
+                      <p className="text-xs text-gray-400 mb-4">/month · 109,99 €/year</p>
                       <div className="space-y-2 text-sm text-gray-300">
                         <p className="flex items-start gap-2"><span className="text-pink-400">✓</span><span>Total streams: Unlimited</span></p>
                         <p className="flex items-start gap-2"><span className="text-pink-400">✓</span><span>Streams per month: 50</span></p>
