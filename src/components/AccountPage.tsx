@@ -14,9 +14,9 @@ import {
 import { doc, getDoc } from 'firebase/firestore';
 import { auth } from '../firebase';
 import { db } from '../firebase';
-import { createCheckoutSession, createPortalSession, fetchBillingMe, type BillingMe, type BillingPlan } from '../lib/billingApi';
+import { fetchBillingMe, type BillingMe } from '../lib/billingApi';
 import { clearClientAuthContext, getFreshClientAuthContext, setClientAuthContext } from '../lib/authContext';
-import { writeBillingSnapshot, writeCheckoutAttempt, writeCheckoutError } from '../lib/subscriptionLedger';
+import { writeBillingSnapshot } from '../lib/subscriptionLedger';
 import { navigateTo } from '../lib/navigation';
 
 const AccountPage = () => {
@@ -125,49 +125,6 @@ const AccountPage = () => {
     } catch (error) {
       console.error(error);
       setMessage('Could not sign out.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const changePlan = async (plan: BillingPlan) => {
-    setLoading(true);
-    setMessage('');
-    try {
-      const ctx = await getFreshClientAuthContext();
-      if (!ctx) {
-        setMessage('Sign in first.');
-        return;
-      }
-      await writeCheckoutAttempt(ctx.uid, plan);
-      const { url } = await createCheckoutSession(ctx, plan);
-      window.location.href = url;
-    } catch (error) {
-      console.error(error);
-      const ctx = await getFreshClientAuthContext();
-      if (ctx) {
-        await writeCheckoutError(ctx.uid, plan, error instanceof Error ? error.message : 'checkout_failed');
-      }
-      setMessage('Could not open checkout.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const managePlan = async () => {
-    setLoading(true);
-    setMessage('');
-    try {
-      const ctx = await getFreshClientAuthContext();
-      if (!ctx) {
-        setMessage('Sign in first.');
-        return;
-      }
-      const { url } = await createPortalSession(ctx);
-      window.location.href = url;
-    } catch (error) {
-      console.error(error);
-      setMessage('Could not open billing portal.');
     } finally {
       setLoading(false);
     }
@@ -315,22 +272,26 @@ const AccountPage = () => {
                       </p>
                     </div>
                   </div>
-                  <div className="mt-4 flex items-center justify-between">
-                    <button onClick={managePlan} disabled={loading} className="bg-gray-700 hover:bg-gray-600 disabled:opacity-60 font-semibold py-3 px-5 rounded-lg">
-                      Cancel / Manage
-                    </button>
-                    <div className="w-[190px] flex justify-end">
-                      {(selectedPlan === 'pro' || selectedPlan === 'max') && (
-                        <button
-                          onClick={() => changePlan(selectedPlan)}
-                          disabled={loading}
-                          className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 disabled:opacity-60 disabled:cursor-not-allowed font-semibold py-3 px-6 rounded-lg min-w-[190px]"
-                        >
-                          {loading && <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />}
-                          {loading ? 'Loading Stripe...' : `Choose ${selectedPlan === 'pro' ? 'Pro' : 'Max'}`}
-                        </button>
-                      )}
-                    </div>
+                  {/* Ni comprar ni cancelar desde la web: los planes se cobran por Google
+                      Play y allí se gestionan. Lo que había aquí abría Stripe, que ya no
+                      vende nada. */}
+                  <div className="mt-4 flex flex-wrap items-center gap-3">
+                    <a
+                      href="https://play.google.com/store/apps/details?id=com.danihg.calypso"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 font-semibold py-3 px-6 rounded-lg"
+                    >
+                      Subscribe in the app
+                    </a>
+                    <a
+                      href="https://play.google.com/store/account/subscriptions"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="bg-gray-700 hover:bg-gray-600 font-semibold py-3 px-5 rounded-lg"
+                    >
+                      Manage on Google Play
+                    </a>
                   </div>
                 </div>
               </div>

@@ -3,14 +3,11 @@ import { Check, Sparkles, Zap, Lock } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { doc, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase';
-import { createPortalSession, fetchBillingMe, type BillingMe, type BillingPlan } from '../lib/billingApi';
+import { fetchBillingMe, type BillingMe } from '../lib/billingApi';
 import { getClientAuthContext } from '../lib/authContext';
 import { writeBillingSnapshot } from '../lib/subscriptionLedger';
-import { navigateTo } from '../lib/navigation';
 
 const Pricing = () => {
-  const [isLoadingPlan, setIsLoadingPlan] = useState<null | BillingPlan | 'portal'>(null);
-  const [statusMessage, setStatusMessage] = useState('');
   const [billing, setBilling] = useState<BillingMe | null>(null);
   const [auth, setAuth] = useState(() => getClientAuthContext());
 
@@ -68,30 +65,6 @@ const Pricing = () => {
     const element = document.getElementById('download');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const goToAccountForCheckout = (plan: BillingPlan) => {
-    setStatusMessage(`Continue in Account to choose ${plan === 'pro' ? 'Pro' : 'Max'} after login.`);
-    navigateTo('/account');
-  };
-
-  const openPortal = async () => {
-    if (!auth) {
-      setStatusMessage('Sign in from the Calypso app first to manage your subscription.');
-      return;
-    }
-
-    try {
-      setIsLoadingPlan('portal');
-      setStatusMessage('');
-      const { url } = await createPortalSession(auth);
-      window.location.href = url;
-    } catch (error) {
-      console.error(error);
-      setStatusMessage('Unable to open billing portal for this account.');
-    } finally {
-      setIsLoadingPlan(null);
     }
   };
 
@@ -218,14 +191,16 @@ const Pricing = () => {
                 </div>
               </div>
 
-              <button
-                onClick={() => goToAccountForCheckout('pro')}
-                className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-4 rounded-xl transition-colors duration-200 shadow-lg cursor-pointer"
+              <a
+                href="https://play.google.com/store/apps/details?id=com.danihg.calypso"
+                target="_blank"
+                rel="noreferrer"
+                className="block w-full text-center bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-4 rounded-xl transition-colors duration-200 shadow-lg cursor-pointer"
               >
-                Choose Pro
-              </button>
+                Get Pro in the app
+              </a>
 
-              <p className="text-center text-sm text-gray-400 mt-4">Upgrade takes effect immediately</p>
+              <p className="text-center text-sm text-gray-400 mt-4">Subscriptions are purchased in the Android app</p>
             </div>
           </motion.div>
 
@@ -272,12 +247,14 @@ const Pricing = () => {
                 </div>
               </div>
 
-              <button
-                onClick={() => goToAccountForCheckout('max')}
-                className="w-full bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 rounded-xl transition-colors duration-200 cursor-pointer"
+              <a
+                href="https://play.google.com/store/apps/details?id=com.danihg.calypso"
+                target="_blank"
+                rel="noreferrer"
+                className="block w-full text-center bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 rounded-xl transition-colors duration-200 cursor-pointer"
               >
-                Choose Max
-              </button>
+                Get Max in the app
+              </a>
 
               <p className="text-center text-sm text-gray-500 mt-4">Built for teams and frequent events</p>
             </div>
@@ -347,14 +324,16 @@ const Pricing = () => {
               {billing.subscriptionStatus ? ` (${billing.subscriptionStatus})` : ''}
             </p>
           )}
-          <button
-            onClick={openPortal}
-            disabled={isLoadingPlan !== null || !auth}
-            className="bg-gray-800 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed text-white px-5 py-2 rounded-lg text-sm transition-colors duration-200 cursor-pointer"
+          {/* Las suscripciones se cobran por Google Play, así que se gestionan y se
+              cancelan allí. La web ya no vende ni abre el portal de Stripe. */}
+          <a
+            href="https://play.google.com/store/account/subscriptions"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-block bg-gray-800 hover:bg-gray-700 text-white px-5 py-2 rounded-lg text-sm transition-colors duration-200 cursor-pointer"
           >
-            {isLoadingPlan === 'portal' ? 'Opening portal...' : 'Manage Subscription'}
-          </button>
-          {statusMessage && <p className="text-sm text-amber-300">{statusMessage}</p>}
+            Manage subscription on Google Play
+          </a>
           {!auth && (
             <p className="text-xs text-gray-500">
               Billing actions require a Firebase session (uid and idToken) from the app.
