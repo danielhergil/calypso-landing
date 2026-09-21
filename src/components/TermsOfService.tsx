@@ -5,20 +5,20 @@ const TermsOfService = () => {
   const lastUpdated = 'April 29, 2026';
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-[100dvh] bg-ink-900 text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 max-w-4xl">
         <a
           href="/"
-          className="inline-flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-200 mb-8"
+          className="inline-flex items-center space-x-2 text-fg-muted hover:text-white transition-colors duration-200 mb-8"
         >
           <ArrowLeft size={18} />
           <span>Back to home</span>
         </a>
 
         <h1 className="text-4xl sm:text-5xl font-bold mb-4">Terms of Service</h1>
-        <p className="text-gray-400 mb-12">Last updated: {lastUpdated}</p>
+        <p className="text-fg-muted mb-12">Last updated: {lastUpdated}</p>
 
-        <div className="space-y-8 text-gray-300 leading-relaxed">
+        <div className="space-y-8 text-fg-muted leading-relaxed">
           <section>
             <h2 className="text-2xl font-semibold text-white mb-3">1. Acceptance of Terms</h2>
             <p>
@@ -118,7 +118,7 @@ const TermsOfService = () => {
               Questions about these Terms? Email{' '}
               <a
                 href="mailto:calypso.sport.stream@gmail.com"
-                className="text-purple-400 hover:text-purple-300 underline"
+                className="text-brand hover:text-brand-light underline"
               >
                 calypso.sport.stream@gmail.com
               </a>

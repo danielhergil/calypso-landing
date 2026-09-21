@@ -1,139 +1,89 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { navigateTo } from '../lib/navigation';
+import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
+import { PlayStoreButton } from './ui';
+
+const NAV = [
+  { id: 'features', label: 'Features' },
+  { id: 'pricing', label: 'Pricing' },
+  { id: 'video', label: 'Demo' },
+  { id: 'download', label: 'Download' },
+];
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  // The hero already carries the download CTA, so the nav only shows its own
+  // copy once the hero has scrolled away.
+  const [showCta, setShowCta] = useState(false);
+  const { scrollY } = useScroll();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  useMotionValueEvent(scrollY, 'change', (y) => {
+    setIsScrolled(y > 24);
+    setShowCta(y > 520);
+  });
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
-    }
-  };
-
-  const goToAccount = () => {
-    navigateTo('/account');
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
     setIsMenuOpen(false);
   };
 
   return (
-    <header className={`fixed top-4 left-4 right-4 z-50 transition-all duration-300 rounded-2xl ${
-      isScrolled ? 'bg-gray-900/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
-    }`}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center shadow-lg">
-              <img
-                src="/logo_calypso.png"
-                alt="Logo de Calypso"
-                className="w-10 h-10 rounded-full object-cover shadow-lg"
-              />
-            </div>
-            <div>
-              <h1 className="text-xl lg:text-2xl font-bold text-white">Calypso</h1>
-              <p className="text-xs text-gray-400 hidden sm:block">Sports Streaming</p>
-            </div>
-          </div>
+    <header
+      className={`fixed inset-x-0 top-0 z-40 transition-colors duration-300 ${
+        isScrolled ? 'bg-ink-900/85 backdrop-blur-xl border-b border-white/[0.07]' : 'border-b border-transparent'
+      }`}
+    >
+      <div className="mx-auto flex h-16 max-w-page items-center justify-between px-4 sm:px-6 lg:h-[72px] lg:px-10">
+        <a href="/" className="flex items-center gap-2.5">
+          <img src="/shots/logo.png" alt="Calypso" className="h-9 w-9 object-contain" />
+          <span className="font-heading text-lg font-bold tracking-tight text-fg">Calypso</span>
+        </a>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden items-center gap-8 md:flex">
+          {NAV.map((item) => (
             <button
-              onClick={() => scrollToSection('features')}
-              className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer"
+              key={item.id}
+              onClick={() => scrollToSection(item.id)}
+              className="text-sm text-fg-muted transition-colors duration-200 hover:text-fg"
             >
-              Features
+              {item.label}
             </button>
-            <button
-              onClick={() => scrollToSection('pricing')}
-              className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer"
-            >
-              Pricing
-            </button>
-            <button
-              onClick={() => scrollToSection('video')}
-              className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer"
-            >
-              Demo
-            </button>
-            <button
-              onClick={() => scrollToSection('download')}
-              className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer"
-            >
-              Download
-            </button>
-            <button
-              onClick={goToAccount}
-              className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-6 py-2 rounded-full font-medium transition-colors duration-200 shadow-lg flex items-center space-x-2 cursor-pointer"
-            >
-              <span>Account</span>
-            </button>
-          </nav>
+          ))}
+          {showCta && <PlayStoreButton size="md" />}
+        </nav>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors duration-200 cursor-pointer"
-          >
-            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-        <div className="md:hidden absolute top-full inset-x-0 bg-gray-900/95 backdrop-blur-md border-t border-gray-800 z-50">
-          <div
-            className="px-4 py-6 space-y-4 overflow-y-auto"
-            style={{ maxHeight: 'calc(100vh - 4rem)' }}
-          >
-            <button
-              onClick={() => scrollToSection('features')}
-              className="block w-full text-left text-gray-300 hover:text-white py-2 transition-colors duration-200 cursor-pointer"
-            >
-              Features
-            </button>
-            <button
-              onClick={() => scrollToSection('pricing')}
-              className="block w-full text-left text-gray-300 hover:text-white py-2 transition-colors duration-200 cursor-pointer"
-            >
-              Pricing
-            </button>
-            <button
-              onClick={() => scrollToSection('video')}
-              className="block w-full text-left text-gray-300 hover:text-white py-2 transition-colors duration-200 cursor-pointer"
-            >
-              Demo
-            </button>
-            <button
-              onClick={() => scrollToSection('download')}
-              className="block w-full text-left text-gray-300 hover:text-white py-2 transition-colors duration-200 cursor-pointer"
-            >
-              Download
-            </button>
-            <button
-              onClick={goToAccount}
-              className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-6 py-3 rounded-full font-medium transition-colors duration-200 flex items-center justify-center space-x-2 mt-4 cursor-pointer"
-            >
-              <span>Account</span>
-            </button>
-          </div>
-        </div>
-      )}
-
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={isMenuOpen}
+          className="rounded-full border border-white/15 p-2 text-fg md:hidden"
+        >
+          {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
+        </button>
       </div>
+
+      {isMenuOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2 }}
+          className="border-t border-white/[0.07] bg-ink-900/95 backdrop-blur-xl md:hidden"
+        >
+          <div className="space-y-1 px-4 py-4">
+            {NAV.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className="block w-full rounded-card px-3 py-3 text-left text-base text-fg-muted hover:bg-white/5 hover:text-fg"
+              >
+                {item.label}
+              </button>
+            ))}
+            <PlayStoreButton size="md" className="mt-2 w-full" />
+          </div>
+        </motion.div>
+      )}
     </header>
   );
 };

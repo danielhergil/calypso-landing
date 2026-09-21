@@ -1,147 +1,79 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
 import { Play, X } from 'lucide-react';
+import { Reveal } from './ui';
+
+const YOUTUBE_ID = 'dgZtXBVLy1k';
 
 const VideoSection = () => {
-  const [isVideoOpen, setIsVideoOpen] = useState(false);
-  const [videoUrl, setVideoUrl] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
 
-  // Placeholder for YouTube video - replace with your actual video ID
-  const youtubeVideoId = 'dgZtXBVLy1k'; // Replace with your actual YouTube video ID
-
-  const openVideo = () => {
-    setVideoUrl(`https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&rel=0`);
-    setIsVideoOpen(true);
-  };
-
-  const closeVideo = () => {
-    setIsVideoOpen(false);
-    setVideoUrl('');
-  };
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsOpen(false);
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [isOpen]);
 
   return (
-    <section id="video" className="py-20 lg:py-32 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-900 to-black"></div>
-      
-      {/* Background Elements */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-red-500/10 rounded-full blur-3xl"></div>
-
-      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center space-y-6 mb-12 lg:mb-16"
-        >
-          <motion.h2 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white"
+    <section id="video" className="py-20 lg:py-28" aria-labelledby="video-heading">
+      <div className="mx-auto max-w-page px-4 sm:px-6 lg:px-10">
+        <Reveal>
+          <h2
+            id="video-heading"
+            className="max-w-[18ch] font-heading text-4xl font-extrabold leading-[1.02] tracking-[-0.025em] sm:text-5xl lg:text-6xl"
           >
-            See Calypso in
-            <span className="block bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
-              Action
+            Three minutes, kickoff to stream.
+          </h2>
+          <p className="mt-5 max-w-[52ch] text-lg leading-relaxed text-fg-muted">
+            The full run-through: set up the teams, go live, and run the scoreboard from the camera.
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.1} className="mt-10">
+          <button
+            onClick={() => setIsOpen(true)}
+            aria-label="Play the Calypso demo video"
+            className="group relative block aspect-video w-full overflow-hidden rounded-card border border-white/[0.07]"
+          >
+            <img
+              src="/shots/demo-stage.webp"
+              alt="A phone on a tripod filming a floodlit match from the touchline"
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+            />
+            <div className="absolute inset-0 bg-ink-900/35 transition-colors duration-300 group-hover:bg-ink-900/20" />
+            <span className="absolute left-1/2 top-1/2 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-brand text-white shadow-2xl transition-transform duration-300 group-hover:scale-110 group-active:scale-95">
+              <Play size={30} className="ml-1 fill-current" />
             </span>
-          </motion.h2>
-          
-          <motion.p 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto"
-          >
-            Discover how Calypso transforms your sports streaming experience 
-            with professional tools at your fingertips.
-          </motion.p>
-        </motion.div>
-
-        {/* Video Preview */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="relative max-w-4xl mx-auto"
-        >
-          <motion.div 
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.3 }}
-            className="relative aspect-video bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl group cursor-pointer" 
-            onClick={openVideo}
-          >
-            {/* Thumbnail - Replace with your video thumbnail */}
-            <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 to-gray-900 flex items-center justify-center">
-              <div className="text-center space-y-6">
-                <div className="w-20 h-20 lg:w-24 lg:h-24 bg-red-500 hover:bg-red-600 rounded-full flex items-center justify-center mx-auto transition-all duration-300 transform group-hover:scale-110 shadow-xl">
-                  <Play size={32} className="text-white ml-1" />
-                </div>
-                <div className="space-y-2">
-                  <h3 className="text-2xl lg:text-3xl font-bold text-white">Calypso Demo</h3>
-                  <p className="text-gray-300">See how the app works</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Mock interface elements */}
-            <div className="absolute top-4 left-4 right-4 flex justify-between items-center opacity-60 group-hover:opacity-80 transition-opacity duration-300">
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 rounded-full bg-red-500 flex items-center justify-center">
-                  <span className="text-white text-xs font-bold">CP</span>
-                </div>
-                <span className="text-white text-sm font-medium">Calypso Live</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                <span className="text-white text-sm">LIVE</span>
-              </div>
-            </div>
-
-            {/* Hover overlay */}
-            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          </motion.div>
-
-          {/* Features around video */}
-          <div className="absolute -top-8 -left-8 w-16 h-16 bg-blue-500/20 rounded-full blur-xl animate-pulse hidden lg:block"></div>
-          <div className="absolute -bottom-8 -right-8 w-20 h-20 bg-green-500/20 rounded-full blur-xl animate-pulse delay-1000 hidden lg:block"></div>
-        </motion.div>
-
-        {/* Additional info */}
-        <div className="grid sm:grid-cols-3 gap-8 mt-16 lg:mt-24 max-w-3xl mx-auto">
-          <div className="text-center space-y-2">
-            <div className="text-2xl lg:text-3xl font-bold text-red-400">HD</div>
-            <p className="text-gray-400">High Definition Streaming</p>
-          </div>
-          <div className="text-center space-y-2">
-            <div className="text-2xl lg:text-3xl font-bold text-blue-400">RTMP</div>
-            <p className="text-gray-400">Universal Compatibility</p>
-          </div>
-          <div className="text-center space-y-2">
-            <div className="text-2xl lg:text-3xl font-bold text-green-400">$0</div>
-            <p className="text-gray-400">To get started</p>
-          </div>
-        </div>
+          </button>
+        </Reveal>
       </div>
 
-      {/* Video Modal */}
-      {isVideoOpen && (
-        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
-          <div className="relative w-full max-w-4xl aspect-video">
+      {isOpen && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Calypso demo video"
+          onClick={() => setIsOpen(false)}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-ink-900/95 p-4 backdrop-blur-sm"
+        >
+          <div className="relative w-full max-w-5xl" onClick={(e) => e.stopPropagation()}>
             <button
-              onClick={closeVideo}
-              className="absolute -top-12 right-0 text-white hover:text-red-400 transition-colors duration-200"
+              onClick={() => setIsOpen(false)}
+              aria-label="Close video"
+              className="absolute -top-12 right-0 rounded-full border border-white/15 p-2 text-fg transition-colors hover:border-brand hover:text-brand-light"
             >
-              <X size={32} />
+              <X size={20} />
             </button>
             <iframe
-              src={videoUrl}
-              className="w-full h-full rounded-lg"
+              title="Calypso demo"
+              src={`https://www.youtube.com/embed/${YOUTUBE_ID}?autoplay=1&rel=0`}
+              className="aspect-video w-full rounded-card"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-            ></iframe>
+            />
           </div>
         </div>
       )}

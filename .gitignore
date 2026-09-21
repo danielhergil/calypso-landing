@@ -26,3 +26,12 @@ dist-ssr
 .claude/
 firestore.rules
 .env.example
+# Source artwork for the Play Store listing (optimised copies live in public/shots)
+design/
+
+# Source artwork for the store listing (optimised copies live in public/shots)
+design/
+
+*.tsbuildinfo
+
+assets-gen/

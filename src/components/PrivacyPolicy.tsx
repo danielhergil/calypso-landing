@@ -5,20 +5,20 @@ const PrivacyPolicy = () => {
   const lastUpdated = 'September 16, 2026';
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-[100dvh] bg-ink-900 text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 max-w-4xl">
         <a
           href="/"
-          className="inline-flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-200 mb-8"
+          className="inline-flex items-center space-x-2 text-fg-muted hover:text-white transition-colors duration-200 mb-8"
         >
           <ArrowLeft size={18} />
           <span>Back to home</span>
         </a>
 
         <h1 className="text-4xl sm:text-5xl font-bold mb-4">Privacy Policy</h1>
-        <p className="text-gray-400 mb-12">Last updated: {lastUpdated}</p>
+        <p className="text-fg-muted mb-12">Last updated: {lastUpdated}</p>
 
-        <div className="space-y-8 text-gray-300 leading-relaxed">
+        <div className="space-y-8 text-fg-muted leading-relaxed">
           <section>
             <h2 className="text-2xl font-semibold text-white mb-3">1. Introduction</h2>
             <p>
@@ -71,14 +71,14 @@ const PrivacyPolicy = () => {
               live broadcasts from inside the app. By doing so you also agree to the{' '}
               <a
                 href="https://www.youtube.com/t/terms"
-                className="text-purple-400 hover:text-purple-300 underline"
+                className="text-brand hover:text-brand-light underline"
               >
                 YouTube Terms of Service
               </a>
               , and the data Google processes on its side is governed by the{' '}
               <a
                 href="https://policies.google.com/privacy"
-                className="text-purple-400 hover:text-purple-300 underline"
+                className="text-brand hover:text-brand-light underline"
               >
                 Google Privacy Policy
               </a>
@@ -115,7 +115,7 @@ const PrivacyPolicy = () => {
               time from the{' '}
               <a
                 href="https://myaccount.google.com/permissions"
-                className="text-purple-400 hover:text-purple-300 underline"
+                className="text-brand hover:text-brand-light underline"
               >
                 permissions page of your Google Account
               </a>
@@ -126,11 +126,11 @@ const PrivacyPolicy = () => {
 
           <section>
             <h2 className="text-2xl font-semibold text-white mb-3">5. How We Protect Your Data</h2>
-            <p className="text-gray-300 leading-relaxed">
+            <p className="text-fg-muted leading-relaxed">
               We apply the following measures to every piece of Google user data the app handles,
               including the YouTube data described above:
             </p>
-            <ul className="list-disc list-inside text-gray-300 space-y-2 mt-3">
+            <ul className="list-disc list-inside text-fg-muted space-y-2 mt-3">
               <li>
                 <strong className="text-white">Encryption in transit.</strong> All communication between the app,
                 our backend and Google&apos;s APIs travels over TLS (HTTPS). The app makes no
@@ -166,7 +166,7 @@ const PrivacyPolicy = () => {
                 that for the purpose of accessing your YouTube channel.
               </li>
             </ul>
-            <p className="text-gray-300 leading-relaxed">
+            <p className="text-fg-muted leading-relaxed">
               If we ever become aware of a security incident affecting your data, we will notify
               affected users and the competent supervisory authority as required by the GDPR.
             </p>
@@ -174,12 +174,12 @@ const PrivacyPolicy = () => {
 
           <section>
             <h2 className="text-2xl font-semibold text-white mb-3">6. Limited Use of Google User Data</h2>
-            <p className="text-gray-300 leading-relaxed">
+            <p className="text-fg-muted leading-relaxed">
               Calypso&apos;s use and transfer of information received from Google APIs adheres to
               the{' '}
               <a
                 href="https://developers.google.com/terms/api-services-user-data-policy"
-                className="text-red-400 hover:text-red-300 underline"
+                className="text-brand hover:text-brand-light underline"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -198,11 +198,11 @@ const PrivacyPolicy = () => {
             <ul className="list-disc list-inside space-y-2 mt-2">
               <li>
                 <strong className="text-white">Google Firebase</strong> (Authentication, Firestore,
-                Storage, Cloud Functions) — see Google's privacy policy.
+                Storage, Cloud Functions), see Google's privacy policy.
               </li>
               <li>
                 <strong className="text-white">YouTube, Twitch and other RTMP destinations</strong>{' '}
-                — only when you connect them; their own terms and privacy policies apply.
+                only when you connect them; their own terms and privacy policies apply.
               </li>
             </ul>
           </section>
@@ -248,7 +248,7 @@ const PrivacyPolicy = () => {
               For any privacy-related question, write to{' '}
               <a
                 href="mailto:calypso.sport.stream@gmail.com"
-                className="text-purple-400 hover:text-purple-300 underline"
+                className="text-brand hover:text-brand-light underline"
               >
                 calypso.sport.stream@gmail.com
               </a>

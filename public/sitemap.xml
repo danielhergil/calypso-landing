@@ -5,21 +5,43 @@
   <!-- Homepage -->
   <url>
     <loc>https://www.calypso-app.es/</loc>
-    <lastmod>2025-10-21</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://www.calypso-app.es/logo_calypso.png</image:loc>
-      <image:title>Calypso Sports Streaming App Logo</image:title>
+      <image:loc>https://www.calypso-app.es/shots/logo.png</image:loc>
+      <image:title>Calypso app icon</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://www.calypso-app.es/calypso_home_screen.jpeg</image:loc>
-      <image:title>Calypso App Home Screen</image:title>
+      <image:loc>https://www.calypso-app.es/shots/app-home.webp</image:loc>
+      <image:title>Calypso home screen, ready to start a broadcast</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://www.calypso-app.es/camera_screenshot.jpeg</image:loc>
-      <image:title>Calypso Camera Screenshot</image:title>
+      <image:loc>https://www.calypso-app.es/shots/app-camera.webp</image:loc>
+      <image:title>Calypso camera screen filming a match</image:title>
     </image:image>
+    <image:image>
+      <image:loc>https://www.calypso-app.es/shots/scoreboard.webp</image:loc>
+      <image:title>Calypso live scoreboard over the camera view</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.calypso-app.es/shots/teams.webp</image:loc>
+      <image:title>Calypso team management with badges and lineups</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.calypso-app.es/privacy</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://www.calypso-app.es/terms</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 
 </urlset>
