@@ -1,117 +1,47 @@
 import React from 'react';
-import { Star, Shield, Zap } from 'lucide-react';
+import { PlayStoreButton, Reveal } from './ui';
 
 const Download = () => {
   return (
-    <section id="download" className="py-20 lg:py-32 relative overflow-hidden" aria-labelledby="download-heading">
-      <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-gray-900 to-black"></div>
-      
-      {/* Background Elements */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-red-500/10 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl transform translate-x-1/2 translate-y-1/2"></div>
+    <section id="download" className="relative overflow-hidden" aria-labelledby="download-heading">
+      <img
+        src="/shots/logo.png"
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        className="absolute left-1/2 top-1/2 h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 object-contain opacity-[0.11] lg:h-[680px] lg:w-[680px]"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand/15 blur-[130px]"
+      />
 
-      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center space-y-12 lg:space-y-16">
-          {/* Header */}
-          <div className="space-y-6">
-            <div className="inline-flex items-center bg-green-500/10 text-green-400 px-4 py-2 rounded-full text-sm font-medium">
-              <Shield size={16} className="mr-2" />
-              Free to Start, No Card Required
-            </div>
-            
-            <h2 id="download-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
-              Download
-              <span className="block bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
-                Calypso Now
-              </span>
-            </h2>
-            
-            <p className="text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto">
-              Join thousands of streamers who are already broadcasting sports 
-              like professionals from their mobile devices.
-            </p>
-          </div>
-
-          {/* Download Buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center max-w-2xl mx-auto">
-            {/* Google Play Button */}
-            <a
-              href="https://play.google.com/store/apps/details?id=com.danihg.calypso"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center space-x-4 bg-black hover:bg-gray-900 text-white px-8 py-4 rounded-xl font-medium text-lg transition-all duration-200 transform hover:scale-105 shadow-xl border border-gray-700 hover:border-red-500/50 w-full sm:w-auto justify-center"
-            >
-              <img
-                src="/google_play_logo.png"
-                alt="Download Calypso on Google Play Store"
-                className="w-10 h-10 rounded-full object-cover shadow-lg"
-              />
-              <div className="text-left">
-                <div className="text-sm text-gray-400">Download on</div>
-                <div className="font-bold">Google Play</div>
-              </div>
-            </a>
-          </div>
-
-          {/* Features Grid */}
-          <div className="grid sm:grid-cols-3 gap-8 lg:gap-12 max-w-4xl mx-auto mt-16 lg:mt-20">
-            <div className="text-center space-y-4">
-              <div className="w-16 h-16 bg-green-500/10 rounded-2xl flex items-center justify-center mx-auto">
-                <Shield size={32} className="text-green-400" />
-              </div>
-              <h3 className="text-xl font-bold text-white">Free to Start</h3>
-              <p className="text-gray-400">
-                Stream on the free plan without a card. Upgrade only if you need more.
-              </p>
-            </div>
-
-            <div className="text-center space-y-4">
-              <div className="w-16 h-16 bg-yellow-500/10 rounded-2xl flex items-center justify-center mx-auto">
-                <Star size={32} className="text-yellow-400" />
-              </div>
-              <h3 className="text-xl font-bold text-white">Premium Quality</h3>
-              <p className="text-gray-400">
-                Professional streaming tools in the palm of your hand.
-              </p>
-            </div>
-
-            <div className="text-center space-y-4">
-              <div className="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mx-auto">
-                <Zap size={32} className="text-blue-400" />
-              </div>
-              <h3 className="text-xl font-bold text-white">Easy to Use</h3>
-              <p className="text-gray-400">
-                Intuitive interface that lets you start streaming in minutes.
-              </p>
-            </div>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-3xl mx-auto pt-12 lg:pt-16 border-t border-gray-800">
-            <div className="text-center">
-              <div className="text-2xl lg:text-3xl font-bold text-red-400 mb-2">5★</div>
-              <p className="text-gray-400 text-sm">Average rating</p>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl lg:text-3xl font-bold text-blue-400 mb-2">10K+</div>
-              <p className="text-gray-400 text-sm">Downloads</p>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl lg:text-3xl font-bold text-green-400 mb-2">24/7</div>
-              <p className="text-gray-400 text-sm">Available</p>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl lg:text-3xl font-bold text-yellow-400 mb-2">$0</div>
-              <p className="text-gray-400 text-sm">To get started</p>
-            </div>
-          </div>
-
-          {/* Legal Note */}
-          <p className="text-sm text-gray-500 max-w-2xl mx-auto">
-            By downloading Calypso, you accept our terms of service and privacy policy. 
-            The app is compatible with Android 6.0 or higher.
+      <div className="relative mx-auto max-w-page px-4 py-24 text-center sm:px-6 lg:px-10 lg:py-32">
+        <Reveal>
+          <h2
+            id="download-heading"
+            className="mx-auto max-w-[14ch] font-heading text-4xl font-extrabold leading-[1.03] tracking-tight sm:text-6xl lg:text-7xl"
+          >
+            Your next match, live.
+          </h2>
+          <p className="mx-auto mt-6 max-w-[44ch] text-lg leading-relaxed text-fg-muted">
+            Free on Android, no card. Upgrade only when your season needs more streams.
           </p>
-        </div>
+          <div className="mt-9 flex justify-center">
+            <PlayStoreButton />
+          </div>
+          <p className="mt-6 text-sm text-fg-faint">
+            Android 6.0 and up. By installing Calypso you accept the{' '}
+            <a href="/terms" className="underline underline-offset-4 transition-colors hover:text-fg">
+              terms
+            </a>{' '}
+            and{' '}
+            <a href="/privacy" className="underline underline-offset-4 transition-colors hover:text-fg">
+              privacy policy
+            </a>
+            .
+          </p>
+        </Reveal>
       </div>
     </section>
   );

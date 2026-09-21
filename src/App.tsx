@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Features from './components/Features';
-import Pricing from './components/Pricing';
+import Production from './components/Production';
 import VideoSection from './components/VideoSection';
 import Screenshots from './components/Screenshots';
+import Pricing from './components/Pricing';
 import Wishlist from './components/Wishlist';
 import Download from './components/Download';
 import Footer from './components/Footer';
@@ -27,60 +27,27 @@ function App() {
     };
   }, []);
 
+  const page = (content: React.ReactNode) => (
+    <div className="min-h-[100dvh] bg-ink-900 text-fg">
+      {content}
+      <Footer />
+    </div>
+  );
+
   if (path === '/privacy' || path === '/privacy/') {
-    return (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="min-h-screen bg-gray-900 text-white"
-      >
-        <PrivacyPolicy />
-        <Footer />
-      </motion.div>
-    );
+    return page(<PrivacyPolicy />);
   }
 
   if (path === '/terms' || path === '/terms/') {
-    return (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="min-h-screen bg-gray-900 text-white"
-      >
-        <TermsOfService />
-        <Footer />
-      </motion.div>
-    );
+    return page(<TermsOfService />);
   }
 
   if (path === '/billing/success' || path === '/billing/success/') {
-    return (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="min-h-screen bg-gray-900 text-white"
-      >
-        <BillingResult mode="success" />
-        <Footer />
-      </motion.div>
-    );
+    return page(<BillingResult mode="success" />);
   }
 
   if (path === '/billing/cancel' || path === '/billing/cancel/') {
-    return (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="min-h-screen bg-gray-900 text-white"
-      >
-        <BillingResult mode="cancel" />
-        <Footer />
-      </motion.div>
-    );
+    return page(<BillingResult mode="cancel" />);
   }
 
   if (path === '/account' || path === '/account/') {
@@ -88,43 +55,20 @@ function App() {
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="min-h-screen bg-gray-900 text-white overflow-x-hidden"
-    >
-      {/* Enhanced animated background gradient */}
-      <div className="fixed inset-0 bg-gradient-to-br from-gray-900 via-purple-900/40 to-pink-900/40 -z-10" />
-      <motion.div
-        animate={{ 
-          background: [
-            "radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%)",
-            "radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%)",
-            "radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.3) 0%, transparent 50%)",
-            "radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%)"
-          ]
-        }}
-        transition={{ 
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        className="fixed inset-0 -z-10"
-      />
-
+    <div className="min-h-[100dvh] overflow-x-hidden bg-ink-900 text-fg">
       <Header />
       <main id="main-content">
         <Hero />
         <Features />
-        <Pricing />
+        <Production />
         <VideoSection />
         <Screenshots />
+        <Pricing />
         <Wishlist />
         <Download />
       </main>
       <Footer />
-    </motion.div>
+    </div>
   );
 }
 

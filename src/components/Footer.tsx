@@ -1,99 +1,86 @@
 import React from 'react';
-import { Heart, Mail, Shield, FileText } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-black border-t border-gray-800">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          {/* Brand */}
-          <div className="space-y-4">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center">
-                <img
-                  src="/logo_calypso.png"
-                  alt="Logo de Calypso"
-                  className="w-10 h-10 rounded-full object-cover shadow-lg"
-                />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-white">Calypso</h3>
-                <p className="text-xs text-gray-400">Sports Streaming</p>
-              </div>
-            </div>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              The ultimate professional sports streaming app from your mobile device. Free to start.
+    <footer className="border-t border-white/[0.07] bg-ink-900">
+      <div className="mx-auto max-w-page px-4 py-14 sm:px-6 lg:px-10">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="lg:col-span-2">
+            <a href="/" className="inline-flex items-center gap-2.5">
+              <img src="/shots/logo.png" alt="Calypso" className="h-9 w-9 object-contain" />
+              <span className="font-heading text-lg font-bold tracking-tight">Calypso</span>
+            </a>
+            <p className="mt-4 max-w-[38ch] text-sm leading-relaxed text-fg-muted">
+              Live sports streaming from your phone. Camera, scoreboard and broadcast in one app.
             </p>
           </div>
 
-          {/* Features */}
-          <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-white">Features</h4>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li className="hover:text-white transition-colors duration-200 cursor-pointer">HD Streaming</li>
-              <li className="hover:text-white transition-colors duration-200 cursor-pointer">Team Management</li>
-              <li className="hover:text-white transition-colors duration-200 cursor-pointer">Live Scores</li>
-              <li className="hover:text-white transition-colors duration-200 cursor-pointer">RTMP Configuration</li>
-              <li className="hover:text-white transition-colors duration-200 cursor-pointer">Local Recording</li>
+          <nav aria-label="Product">
+            <h2 className="text-sm font-semibold text-fg">Product</h2>
+            <ul className="mt-4 space-y-2.5 text-sm">
+              <li>
+                <a href="#features" className="text-fg-muted transition-colors hover:text-fg">
+                  Features
+                </a>
+              </li>
+              <li>
+                <a href="#pricing" className="text-fg-muted transition-colors hover:text-fg">
+                  Pricing
+                </a>
+              </li>
+              <li>
+                <a href="#video" className="text-fg-muted transition-colors hover:text-fg">
+                  Demo
+                </a>
+              </li>
+              <li>
+                <a href="/account" className="text-fg-muted transition-colors hover:text-fg">
+                  Account
+                </a>
+              </li>
             </ul>
-          </div>
+          </nav>
 
-          {/* Platforms */}
-          <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-white">Platforms</h4>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li className="hover:text-white transition-colors duration-200 cursor-pointer">YouTube Live</li>
-              <li className="hover:text-white transition-colors duration-200 cursor-pointer">Twitch</li>
-              <li className="hover:text-white transition-colors duration-200 cursor-pointer">Facebook Live</li>
-              <li className="hover:text-white transition-colors duration-200 cursor-pointer">Custom RTMP Server</li>
+          <nav aria-label="Support and legal">
+            <h2 className="text-sm font-semibold text-fg">Support</h2>
+            <ul className="mt-4 space-y-2.5 text-sm">
+              <li>
+                <a
+                  href="mailto:calypso.sport.stream@gmail.com"
+                  className="text-fg-muted transition-colors hover:text-fg"
+                >
+                  calypso.sport.stream@gmail.com
+                </a>
+              </li>
+              <li>
+                <a href="/privacy" className="text-fg-muted transition-colors hover:text-fg">
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a href="/terms" className="text-fg-muted transition-colors hover:text-fg">
+                  Terms of Service
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://play.google.com/store/account/subscriptions"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-fg-muted transition-colors hover:text-fg"
+                >
+                  Manage subscription
+                </a>
+              </li>
             </ul>
-          </div>
-
-          {/* Support & Legal */}
-          <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-white">Support</h4>
-            <div className="space-y-3">
-              <a
-                href="mailto:calypso.sport.stream@gmail.com"
-                className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-200 text-sm"
-              >
-                <Mail size={16} />
-                <span>calypso.sport.stream@gmail.com</span>
-              </a>
-              <a
-                href="/privacy"
-                className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-200 text-sm"
-              >
-                <Shield size={16} />
-                <span>Privacy Policy</span>
-              </a>
-              <a
-                href="/terms"
-                className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-200 text-sm"
-              >
-                <FileText size={16} />
-                <span>Terms of Service</span>
-              </a>
-            </div>
-          </div>
+          </nav>
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-gray-800 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-gray-400 text-sm text-center md:text-left">
-              © {currentYear} Calypso Sports Streaming. All rights reserved.
-            </p>
-
-            <div className="flex items-center space-x-2 text-gray-400 text-sm">
-              <span>Made with</span>
-              <Heart size={16} className="text-red-500" />
-              <span>for sports streamers</span>
-            </div>
-          </div>
-        </div>
+        <p className="mt-14 border-t border-white/[0.07] pt-8 text-sm text-fg-faint">
+          © {currentYear} Calypso Sports Streaming. All rights reserved.
+        </p>
       </div>
     </footer>
   );

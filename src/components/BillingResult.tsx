@@ -67,29 +67,29 @@ const BillingResult = ({ mode }: BillingResultProps) => {
   }, [mode]);
 
   const Icon = mode === 'success' ? CheckCircle2 : XCircle;
-  const color = mode === 'success' ? 'text-green-400' : 'text-amber-400';
+  const color = mode === 'success' ? 'text-brand' : 'text-amber-400';
 
   return (
     <section className="min-h-[65vh] flex items-center justify-center px-4">
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
-        className="max-w-xl w-full bg-gray-900 border border-gray-700 rounded-2xl p-8 text-center"
+        className="max-w-xl w-full bg-ink-900 border border-white/[0.07] rounded-card p-8 text-center"
       >
         <Icon className={`${color} mx-auto mb-4`} size={52} />
         <h1 className="text-3xl font-bold text-white mb-3">
           {mode === 'success' ? 'Payment Completed' : 'Checkout Cancelled'}
         </h1>
-        <p className="text-gray-300 mb-6">{message}</p>
+        <p className="text-fg-muted mb-6">{message}</p>
         {billing && (
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-fg-muted">
             Current plan: <strong className="text-white uppercase">{billing.accountType}</strong>
             {billing.subscriptionStatus ? ` (${billing.subscriptionStatus})` : ''}
           </p>
         )}
         <a
           href="/"
-          className="inline-block mt-8 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg font-semibold"
+          className="inline-block mt-8 bg-brand text-white px-6 py-3 rounded-lg font-semibold"
         >
           Back to Pricing
         </a>

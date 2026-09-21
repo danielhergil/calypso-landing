@@ -146,13 +146,13 @@ const AccountPanel = () => {
   };
 
   return (
-    <section id="account" className="py-16 relative overflow-hidden border-t border-gray-800/40">
+    <section id="account" className="py-16 relative overflow-hidden border-t border-white/[0.07]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-3xl mx-auto bg-gray-900/80 border border-gray-700 rounded-2xl p-8"
+          className="max-w-3xl mx-auto bg-ink-800/80 border border-white/[0.07] rounded-card p-8"
         >
           <h2 className="text-3xl font-bold text-white mb-6">Account & Billing</h2>
 
@@ -163,7 +163,7 @@ const AccountPanel = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email"
-                className="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-3 text-white"
+                className="w-full bg-ink-700 border border-white/15 rounded-lg px-4 py-3 text-white"
                 required
               />
               <input
@@ -171,13 +171,13 @@ const AccountPanel = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Password"
-                className="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-3 text-white"
+                className="w-full bg-ink-700 border border-white/15 rounded-lg px-4 py-3 text-white"
                 required
               />
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-gradient-to-r from-purple-500 to-pink-500 disabled:opacity-60 text-white font-semibold py-3 rounded-lg"
+                className="w-full bg-brand disabled:opacity-60 text-white font-semibold py-3 rounded-lg"
               >
                 {loading ? 'Signing in...' : 'Sign In'}
               </button>
@@ -186,7 +186,7 @@ const AccountPanel = () => {
 
           {user && (
             <div className="space-y-5">
-              <div className="text-sm text-gray-300 space-y-1">
+              <div className="text-sm text-fg-muted space-y-1">
                 <p><strong className="text-white">User:</strong> {user.uid}</p>
                 <p><strong className="text-white">Email:</strong> {user.email ?? 'No email'}</p>
                 <p><strong className="text-white">Account type:</strong> {billing?.accountType ?? 'basic'}</p>
@@ -197,34 +197,34 @@ const AccountPanel = () => {
                 <button
                   onClick={() => startCheckout('pro')}
                   disabled={loading}
-                  className="bg-purple-600 hover:bg-purple-700 disabled:opacity-60 text-white font-semibold py-3 rounded-lg"
+                  className="bg-brand hover:bg-brand-dark disabled:opacity-60 text-white font-semibold py-3 rounded-lg"
                 >
                   Change to Pro
                 </button>
                 <button
                   onClick={() => startCheckout('max')}
                   disabled={loading}
-                  className="bg-pink-600 hover:bg-pink-700 disabled:opacity-60 text-white font-semibold py-3 rounded-lg"
+                  className="bg-brand hover:bg-brand-dark disabled:opacity-60 text-white font-semibold py-3 rounded-lg"
                 >
                   Change to Max
                 </button>
                 <button
                   onClick={openPortal}
                   disabled={loading}
-                  className="bg-gray-700 hover:bg-gray-600 disabled:opacity-60 text-white font-semibold py-3 rounded-lg"
+                  className="bg-ink-600 hover:bg-ink-600 disabled:opacity-60 text-white font-semibold py-3 rounded-lg"
                 >
                   Manage / Cancel Plan
                 </button>
                 <button
                   onClick={handleLogout}
                   disabled={loading}
-                  className="bg-gray-800 hover:bg-gray-700 disabled:opacity-60 text-white font-semibold py-3 rounded-lg"
+                  className="bg-ink-700 hover:bg-ink-600 disabled:opacity-60 text-white font-semibold py-3 rounded-lg"
                 >
                   Sign Out
                 </button>
               </div>
 
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-fg-faint">
                 To return to Basic, use "Manage / Cancel Plan" and cancel the active subscription. Webhooks will sync your account to Basic automatically.
               </p>
             </div>

@@ -1,11 +1,71 @@
 import React, { useEffect, useState } from 'react';
-import { Check, Sparkles, Zap, Lock } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { Check, Minus } from 'lucide-react';
 import { doc, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase';
 import { fetchBillingMe, type BillingMe } from '../lib/billingApi';
 import { getClientAuthContext } from '../lib/authContext';
 import { writeBillingSnapshot } from '../lib/subscriptionLedger';
+import { PLAY_STORE_URL, Reveal } from './ui';
+
+type Plan = {
+  id: string;
+  name: string;
+  tagline: string;
+  price: string;
+  period?: string;
+  secondary: string;
+  rows: { label: string; value: string; included: boolean }[];
+  cta: string;
+  featured?: boolean;
+};
+
+const PLANS: Plan[] = [
+  {
+    id: 'basic',
+    name: 'Basic',
+    tagline: 'For testing and the odd match',
+    price: '0 €',
+    secondary: 'Free forever, no card',
+    rows: [
+      { label: 'Total streams', value: '2', included: true },
+      { label: 'Streams per month', value: '2', included: true },
+      { label: 'YouTube API ops / month', value: '12', included: true },
+      { label: 'External broadcast sync', value: 'Not included', included: false },
+    ],
+    cta: 'Get it on Google Play',
+  },
+  {
+    id: 'pro',
+    name: 'Pro',
+    tagline: 'For a match most weekends',
+    price: '5,99 €',
+    period: '/month',
+    secondary: 'or 49,99 € a year, saving 30%',
+    rows: [
+      { label: 'Total streams', value: 'Unlimited', included: true },
+      { label: 'Streams per month', value: '20', included: true },
+      { label: 'YouTube API ops / month', value: '240', included: true },
+      { label: 'External broadcast sync', value: 'Included', included: true },
+    ],
+    cta: 'Get Pro in the app',
+    featured: true,
+  },
+  {
+    id: 'max',
+    name: 'Max',
+    tagline: 'For clubs and full competitions',
+    price: '12,99 €',
+    period: '/month',
+    secondary: 'or 109,99 € a year, saving 29%',
+    rows: [
+      { label: 'Total streams', value: 'Unlimited', included: true },
+      { label: 'Streams per month', value: '50', included: true },
+      { label: 'YouTube API ops / month', value: '1000', included: true },
+      { label: 'External broadcast sync', value: 'Included', included: true },
+    ],
+    cta: 'Get Max in the app',
+  },
+];
 
 const Pricing = () => {
   const [billing, setBilling] = useState<BillingMe | null>(null);
@@ -61,280 +121,82 @@ const Pricing = () => {
     syncBilling();
   }, [auth?.uid, auth?.idToken]);
 
-  const scrollToDownload = () => {
-    const element = document.getElementById('download');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <section id="pricing" className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-purple-900/20 to-black -z-10" />
-
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <div className="inline-flex items-center space-x-2 bg-purple-500/10 border border-purple-500/30 rounded-full px-4 py-2 mb-6">
-            <Sparkles className="text-purple-400" size={16} />
-            <span className="text-purple-300 text-sm font-medium">Plans Built for Streaming Volume</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent font-heading">
-            Simple, Transparent Pricing
+    <section id="pricing" className="py-20 lg:py-28" aria-labelledby="pricing-heading">
+      <div className="mx-auto max-w-page px-4 sm:px-6 lg:px-10">
+        <Reveal>
+          <h2
+            id="pricing-heading"
+            className="max-w-[16ch] font-heading text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl"
+          >
+            Free until you stream a lot.
           </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Start free, then scale with higher monthly stream capacity and YouTube API operations.
+          <p className="mt-5 max-w-[52ch] text-lg leading-relaxed text-fg-muted">
+            Plans scale with how many matches you broadcast each month. Paid plans are bought inside the Android app.
           </p>
-        </motion.div>
+        </Reveal>
 
-        <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="relative"
-          >
-            <div className="relative bg-gray-900 rounded-2xl p-8 border border-gray-700 h-full">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                <div className="bg-gray-700 text-gray-300 px-6 py-2 rounded-full text-sm font-bold shadow-lg flex items-center space-x-2">
-                  <Zap size={16} />
-                  <span>BASIC</span>
-                </div>
-              </div>
+        <div className="mt-12 grid gap-4 lg:mt-16 lg:grid-cols-3 lg:items-center">
+          {PLANS.map((plan, i) => (
+            <Reveal
+              key={plan.id}
+              delay={i * 0.08}
+              className={`relative flex flex-col rounded-card border p-7 lg:p-8 ${
+                plan.featured
+                  ? 'border-brand/50 bg-gradient-to-b from-brand/15 to-ink-800 lg:-my-6 lg:py-14'
+                  : 'border-white/[0.07] bg-ink-800'
+              }`}
+            >
+              {plan.featured && (
+                <span className="absolute -top-3 left-7 rounded-full bg-brand px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">
+                  Most popular
+                </span>
+              )}
 
-              <div className="text-center mb-8 mt-6">
-                <h3 className="text-2xl font-bold text-white mb-2">Basic</h3>
-                <p className="text-gray-400 mb-4">For testing and occasional use</p>
-                <div className="flex items-baseline justify-center space-x-2">
-                  <span className="text-5xl font-bold text-white">0 €</span>
-                </div>
-                <p className="text-sm text-gray-400 mt-2">Free forever</p>
-              </div>
+              <h3 className="font-heading text-2xl font-bold tracking-tight">{plan.name}</h3>
+              <p className="mt-1 text-sm text-fg-muted">{plan.tagline}</p>
 
-              <div className="space-y-4 mb-8">
-                <div className="flex items-start space-x-3">
-                  <Check className="text-green-400 flex-shrink-0 mt-1" size={20} />
-                  <span className="text-gray-300">Total streams: 2</span>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <Check className="text-green-400 flex-shrink-0 mt-1" size={20} />
-                  <span className="text-gray-300">Streams per month: 2</span>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <Check className="text-green-400 flex-shrink-0 mt-1" size={20} />
-                  <span className="text-gray-300">YouTube API ops/month: 12</span>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <Lock className="text-gray-500 flex-shrink-0 mt-1" size={20} />
-                  <span className="text-gray-300">External broadcast sync: No</span>
-                </div>
-              </div>
+              <p className="mt-6 flex items-baseline gap-1.5">
+                <span className="font-heading text-5xl font-extrabold tracking-tight">{plan.price}</span>
+                {plan.period && <span className="text-sm text-fg-muted">{plan.period}</span>}
+              </p>
+              <p className="mt-2 text-sm text-fg-faint">{plan.secondary}</p>
 
-              <button
-                onClick={scrollToDownload}
-                className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-4 rounded-xl transition-colors duration-200 shadow-lg cursor-pointer"
-              >
-                Start Free
-              </button>
-
-              <p className="text-center text-sm text-gray-400 mt-4">No credit card required</p>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative"
-          >
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl opacity-75 blur"></div>
-            <div className="relative bg-gray-900 rounded-2xl p-8 border border-purple-500/50 h-full">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg flex items-center space-x-2">
-                  <Sparkles size={16} />
-                  <span>MOST POPULAR</span>
-                </div>
-              </div>
-
-              <div className="text-center mb-8 mt-6">
-                <h3 className="text-2xl font-bold text-white mb-2">Pro</h3>
-                <p className="text-gray-400 mb-4">For active weekly creators</p>
-                <div className="flex items-baseline justify-center space-x-2">
-                  <span className="text-5xl font-bold text-white">5,99 €</span>
-                  <span className="text-gray-400">/month</span>
-                </div>
-                <p className="text-sm text-gray-400 mt-2">
-                  or <strong className="text-white">49,99 €/year</strong>
-                  <span className="text-pink-400"> · save 30%</span>
-                </p>
-              </div>
-
-              <div className="space-y-4 mb-8">
-                <div className="flex items-start space-x-3">
-                  <Check className="text-purple-400 flex-shrink-0 mt-1" size={20} />
-                  <span className="text-gray-300">Total streams: Unlimited</span>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <Check className="text-purple-400 flex-shrink-0 mt-1" size={20} />
-                  <span className="text-gray-300">Streams per month: 20</span>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <Check className="text-purple-400 flex-shrink-0 mt-1" size={20} />
-                  <span className="text-gray-300">YouTube API ops/month: 240</span>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <Check className="text-purple-400 flex-shrink-0 mt-1" size={20} />
-                  <span className="text-gray-300">External broadcast sync: Yes</span>
-                </div>
-              </div>
+              <ul className="mt-7 space-y-3 border-t border-white/[0.07] pt-7">
+                {plan.rows.map((row) => (
+                  <li key={row.label} className="flex items-start gap-3 text-sm">
+                    {row.included ? (
+                      <Check size={18} className="mt-0.5 shrink-0 text-brand" strokeWidth={2.5} />
+                    ) : (
+                      <Minus size={18} className="mt-0.5 shrink-0 text-fg-faint" strokeWidth={2.5} />
+                    )}
+                    <span className={row.included ? 'text-fg' : 'text-fg-faint'}>
+                      {row.label}: <span className="font-semibold">{row.value}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
 
               <a
-                href="https://play.google.com/store/apps/details?id=com.danihg.calypso"
+                href={PLAY_STORE_URL}
                 target="_blank"
-                rel="noreferrer"
-                className="block w-full text-center bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-4 rounded-xl transition-colors duration-200 shadow-lg cursor-pointer"
+                rel="noopener noreferrer"
+                className={`mt-8 block rounded-full px-6 py-3.5 text-center text-sm font-semibold transition-colors duration-200 active:translate-y-[1px] ${
+                  plan.featured
+                    ? 'bg-brand text-white hover:bg-brand-light'
+                    : 'border border-white/15 text-fg hover:border-white/35'
+                }`}
               >
-                Get Pro in the app
+                {plan.cta}
               </a>
-
-              <p className="text-center text-sm text-gray-400 mt-4">Subscriptions are purchased in the Android app</p>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="relative"
-          >
-            <div className="relative bg-gray-800/50 rounded-2xl p-8 border border-gray-700 h-full backdrop-blur-sm">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                <div className="bg-gray-700 text-gray-300 px-6 py-2 rounded-full text-sm font-bold shadow-lg flex items-center space-x-2">
-                  <Lock size={16} />
-                  <span>HIGH VOLUME</span>
-                </div>
-              </div>
-
-              <div className="text-center mb-8 mt-6">
-                <h3 className="text-2xl font-bold text-white mb-2">Max</h3>
-                <p className="text-gray-400 mb-4">For intensive operations</p>
-                <div className="flex items-baseline justify-center space-x-2">
-                  <span className="text-5xl font-bold text-white">12,99 €</span>
-                  <span className="text-gray-400">/month</span>
-                </div>
-                <p className="text-sm text-gray-400 mt-2">
-                  or <strong className="text-white">109,99 €/year</strong>
-                  <span className="text-purple-400"> · save 29%</span>
-                </p>
-              </div>
-
-              <div className="space-y-4 mb-8">
-                <div className="flex items-start space-x-3">
-                  <Check className="text-purple-400 flex-shrink-0 mt-1" size={20} />
-                  <span className="text-gray-300">Total streams: Unlimited</span>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <Check className="text-purple-400 flex-shrink-0 mt-1" size={20} />
-                  <span className="text-gray-300">Streams per month: 50</span>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <Check className="text-purple-400 flex-shrink-0 mt-1" size={20} />
-                  <span className="text-gray-300">YouTube API ops/month: 1000</span>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <Check className="text-purple-400 flex-shrink-0 mt-1" size={20} />
-                  <span className="text-gray-300">External broadcast sync: Yes</span>
-                </div>
-              </div>
-
-              <a
-                href="https://play.google.com/store/apps/details?id=com.danihg.calypso"
-                target="_blank"
-                rel="noreferrer"
-                className="block w-full text-center bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 rounded-xl transition-colors duration-200 cursor-pointer"
-              >
-                Get Max in the app
-              </a>
-
-              <p className="text-center text-sm text-gray-500 mt-4">Built for teams and frequent events</p>
-            </div>
-          </motion.div>
+            </Reveal>
+          ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-16 text-center"
-        >
-          <div className="inline-block bg-gradient-to-r from-purple-900/30 to-pink-900/30 border border-purple-500/20 rounded-2xl p-8 max-w-5xl w-full">
-            <h3 className="text-2xl font-bold text-white mb-6 font-heading">Plan Comparison</h3>
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-sm">
-                <thead>
-                  <tr className="border-b border-gray-700">
-                    <th className="py-3 text-gray-300 font-semibold">Feature</th>
-                    <th className="py-3 text-gray-300 font-semibold">Basic</th>
-                    <th className="py-3 text-gray-300 font-semibold">Pro</th>
-                    <th className="py-3 text-gray-300 font-semibold">Max</th>
-                  </tr>
-                </thead>
-                <tbody className="text-gray-300">
-                  <tr className="border-b border-gray-800">
-                    <td className="py-3">Price / month</td>
-                    <td className="py-3">0 €</td>
-                    <td className="py-3">5,99 €</td>
-                    <td className="py-3">12,99 €</td>
-                  </tr>
-                  <tr className="border-b border-gray-800">
-                    <td className="py-3">Price / year</td>
-                    <td className="py-3">—</td>
-                    <td className="py-3">49,99 €</td>
-                    <td className="py-3">109,99 €</td>
-                  </tr>
-                  <tr className="border-b border-gray-800">
-                    <td className="py-3">Total streams</td>
-                    <td className="py-3">2</td>
-                    <td className="py-3">Unlimited</td>
-                    <td className="py-3">Unlimited</td>
-                  </tr>
-                  <tr className="border-b border-gray-800">
-                    <td className="py-3">Streams per month</td>
-                    <td className="py-3">2</td>
-                    <td className="py-3">20</td>
-                    <td className="py-3">50</td>
-                  </tr>
-                  <tr className="border-b border-gray-800">
-                    <td className="py-3">YouTube API ops/month</td>
-                    <td className="py-3">12</td>
-                    <td className="py-3">240</td>
-                    <td className="py-3">1000</td>
-                  </tr>
-                  <tr>
-                    <td className="py-3">External broadcast sync</td>
-                    <td className="py-3">No</td>
-                    <td className="py-3">Yes</td>
-                    <td className="py-3">Yes</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </motion.div>
-
-        <div className="mt-8 text-center space-y-3">
+        <div className="mt-10 flex flex-col items-center gap-3 text-center">
           {billing?.accountType && (
-            <p className="text-sm text-gray-300">
-              Current plan: <strong className="text-white uppercase">{billing.accountType}</strong>
+            <p className="text-sm text-fg-muted">
+              Current plan: <strong className="uppercase text-fg">{billing.accountType}</strong>
               {billing.subscriptionStatus ? ` (${billing.subscriptionStatus})` : ''}
             </p>
           )}
@@ -344,15 +206,10 @@ const Pricing = () => {
             href="https://play.google.com/store/account/subscriptions"
             target="_blank"
             rel="noreferrer"
-            className="inline-block bg-gray-800 hover:bg-gray-700 text-white px-5 py-2 rounded-lg text-sm transition-colors duration-200 cursor-pointer"
+            className="text-sm text-fg-muted underline underline-offset-4 transition-colors hover:text-fg"
           >
             Manage subscription on Google Play
           </a>
-          {!auth && (
-            <p className="text-xs text-gray-500">
-              Billing actions require a Firebase session (uid and idToken) from the app.
-            </p>
-          )}
         </div>
       </div>
     </section>
