@@ -11,8 +11,6 @@ import Download from './components/Download';
 import Footer from './components/Footer';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsOfService from './components/TermsOfService';
-import BillingResult from './components/BillingResult';
-import AccountPage from './components/AccountPage';
 
 function App() {
   const [path, setPath] = useState(typeof window !== 'undefined' ? window.location.pathname : '/');
@@ -20,38 +18,25 @@ function App() {
   useEffect(() => {
     const syncPath = () => setPath(window.location.pathname);
     window.addEventListener('popstate', syncPath);
-    window.addEventListener('app:navigate', syncPath);
-    return () => {
-      window.removeEventListener('popstate', syncPath);
-      window.removeEventListener('app:navigate', syncPath);
-    };
+    return () => window.removeEventListener('popstate', syncPath);
   }, []);
 
-  const page = (content: React.ReactNode) => (
-    <div className="min-h-[100dvh] bg-ink-900 text-fg">
-      {content}
-      <Footer />
-    </div>
-  );
-
   if (path === '/privacy' || path === '/privacy/') {
-    return page(<PrivacyPolicy />);
+    return (
+      <div className="min-h-[100dvh] bg-ink-900 text-fg">
+        <PrivacyPolicy />
+        <Footer />
+      </div>
+    );
   }
 
   if (path === '/terms' || path === '/terms/') {
-    return page(<TermsOfService />);
-  }
-
-  if (path === '/billing/success' || path === '/billing/success/') {
-    return page(<BillingResult mode="success" />);
-  }
-
-  if (path === '/billing/cancel' || path === '/billing/cancel/') {
-    return page(<BillingResult mode="cancel" />);
-  }
-
-  if (path === '/account' || path === '/account/') {
-    return <AccountPage />;
+    return (
+      <div className="min-h-[100dvh] bg-ink-900 text-fg">
+        <TermsOfService />
+        <Footer />
+      </div>
+    );
   }
 
   return (

@@ -36,8 +36,8 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="/account" className="text-fg-muted transition-colors hover:text-fg">
-                  Account
+                <a href="#download" className="text-fg-muted transition-colors hover:text-fg">
+                  Download
                 </a>
               </li>
             </ul>

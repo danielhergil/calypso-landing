@@ -1,10 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Check, Minus } from 'lucide-react';
-import { doc, onSnapshot } from 'firebase/firestore';
-import { db } from '../firebase';
-import { fetchBillingMe, type BillingMe } from '../lib/billingApi';
-import { getClientAuthContext } from '../lib/authContext';
-import { writeBillingSnapshot } from '../lib/subscriptionLedger';
 import { PLAY_STORE_URL, Reveal } from './ui';
 
 type Plan = {
@@ -68,59 +63,6 @@ const PLANS: Plan[] = [
 ];
 
 const Pricing = () => {
-  const [billing, setBilling] = useState<BillingMe | null>(null);
-  const [auth, setAuth] = useState(() => getClientAuthContext());
-
-  useEffect(() => {
-    const syncAuth = () => setAuth(getClientAuthContext());
-    window.addEventListener('focus', syncAuth);
-    window.addEventListener('app:navigate', syncAuth);
-    return () => {
-      window.removeEventListener('focus', syncAuth);
-      window.removeEventListener('app:navigate', syncAuth);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!auth) {
-      return;
-    }
-
-    const unsub = onSnapshot(doc(db, 'users', auth.uid), (snap) => {
-      const data = snap.data();
-      if (!data) {
-        return;
-      }
-
-      setBilling({
-        accountType: (data.accountType ?? 'basic') as BillingMe['accountType'],
-        subscriptionStatus: (data.subscriptionStatus ?? null) as string | null,
-        subscriptionCurrentPeriodEnd: (data.subscriptionCurrentPeriodEnd ?? null) as string | null,
-        cancelAtPeriodEnd: (data.cancelAtPeriodEnd ?? null) as boolean | null
-      });
-    });
-
-    return () => unsub();
-  }, [auth?.uid]);
-
-  useEffect(() => {
-    const syncBilling = async () => {
-      if (!auth) {
-        return;
-      }
-
-      try {
-        const me = await fetchBillingMe(auth);
-        setBilling(me);
-        await writeBillingSnapshot(auth.uid, me, 'pricing_load');
-      } catch (error) {
-        console.error('Unable to refresh billing state:', error);
-      }
-    };
-
-    syncBilling();
-  }, [auth?.uid, auth?.idToken]);
-
   return (
     <section id="pricing" className="py-20 lg:py-28" aria-labelledby="pricing-heading">
       <div className="mx-auto max-w-page px-4 sm:px-6 lg:px-10">
@@ -193,15 +135,9 @@ const Pricing = () => {
           ))}
         </div>
 
-        <div className="mt-10 flex flex-col items-center gap-3 text-center">
-          {billing?.accountType && (
-            <p className="text-sm text-fg-muted">
-              Current plan: <strong className="uppercase text-fg">{billing.accountType}</strong>
-              {billing.subscriptionStatus ? ` (${billing.subscriptionStatus})` : ''}
-            </p>
-          )}
-          {/* Las suscripciones se cobran por Google Play, así que se gestionan y se
-              cancelan allí. La web ya no vende ni abre el portal de Stripe. */}
+        {/* Las suscripciones se cobran por Google Play, así que se compran, se
+            gestionan y se cancelan allí. La web no vende ni pide login. */}
+        <div className="mt-10 text-center">
           <a
             href="https://play.google.com/store/account/subscriptions"
             target="_blank"

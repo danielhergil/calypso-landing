@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
-import { navigateTo } from '../lib/navigation';
+import { PlayStoreButton } from './ui';
 
 const NAV = [
   { id: 'features', label: 'Features' },
@@ -13,17 +13,18 @@ const NAV = [
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  // The hero already carries the download CTA, so the nav only shows its own
+  // copy once the hero has scrolled away.
+  const [showCta, setShowCta] = useState(false);
   const { scrollY } = useScroll();
 
-  useMotionValueEvent(scrollY, 'change', (y) => setIsScrolled(y > 24));
+  useMotionValueEvent(scrollY, 'change', (y) => {
+    setIsScrolled(y > 24);
+    setShowCta(y > 520);
+  });
 
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
-    setIsMenuOpen(false);
-  };
-
-  const goToAccount = () => {
-    navigateTo('/account');
     setIsMenuOpen(false);
   };
 
@@ -49,12 +50,7 @@ const Header = () => {
               {item.label}
             </button>
           ))}
-          <button
-            onClick={goToAccount}
-            className="rounded-full border border-white/15 px-5 py-2 text-sm font-medium text-fg transition-colors duration-200 hover:border-brand hover:text-brand-light"
-          >
-            Account
-          </button>
+          {showCta && <PlayStoreButton size="md" />}
         </nav>
 
         <button
@@ -84,12 +80,7 @@ const Header = () => {
                 {item.label}
               </button>
             ))}
-            <button
-              onClick={goToAccount}
-              className="mt-2 block w-full rounded-full border border-white/15 px-3 py-3 text-base font-medium text-fg"
-            >
-              Account
-            </button>
+            <PlayStoreButton size="md" className="mt-2 w-full" />
           </div>
         </motion.div>
       )}
