@@ -1,58 +1,39 @@
 import React from 'react';
 import { Reveal } from './ui';
 
-type Cell = {
-  title: string;
-  body: string;
-  image?: { src: string; alt: string; position?: string };
-  className: string;
-};
+type Cell =
+  | { kind: 'photo'; title: string; body: string; src: string; alt: string }
+  | { kind: 'text'; title: string; body: string; stat: string; statLabel: string };
 
+// Two photographs shot at 4:3 and shown at 4:3, two typographic tiles.
 const CELLS: Cell[] = [
   {
-    title: 'Live scoreboard',
-    body: 'Goals, fouls and periods update on the overlay while you keep filming.',
-    image: {
-      src: '/shots/scoreboard-crop.webp',
-      alt: 'Calypso camera view with the live scoreboard overlay during a futsal match',
-      position: 'object-[center_62%]',
-    },
-    className: 'lg:col-span-4 lg:row-span-2',
-  },
-  {
+    kind: 'photo',
     title: 'Teams with badges',
-    body: 'Squads, crests and lineups saved before kickoff.',
-    image: {
-      src: '/shots/teams-crop.webp',
-      alt: 'Team list in Calypso showing club badges and squads',
-      position: 'object-[70%_center]',
-    },
-    className: 'lg:col-span-2 lg:row-span-2',
+    body: 'Save crests, squads and lineups once. They are waiting the next time you go live.',
+    src: '/shots/feat-badges.webp',
+    alt: 'Football shirts hanging in a dark dressing room, crests catching the light',
   },
   {
+    kind: 'text',
     title: 'Your quality, your call',
-    body: 'Pick the resolution, bitrate and frame rate the venue can actually carry. Defaults to 1080p at 30fps.',
-    className: 'lg:col-span-2',
+    body: 'Set the resolution, bitrate and frame rate the venue can actually carry.',
+    stat: '1080p',
+    statLabel: 'default, at 30fps',
   },
   {
-    title: 'Schedule from the bench',
-    body: 'Title, time, privacy and thumbnail. The stream is waiting when you are.',
-    image: {
-      src: '/shots/schedule-crop.webp',
-      alt: 'New broadcast form in Calypso with title, date, privacy and stream key',
-      position: 'object-[center_28%]',
-    },
-    className: 'lg:col-span-2',
-  },
-  {
+    kind: 'text',
     title: 'Stream keys, organized',
-    body: 'Create, rename and copy keys without leaving the app.',
-    image: {
-      src: '/shots/keys-crop.webp',
-      alt: 'Stream keys screen in Calypso with copy and rename actions',
-      position: 'object-[60%_center]',
-    },
-    className: 'lg:col-span-2',
+    body: 'Create, rename and copy keys in the app. No hunting through a studio dashboard.',
+    stat: 'RTMP',
+    statLabel: 'any destination',
+  },
+  {
+    kind: 'photo',
+    title: 'Schedule from the bench',
+    body: 'Title, time, privacy and thumbnail. The stream is waiting when the whistle goes.',
+    src: '/shots/feat-bench.webp',
+    alt: 'A coach on a bench beside a floodlit pitch at dusk, phone resting next to them',
   },
 ];
 
@@ -63,42 +44,51 @@ const Features = () => {
         <Reveal>
           <h2
             id="features-heading"
-            className="max-w-[16ch] font-heading text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl"
+            className="max-w-[18ch] font-heading text-4xl font-extrabold leading-[1.02] tracking-[-0.025em] sm:text-5xl lg:text-6xl"
           >
-            A whole production truck, in your pocket.
+            Set up once. Go live all season.
           </h2>
-          <p className="mt-5 max-w-[52ch] text-lg leading-relaxed text-fg-muted">
-            Everything a match needs is on one screen. No capture card, no second operator, no cables.
-          </p>
         </Reveal>
 
-        <div className="mt-12 grid auto-rows-[220px] grid-cols-1 gap-4 sm:grid-cols-2 lg:mt-16 lg:grid-cols-6">
-          {CELLS.map((cell, i) => (
-            <Reveal
-              key={cell.title}
-              delay={i * 0.06}
-              className={`group relative overflow-hidden rounded-card border border-white/[0.07] ${
-                cell.image ? 'bg-ink-800' : 'bg-[radial-gradient(120%_120%_at_0%_0%,rgba(240,74,66,0.32)_0%,rgba(240,74,66,0.06)_45%,#16181D_100%)]'
-              } ${cell.className}`}
-            >
-              {cell.image && (
-                <>
-                  <img
-                    src={cell.image.src}
-                    alt={cell.image.alt}
-                    loading="lazy"
-                    className={`absolute inset-0 h-full w-full object-cover ${cell.image.position ?? ''} transition-transform duration-700 ease-out group-hover:scale-[1.04]`}
-                  />
-                  <div className="absolute inset-0 scrim-bottom" />
-                </>
-              )}
-
-              <div className="relative flex h-full flex-col justify-end p-6">
-                <h3 className="font-heading text-xl font-bold tracking-tight lg:text-2xl">{cell.title}</h3>
-                <p className="mt-2 max-w-[38ch] text-sm leading-relaxed text-fg-muted">{cell.body}</p>
-              </div>
-            </Reveal>
-          ))}
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:mt-16 lg:gap-5">
+          {CELLS.map((cell, i) =>
+            cell.kind === 'photo' ? (
+              <Reveal
+                key={cell.title}
+                delay={i * 0.07}
+                className="group relative aspect-[4/3] overflow-hidden rounded-card border border-white/[0.07]"
+              >
+                <img
+                  src={cell.src}
+                  alt={cell.alt}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.04]"
+                />
+                <div className="absolute inset-0 scrim-bottom" />
+                <div className="relative flex h-full flex-col justify-end p-7 lg:p-9">
+                  <h3 className="font-heading text-2xl font-bold tracking-tight">{cell.title}</h3>
+                  <p className="mt-2 max-w-[40ch] text-[15px] leading-relaxed text-fg-muted">{cell.body}</p>
+                </div>
+              </Reveal>
+            ) : (
+              <Reveal
+                key={cell.title}
+                delay={i * 0.07}
+                className="relative flex aspect-[4/3] flex-col justify-between overflow-hidden rounded-card border border-white/[0.07] bg-[radial-gradient(130%_120%_at_0%_0%,rgba(240,74,66,0.3)_0%,rgba(240,74,66,0.05)_42%,#121317_100%)] p-7 lg:p-9"
+              >
+                <p className="font-heading text-[3.5rem] font-extrabold leading-none tracking-[-0.04em] text-brand lg:text-[4.5rem]">
+                  {cell.stat}
+                  <span className="mt-2 block font-body text-sm font-normal tracking-normal text-fg-faint">
+                    {cell.statLabel}
+                  </span>
+                </p>
+                <div>
+                  <h3 className="font-heading text-2xl font-bold tracking-tight">{cell.title}</h3>
+                  <p className="mt-2 max-w-[40ch] text-[15px] leading-relaxed text-fg-muted">{cell.body}</p>
+                </div>
+              </Reveal>
+            ),
+          )}
         </div>
       </div>
     </section>

@@ -47,8 +47,10 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Calypso" />
 
-    <!-- LCP asset: the hero phone render -->
-    <link rel="preload" as="image" href="/shots/hero-phone.webp" fetchpriority="high" />
+    <!-- LCP assets: the hero photograph for each shape, plus the device shot -->
+    <link rel="preload" as="image" href="/shots/hero-wide.webp" media="(min-width: 768px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/shots/hero-tall.webp" media="(max-width: 767px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/shots/app-home.webp" fetchpriority="high" />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

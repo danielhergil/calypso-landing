@@ -13,8 +13,12 @@
       <image:title>Calypso app icon</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://www.calypso-app.es/shots/hero-phone.webp</image:loc>
+      <image:loc>https://www.calypso-app.es/shots/app-home.webp</image:loc>
       <image:title>Calypso home screen, ready to start a broadcast</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.calypso-app.es/shots/app-camera.webp</image:loc>
+      <image:title>Calypso camera screen filming a match</image:title>
     </image:image>
     <image:image>
       <image:loc>https://www.calypso-app.es/shots/scoreboard.webp</image:loc>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import CameraStory from './components/CameraStory';
 import Features from './components/Features';
 import Production from './components/Production';
 import VideoSection from './components/VideoSection';
@@ -44,6 +45,7 @@ function App() {
       <Header />
       <main id="main-content">
         <Hero />
+        <CameraStory />
         <Features />
         <Production />
         <VideoSection />

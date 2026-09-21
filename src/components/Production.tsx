@@ -23,25 +23,29 @@ const POINTS = [
 const Production = () => {
   return (
     <section className="relative" aria-labelledby="production-heading">
-      <div className="relative min-h-[520px] overflow-hidden lg:min-h-[640px]">
+      {/* Photographed at 16:9 and shown at 16:9 on every breakpoint. */}
+      <div className="relative aspect-[4/5] overflow-hidden sm:aspect-[16/9]">
         <img
-          src="/shots/one-hand.webp"
-          alt="A phone held in both hands running Calypso, filming a futsal match"
+          src="/shots/band-onehand.webp"
+          alt="Two hands holding a phone in landscape, filming a floodlit futsal match"
           loading="lazy"
-          className="absolute inset-0 h-full w-full object-cover object-[center_68%]"
+          className="absolute inset-0 h-full w-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-ink-900/30" />
-        <div className="absolute inset-0 scrim-bottom" />
+        <div className="absolute inset-0 bg-ink-900/25" />
+        <div className="absolute inset-x-0 bottom-0 h-3/5 scrim-bottom" />
+        <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-ink-900 to-transparent" />
 
-        <div className="relative mx-auto flex min-h-[520px] max-w-page flex-col justify-end px-4 pb-14 pt-24 sm:px-6 lg:min-h-[640px] lg:px-10 lg:pb-20">
-          <Reveal>
-            <h2
-              id="production-heading"
-              className="max-w-[14ch] font-heading text-4xl font-extrabold leading-[1.03] tracking-tight sm:text-5xl lg:text-7xl"
-            >
-              One hand. The whole production.
-            </h2>
-          </Reveal>
+        <div className="absolute inset-x-0 bottom-0">
+          <div className="mx-auto max-w-page px-4 pb-10 sm:px-6 lg:px-10 lg:pb-16">
+            <Reveal>
+              <h2
+                id="production-heading"
+                className="max-w-[13ch] font-heading text-4xl font-extrabold leading-[1.0] tracking-[-0.03em] sm:text-6xl lg:text-[5rem]"
+              >
+                One hand. The whole production.
+              </h2>
+            </Reveal>
+          </div>
         </div>
       </div>
 
@@ -50,10 +54,10 @@ const Production = () => {
           {POINTS.map((point, i) => {
             const Icon = point.icon;
             return (
-              <Reveal key={point.title} as="li" delay={i * 0.08} className="bg-ink-900 p-6 lg:p-8">
+              <Reveal key={point.title} as="li" delay={i * 0.08} className="bg-ink-900 p-7 lg:p-9">
                 <Icon size={22} className="text-brand" strokeWidth={2} />
-                <h3 className="mt-4 font-heading text-lg font-bold tracking-tight">{point.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-fg-muted">{point.body}</p>
+                <h3 className="mt-5 font-heading text-lg font-bold tracking-tight">{point.title}</h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-fg-muted">{point.body}</p>
               </Reveal>
             );
           })}

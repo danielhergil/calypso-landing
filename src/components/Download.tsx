@@ -5,22 +5,23 @@ const Download = () => {
   return (
     <section id="download" className="relative overflow-hidden" aria-labelledby="download-heading">
       <img
-        src="/shots/logo.png"
+        src="/shots/cta-floodlights.webp"
         alt=""
         aria-hidden="true"
         loading="lazy"
-        className="absolute left-1/2 top-1/2 h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 object-contain opacity-[0.11] lg:h-[680px] lg:w-[680px]"
+        className="absolute inset-0 h-full w-full object-cover object-[center_38%]"
       />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand/15 blur-[130px]"
-      />
+      <div className="absolute inset-0 bg-ink-900/42" />
+      {/* Keeps the headline above AA contrast where the floodlight is brightest. */}
+      <div className="absolute inset-0 bg-[radial-gradient(58%_52%_at_50%_54%,rgba(10,10,12,0.9)_0%,rgba(10,10,12,0.5)_60%,transparent_100%)]" />
+      <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-ink-900 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-ink-900 to-transparent" />
 
-      <div className="relative mx-auto max-w-page px-4 py-24 text-center sm:px-6 lg:px-10 lg:py-32">
+      <div className="relative mx-auto max-w-page px-4 py-28 text-center sm:px-6 lg:px-10 lg:py-40">
         <Reveal>
           <h2
             id="download-heading"
-            className="mx-auto max-w-[14ch] font-heading text-4xl font-extrabold leading-[1.03] tracking-tight sm:text-6xl lg:text-7xl"
+            className="mx-auto max-w-[14ch] font-heading text-4xl font-extrabold leading-[1.0] tracking-[-0.03em] sm:text-6xl lg:text-[5.25rem]"
           >
             Your next match, live.
           </h2>

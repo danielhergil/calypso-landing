@@ -22,7 +22,7 @@ const VideoSection = () => {
         <Reveal>
           <h2
             id="video-heading"
-            className="max-w-[18ch] font-heading text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl"
+            className="max-w-[18ch] font-heading text-4xl font-extrabold leading-[1.02] tracking-[-0.025em] sm:text-5xl lg:text-6xl"
           >
             Three minutes, kickoff to stream.
           </h2>
@@ -38,8 +38,8 @@ const VideoSection = () => {
             className="group relative block aspect-video w-full overflow-hidden rounded-card border border-white/[0.07]"
           >
             <img
-              src="/shots/demo-poster.webp"
-              alt=""
+              src="/shots/demo-stage.webp"
+              alt="A phone on a tripod filming a floodlit match from the touchline"
               loading="lazy"
               className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
             />

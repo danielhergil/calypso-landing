@@ -33,3 +33,5 @@ design/
 design/
 
 *.tsbuildinfo
+
+assets-gen/

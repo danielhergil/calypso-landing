@@ -31,7 +31,7 @@
 @layer utilities {
   /* Full-bleed photo sections sit under this so text keeps AA contrast. */
   .scrim-bottom {
-    background: linear-gradient(to top, #0a0a0c 6%, rgba(10, 10, 12, 0.82) 45%, rgba(10, 10, 12, 0.35) 100%);
+    background: linear-gradient(to top, #0a0a0c 4%, rgba(10, 10, 12, 0.88) 34%, rgba(10, 10, 12, 0.45) 62%, rgba(10, 10, 12, 0) 100%);
   }
 
   .scrim-left {
