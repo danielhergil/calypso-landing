@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowLeft } from 'lucide-react';
 
 const TermsOfService = () => {
-  const lastUpdated = 'April 29, 2026';
+  const lastUpdated = 'September 29, 2026';
 
   return (
     <div className="min-h-[100dvh] bg-ink-900 text-white">
@@ -76,6 +76,22 @@ const TermsOfService = () => {
               Calypso integrates with external streaming services. Their availability, quality and
               terms are out of our control. You are responsible for complying with the terms of any
               third-party platform you connect to.
+            </p>
+            <p className="mt-3">
+              <strong className="text-white">YouTube.</strong> Calypso uses YouTube API Services. By
+              using Calypso, you agree to be bound by the{' '}
+              <a href="https://www.youtube.com/t/terms" className="text-brand hover:text-brand-light underline">
+                YouTube Terms of Service
+              </a>{' '}
+              (https://www.youtube.com/t/terms). How we handle YouTube data is described in our{' '}
+              <a href="/privacy" className="text-brand hover:text-brand-light underline">
+                Privacy Policy
+              </a>
+              , and Google&apos;s handling of it in the{' '}
+              <a href="http://www.google.com/policies/privacy" className="text-brand hover:text-brand-light underline">
+                Google Privacy Policy
+              </a>
+              .
             </p>
           </section>
 
