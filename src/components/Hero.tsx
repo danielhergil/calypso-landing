@@ -119,7 +119,7 @@ const Hero = () => {
             {PLATFORMS.map((platform) => (
               <li key={platform.name}>
                 <img
-                  src={`https://cdn.simpleicons.org/${platform.slug}/6B6B75`}
+                  src={`https://cdn.simpleicons.org/${platform.slug}`}
                   alt={platform.name}
                   loading="lazy"
                   className="h-6 w-6 sm:h-7 sm:w-7"
