@@ -3,11 +3,22 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { Play } from 'lucide-react';
 import { PhoneFrame, PlayStoreButton } from './ui';
 
+// YouTube's icon has to be the official full-colour one, at least 20px tall (YouTube API Services
+// branding guidelines, III.F.2); the others use their brand colours so the row stays consistent.
 const PLATFORMS = [
-  { name: 'YouTube', slug: 'youtube' },
-  { name: 'Twitch', slug: 'twitch' },
-  { name: 'Facebook Live', slug: 'facebook' },
+  { name: 'Twitch', slug: 'twitch/9146FF' },
+  { name: 'Facebook Live', slug: 'facebook/0866FF' },
 ];
+
+const YouTubeIcon = () => (
+  <svg viewBox="0 0 28 20" role="img" aria-label="YouTube" className="h-6 w-auto sm:h-7">
+    <path
+      fill="#FF0000"
+      d="M27.4 3.1A3.5 3.5 0 0 0 24.9.6C22.7 0 14 0 14 0S5.3 0 3.1.6A3.5 3.5 0 0 0 .6 3.1C0 5.3 0 10 0 10s0 4.7.6 6.9a3.5 3.5 0 0 0 2.5 2.5C5.3 20 14 20 14 20s8.7 0 10.9-.6a3.5 3.5 0 0 0 2.5-2.5C28 14.7 28 10 28 10s0-4.7-.6-6.9Z"
+    />
+    <path fill="#FFFFFF" d="M11.2 14.3 18.5 10l-7.3-4.3v8.6Z" />
+  </svg>
+);
 
 const Hero = () => {
   const reduced = useReducedMotion();
@@ -102,13 +113,16 @@ const Hero = () => {
         <div className="mx-auto flex max-w-page flex-col items-center gap-5 px-4 py-7 sm:flex-row sm:justify-center sm:gap-12 sm:px-6 lg:px-10">
           <p className="text-sm text-fg-faint">Goes live on</p>
           <ul className="flex items-center gap-10">
+            <li>
+              <YouTubeIcon />
+            </li>
             {PLATFORMS.map((platform) => (
-              <li key={platform.slug}>
+              <li key={platform.name}>
                 <img
                   src={`https://cdn.simpleicons.org/${platform.slug}/6B6B75`}
                   alt={platform.name}
                   loading="lazy"
-                  className="h-6 w-6 opacity-80 sm:h-7 sm:w-7"
+                  className="h-6 w-6 sm:h-7 sm:w-7"
                 />
               </li>
             ))}
