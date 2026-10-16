@@ -50,7 +50,7 @@ const Header = () => {
               {item.label}
             </button>
           ))}
-          {showCta && <PlayStoreButton size="md" />}
+          {showCta && <PlayStoreButton campaign="header" size="md" />}
         </nav>
 
         <button
@@ -80,7 +80,7 @@ const Header = () => {
                 {item.label}
               </button>
             ))}
-            <PlayStoreButton size="md" className="mt-2 w-full" />
+            <PlayStoreButton campaign="header-menu" size="md" className="mt-2 w-full" />
           </div>
         </motion.div>
       )}

@@ -4,6 +4,15 @@ import { motion, useReducedMotion } from 'framer-motion';
 export const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.danihg.calypso';
 
 /**
+ * Enlace a Play con la procedencia en `referrer`: Play Console la reparte por utm_source y
+ * utm_campaign en Adquisición de usuarios, así se sabe qué sección de la web trae instalaciones.
+ */
+export function playUrl(campaign: string) {
+  const referrer = `utm_source=calypso-app.es&utm_medium=landing&utm_campaign=${campaign}`;
+  return `${PLAY_STORE_URL}&referrer=${encodeURIComponent(referrer)}`;
+}
+
+/**
  * Scroll reveal used across every section. Collapses to a plain element when
  * the visitor asks for reduced motion, so the page never animates against them.
  */
@@ -78,15 +87,18 @@ export function PhoneFrame({
 
 /** The single download CTA. One label, one intent, used everywhere on the page. */
 export function PlayStoreButton({
+  campaign,
   className = '',
   size = 'lg',
 }: {
+  /** De dónde sale el clic (header, hero, download…), para `playUrl`. */
+  campaign: string;
   className?: string;
   size?: 'md' | 'lg';
 }) {
   return (
     <a
-      href={PLAY_STORE_URL}
+      href={playUrl(campaign)}
       target="_blank"
       rel="noopener noreferrer"
       className={`inline-flex items-center justify-center gap-3 rounded-full bg-brand font-semibold text-white

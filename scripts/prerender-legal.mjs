@@ -1,4 +1,4 @@
-// Después de `vite build`: escribe /privacy y /terms como HTML ya renderizado.
+// Después de `vite build`: escribe /privacy, /terms y /vs-camerafi como HTML ya renderizado.
 // Los revisores de Google (YouTube API Services) y cualquier crawler sin JavaScript
 // veían solo el <div id="root"> vacío de la SPA. El texto sale de los mismos
 // componentes, así que no hay una segunda copia que mantener.
@@ -8,8 +8,9 @@ import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 
 const pages = [
-  { file: 'privacy.html', component: '/src/components/PrivacyPolicy.tsx', title: 'Privacy Policy', path: '/privacy' },
-  { file: 'terms.html', component: '/src/components/TermsOfService.tsx', title: 'Terms of Service', path: '/terms' },
+  { file: 'privacy.html', component: '/src/components/PrivacyPolicy.tsx', title: 'Privacy Policy', path: '/privacy', mustContain: 'YouTube' },
+  { file: 'terms.html', component: '/src/components/TermsOfService.tsx', title: 'Terms of Service', path: '/terms', mustContain: 'YouTube' },
+  { file: 'vs-camerafi.html', component: '/src/components/VsCameraFi.tsx', title: 'Calypso vs CameraFi Live', path: '/vs-camerafi', mustContain: 'CameraFi' },
 ];
 
 const vite = await createServer({ server: { middlewareMode: true }, appType: 'custom', logLevel: 'error' });
@@ -25,7 +26,7 @@ try {
       .replace(/<title>[^<]*<\/title>/, `<title>${page.title} | Calypso</title>`)
       .replace(/<link rel="canonical" href="[^"]*"/, `<link rel="canonical" href="https://www.calypso-app.es${page.path}"`)
       .replace('<div id="root"></div>', `<div id="root">${body}</div>`);
-    if (!html.includes('YouTube')) throw new Error(`${page.file}: el render no contiene el texto legal`);
+    if (!body.includes(page.mustContain)) throw new Error(`${page.file}: el render no contiene «${page.mustContain}»`);
     await writeFile(`dist/${page.file}`, html);
     console.log(`prerender: dist/${page.file}`);
   }

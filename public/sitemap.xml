@@ -31,6 +31,13 @@
   </url>
 
   <url>
+    <loc>https://www.calypso-app.es/vs-camerafi</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
     <loc>https://www.calypso-app.es/privacy</loc>
     <lastmod>2026-09-21</lastmod>
     <changefreq>yearly</changefreq>

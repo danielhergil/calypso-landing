@@ -40,6 +40,11 @@ const Footer = () => {
                   Download
                 </a>
               </li>
+              <li>
+                <a href="/vs-camerafi" className="text-fg-muted transition-colors hover:text-fg">
+                  Calypso vs CameraFi
+                </a>
+              </li>
             </ul>
           </nav>
 

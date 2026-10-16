@@ -12,6 +12,7 @@ import Download from './components/Download';
 import Footer from './components/Footer';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsOfService from './components/TermsOfService';
+import VsCameraFi from './components/VsCameraFi';
 
 function App() {
   const [path, setPath] = useState(typeof window !== 'undefined' ? window.location.pathname : '/');
@@ -26,6 +27,15 @@ function App() {
     return (
       <div className="min-h-[100dvh] bg-ink-900 text-fg">
         <PrivacyPolicy />
+        <Footer />
+      </div>
+    );
+  }
+
+  if (path === '/vs-camerafi' || path === '/vs-camerafi/') {
+    return (
+      <div className="min-h-[100dvh] bg-ink-900 text-fg">
+        <VsCameraFi />
         <Footer />
       </div>
     );
