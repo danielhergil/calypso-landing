@@ -14,6 +14,7 @@ import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsOfService from './components/TermsOfService';
 import VsCameraFi from './components/VsCameraFi';
 import VsPrism from './components/VsPrism';
+import PrismScoreboard from './components/PrismScoreboard';
 
 function App() {
   const [path, setPath] = useState(typeof window !== 'undefined' ? window.location.pathname : '/');
@@ -46,6 +47,15 @@ function App() {
     return (
       <div className="min-h-[100dvh] bg-ink-900 text-fg">
         <VsPrism />
+        <Footer />
+      </div>
+    );
+  }
+
+  if (path === '/prism-scoreboard' || path === '/prism-scoreboard/') {
+    return (
+      <div className="min-h-[100dvh] bg-ink-900 text-fg">
+        <PrismScoreboard />
         <Footer />
       </div>
     );

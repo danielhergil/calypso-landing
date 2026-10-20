@@ -45,6 +45,13 @@
   </url>
 
   <url>
+    <loc>https://www.calypso-app.es/prism-scoreboard</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
     <loc>https://www.calypso-app.es/privacy</loc>
     <lastmod>2026-09-21</lastmod>
     <changefreq>yearly</changefreq>

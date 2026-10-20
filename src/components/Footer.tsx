@@ -50,6 +50,11 @@ const Footer = () => {
                   Calypso vs PRISM
                 </a>
               </li>
+              <li>
+                <a href="/prism-scoreboard" className="text-fg-muted transition-colors hover:text-fg">
+                  Scoreboard in PRISM
+                </a>
+              </li>
             </ul>
           </nav>
 
