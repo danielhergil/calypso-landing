@@ -17,6 +17,8 @@ const pages = [
     description: 'Step by step: add a live scoreboard to PRISM Live Studio with overlays.uno or a web widget, and a simpler way to stream matches with the score built in.' },
   { file: 'stream-football-match.html', component: '/src/components/FootballGuide.tsx', title: 'How to live stream a football match from your phone, with a scoreboard', path: '/stream-football-match', mustContain: 'Football',
     description: 'Stream a football match to YouTube, Facebook or Twitch from one Android phone, with the score and the clock on screen: what you need, where to put the phone and how to run the scoreboard.' },
+  { file: 'stream-padel-match.html', component: '/src/components/PadelGuide.tsx', title: 'How to live stream a padel match from your phone, with a scoreboard', path: '/stream-padel-match', mustContain: 'Padel',
+    description: 'Stream a padel match to YouTube, Facebook or Twitch from one Android phone, with points, games and sets counted for you: what you need, where to put the phone and how to score.' },
 ];
 
 const vite = await createServer({ server: { middlewareMode: true }, appType: 'custom', logLevel: 'error' });
