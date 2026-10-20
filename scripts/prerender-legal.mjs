@@ -1,4 +1,4 @@
-// Después de `vite build`: escribe /privacy, /terms y /vs-camerafi como HTML ya renderizado.
+// Después de `vite build`: escribe /privacy, /terms, /vs-camerafi y /vs-prism como HTML ya renderizado.
 // Los revisores de Google (YouTube API Services) y cualquier crawler sin JavaScript
 // veían solo el <div id="root"> vacío de la SPA. El texto sale de los mismos
 // componentes, así que no hay una segunda copia que mantener.
@@ -11,6 +11,7 @@ const pages = [
   { file: 'privacy.html', component: '/src/components/PrivacyPolicy.tsx', title: 'Privacy Policy', path: '/privacy', mustContain: 'YouTube' },
   { file: 'terms.html', component: '/src/components/TermsOfService.tsx', title: 'Terms of Service', path: '/terms', mustContain: 'YouTube' },
   { file: 'vs-camerafi.html', component: '/src/components/VsCameraFi.tsx', title: 'Calypso vs CameraFi Live', path: '/vs-camerafi', mustContain: 'CameraFi' },
+  { file: 'vs-prism.html', component: '/src/components/VsPrism.tsx', title: 'Calypso vs PRISM Live Studio', path: '/vs-prism', mustContain: 'PRISM' },
 ];
 
 const vite = await createServer({ server: { middlewareMode: true }, appType: 'custom', logLevel: 'error' });

@@ -13,6 +13,7 @@ import Footer from './components/Footer';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsOfService from './components/TermsOfService';
 import VsCameraFi from './components/VsCameraFi';
+import VsPrism from './components/VsPrism';
 
 function App() {
   const [path, setPath] = useState(typeof window !== 'undefined' ? window.location.pathname : '/');
@@ -36,6 +37,15 @@ function App() {
     return (
       <div className="min-h-[100dvh] bg-ink-900 text-fg">
         <VsCameraFi />
+        <Footer />
+      </div>
+    );
+  }
+
+  if (path === '/vs-prism' || path === '/vs-prism/') {
+    return (
+      <div className="min-h-[100dvh] bg-ink-900 text-fg">
+        <VsPrism />
         <Footer />
       </div>
     );

@@ -45,6 +45,11 @@ const Footer = () => {
                   Calypso vs CameraFi
                 </a>
               </li>
+              <li>
+                <a href="/vs-prism" className="text-fg-muted transition-colors hover:text-fg">
+                  Calypso vs PRISM
+                </a>
+              </li>
             </ul>
           </nav>
 
