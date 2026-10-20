@@ -65,6 +65,11 @@ const Footer = () => {
                   Stream a padel match
                 </a>
               </li>
+              <li>
+                <a href="/stream-basketball-game" className="text-fg-muted transition-colors hover:text-fg">
+                  Stream a basketball game
+                </a>
+              </li>
             </ul>
           </nav>
 

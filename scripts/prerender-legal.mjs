@@ -19,6 +19,8 @@ const pages = [
     description: 'Stream a football match to YouTube, Facebook or Twitch from one Android phone, with the score and the clock on screen: what you need, where to put the phone and how to run the scoreboard.' },
   { file: 'stream-padel-match.html', component: '/src/components/PadelGuide.tsx', title: 'How to live stream a padel match from your phone, with a scoreboard', path: '/stream-padel-match', mustContain: 'Padel',
     description: 'Stream a padel match to YouTube, Facebook or Twitch from one Android phone, with points, games and sets counted for you: what you need, where to put the phone and how to score.' },
+  { file: 'stream-basketball-game.html', component: '/src/components/BasketballGuide.tsx', title: 'How to live stream a basketball game from your phone, with a scoreboard', path: '/stream-basketball-game', mustContain: 'Basketball',
+    description: 'Stream a basketball game to YouTube, Facebook or Twitch from one Android phone, with score, quarter, team fouls and a countdown clock on screen: what you need and how to run it.' },
 ];
 
 const vite = await createServer({ server: { middlewareMode: true }, appType: 'custom', logLevel: 'error' });

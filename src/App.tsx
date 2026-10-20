@@ -17,6 +17,7 @@ import VsPrism from './components/VsPrism';
 import PrismScoreboard from './components/PrismScoreboard';
 import FootballGuide from './components/FootballGuide';
 import PadelGuide from './components/PadelGuide';
+import BasketballGuide from './components/BasketballGuide';
 
 function App() {
   const [path, setPath] = useState(typeof window !== 'undefined' ? window.location.pathname : '/');
@@ -76,6 +77,15 @@ function App() {
     return (
       <div className="min-h-[100dvh] bg-ink-900 text-fg">
         <PadelGuide />
+        <Footer />
+      </div>
+    );
+  }
+
+  if (path === '/stream-basketball-game' || path === '/stream-basketball-game/') {
+    return (
+      <div className="min-h-[100dvh] bg-ink-900 text-fg">
+        <BasketballGuide />
         <Footer />
       </div>
     );

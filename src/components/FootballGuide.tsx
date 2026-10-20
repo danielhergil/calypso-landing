@@ -88,8 +88,8 @@ const FootballGuide = () => (
           without leaving the camera.
         </>,
         <>
-          <B>The clock:</B> it runs inside the scoreboard. A tap starts or pauses it and a long press sets it back to
-          zero.
+          <B>The clock:</B> it runs inside the scoreboard. A tap starts or pauses it, and <B>↺</B> sets it back to
+          zero. A long press lets you set a countdown instead, for tournaments with shorter halves.
         </>,
         <>
           <B>Halves:</B> switch to the second half with its button; the clock goes back to zero, ready for the restart.
