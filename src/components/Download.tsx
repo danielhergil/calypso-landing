@@ -29,7 +29,7 @@ const Download = () => {
             Free on Android, no card. Upgrade only when your season needs more streams.
           </p>
           <div className="mt-9 flex justify-center">
-            <PlayStoreButton />
+            <PlayStoreButton campaign="download" />
           </div>
           <p className="mt-6 text-sm text-fg-faint">
             Android 6.0 and up. By installing Calypso you accept the{' '}

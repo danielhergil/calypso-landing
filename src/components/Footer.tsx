@@ -40,6 +40,11 @@ const Footer = () => {
                   Download
                 </a>
               </li>
+              <li>
+                <a href="/guides" className="text-fg-muted transition-colors hover:text-fg">
+                  Guides
+                </a>
+              </li>
             </ul>
           </nav>
 

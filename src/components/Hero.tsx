@@ -73,7 +73,7 @@ const Hero = () => {
             </motion.p>
 
             <motion.div {...rise(0.28)} className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <PlayStoreButton />
+              <PlayStoreButton campaign="hero" />
               <button
                 onClick={scrollToVideo}
                 className="inline-flex items-center justify-center gap-2.5 rounded-full border border-white/15 px-7 py-4 text-base font-semibold text-fg backdrop-blur-sm transition-colors duration-200 hover:border-white/40 active:translate-y-[1px]"

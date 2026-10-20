@@ -12,6 +12,13 @@ import Download from './components/Download';
 import Footer from './components/Footer';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsOfService from './components/TermsOfService';
+import VsCameraFi from './components/VsCameraFi';
+import VsPrism from './components/VsPrism';
+import PrismScoreboard from './components/PrismScoreboard';
+import FootballGuide from './components/FootballGuide';
+import PadelGuide from './components/PadelGuide';
+import BasketballGuide from './components/BasketballGuide';
+import Guides from './components/Guides';
 
 function App() {
   const [path, setPath] = useState(typeof window !== 'undefined' ? window.location.pathname : '/');
@@ -26,6 +33,69 @@ function App() {
     return (
       <div className="min-h-[100dvh] bg-ink-900 text-fg">
         <PrivacyPolicy />
+        <Footer />
+      </div>
+    );
+  }
+
+  if (path === '/vs-camerafi' || path === '/vs-camerafi/') {
+    return (
+      <div className="min-h-[100dvh] bg-ink-900 text-fg">
+        <VsCameraFi />
+        <Footer />
+      </div>
+    );
+  }
+
+  if (path === '/vs-prism' || path === '/vs-prism/') {
+    return (
+      <div className="min-h-[100dvh] bg-ink-900 text-fg">
+        <VsPrism />
+        <Footer />
+      </div>
+    );
+  }
+
+  if (path === '/prism-scoreboard' || path === '/prism-scoreboard/') {
+    return (
+      <div className="min-h-[100dvh] bg-ink-900 text-fg">
+        <PrismScoreboard />
+        <Footer />
+      </div>
+    );
+  }
+
+  if (path === '/stream-football-match' || path === '/stream-football-match/') {
+    return (
+      <div className="min-h-[100dvh] bg-ink-900 text-fg">
+        <FootballGuide />
+        <Footer />
+      </div>
+    );
+  }
+
+  if (path === '/stream-padel-match' || path === '/stream-padel-match/') {
+    return (
+      <div className="min-h-[100dvh] bg-ink-900 text-fg">
+        <PadelGuide />
+        <Footer />
+      </div>
+    );
+  }
+
+  if (path === '/stream-basketball-game' || path === '/stream-basketball-game/') {
+    return (
+      <div className="min-h-[100dvh] bg-ink-900 text-fg">
+        <BasketballGuide />
+        <Footer />
+      </div>
+    );
+  }
+
+  if (path === '/guides' || path === '/guides/') {
+    return (
+      <div className="min-h-[100dvh] bg-ink-900 text-fg">
+        <Guides />
         <Footer />
       </div>
     );

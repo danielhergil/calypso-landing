@@ -1,6 +1,6 @@
 import React from 'react';
 import { Check, Minus } from 'lucide-react';
-import { PLAY_STORE_URL, Reveal } from './ui';
+import { playUrl, Reveal } from './ui';
 
 type Plan = {
   id: string;
@@ -9,25 +9,29 @@ type Plan = {
   price: string;
   period?: string;
   secondary: string;
-  rows: { label: string; value: string; included: boolean }[];
+  /** Lo mismo que enseña la pantalla de planes de la app (PlanesActivity) y sus límites. */
+  rows: { label: string; included: boolean }[];
   cta: string;
+  campaign: string;
   featured?: boolean;
 };
 
 const PLANS: Plan[] = [
   {
-    id: 'basic',
-    name: 'Basic',
-    tagline: 'For testing and the odd match',
+    id: 'free',
+    name: 'Free',
+    tagline: 'Go live today, no card',
     price: '0 €',
-    secondary: 'Free forever, no card',
+    secondary: 'Free forever, no ads',
     rows: [
-      { label: 'Total streams', value: '2', included: true },
-      { label: 'Streams per month', value: '2', included: true },
-      { label: 'YouTube API ops / month', value: '12', included: true },
-      { label: 'External broadcast sync', value: 'Not included', included: false },
+      { label: 'Stream over RTMP/RTMPS to YouTube, Facebook, Twitch and more', included: true },
+      { label: 'Live scoreboard and built-in overlays', included: true },
+      { label: 'Local recording', included: true },
+      { label: '2 teams and 1 stream profile', included: true },
+      { label: 'No Calypso watermark', included: false },
     ],
     cta: 'Get it on Google Play',
+    campaign: 'pricing-free',
   },
   {
     id: 'pro',
@@ -37,12 +41,17 @@ const PLANS: Plan[] = [
     period: '/month',
     secondary: 'or 49,99 € a year, saving 30%',
     rows: [
-      { label: 'Total streams', value: 'Unlimited', included: true },
-      { label: 'Streams per month', value: '20', included: true },
-      { label: 'YouTube API ops / month', value: '240', included: true },
-      { label: 'External broadcast sync', value: 'Included', included: true },
+      { label: 'Everything in Free', included: true },
+      { label: 'No Calypso watermark', included: true },
+      { label: 'Replays and clips', included: true },
+      { label: 'YouTube Live from the app, no stream keys', included: true },
+      { label: 'USB camera and video file as a source', included: true },
+      { label: '1440p and H265', included: true },
+      { label: 'Arena and HUD overlay styles', included: true },
+      { label: '5 teams and 5 stream profiles', included: true },
     ],
     cta: 'Get Pro in the app',
+    campaign: 'pricing-pro',
     featured: true,
   },
   {
@@ -53,12 +62,12 @@ const PLANS: Plan[] = [
     period: '/month',
     secondary: 'or 109,99 € a year, saving 29%',
     rows: [
-      { label: 'Total streams', value: 'Unlimited', included: true },
-      { label: 'Streams per month', value: '50', included: true },
-      { label: 'YouTube API ops / month', value: '1000', included: true },
-      { label: 'External broadcast sync', value: 'Included', included: true },
+      { label: 'Everything in Pro', included: true },
+      { label: 'Remote camera: a second phone as another angle', included: true },
+      { label: 'Unlimited teams and stream profiles', included: true },
     ],
     cta: 'Get Max in the app',
+    campaign: 'pricing-max',
   },
 ];
 
@@ -71,10 +80,11 @@ const Pricing = () => {
             id="pricing-heading"
             className="max-w-[16ch] font-heading text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl"
           >
-            Free until you stream a lot.
+            Free to go live. Pro when it&rsquo;s your club on screen.
           </h2>
           <p className="mt-5 max-w-[52ch] text-lg leading-relaxed text-fg-muted">
-            Plans scale with how many matches you broadcast each month. Paid plans are bought inside the Android app.
+            Free streams anywhere with no ads. Pro removes the Calypso watermark and adds replays, YouTube Live and
+            more. Paid plans are bought inside the Android app.
           </p>
         </Reveal>
 
@@ -91,7 +101,7 @@ const Pricing = () => {
             >
               {plan.featured && (
                 <span className="absolute -top-3 left-7 rounded-full bg-brand px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">
-                  Most popular
+                  Recommended
                 </span>
               )}
 
@@ -112,15 +122,13 @@ const Pricing = () => {
                     ) : (
                       <Minus size={18} className="mt-0.5 shrink-0 text-fg-faint" strokeWidth={2.5} />
                     )}
-                    <span className={row.included ? 'text-fg' : 'text-fg-faint'}>
-                      {row.label}: <span className="font-semibold">{row.value}</span>
-                    </span>
+                    <span className={row.included ? 'text-fg' : 'text-fg-faint'}>{row.label}</span>
                   </li>
                 ))}
               </ul>
 
               <a
-                href={PLAY_STORE_URL}
+                href={playUrl(plan.campaign)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`mt-8 block rounded-full px-6 py-3.5 text-center text-sm font-semibold transition-colors duration-200 active:translate-y-[1px] ${
