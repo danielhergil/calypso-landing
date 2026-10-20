@@ -1,4 +1,4 @@
-// Después de `vite build`: escribe /privacy, /terms, /vs-camerafi, /vs-prism y /prism-scoreboard como HTML ya renderizado.
+// Después de `vite build`: escribe /privacy, /terms, /vs-camerafi, /vs-prism y las guías como HTML ya renderizado.
 // Los revisores de Google (YouTube API Services) y cualquier crawler sin JavaScript
 // veían solo el <div id="root"> vacío de la SPA. El texto sale de los mismos
 // componentes, así que no hay una segunda copia que mantener.
@@ -15,6 +15,8 @@ const pages = [
     description: 'Calypso vs PRISM Live Studio for streaming sports from a phone: built-in scoreboard per sport, prices, ads and watermark compared.' },
   { file: 'prism-scoreboard.html', component: '/src/components/PrismScoreboard.tsx', title: 'How to add a live scoreboard to PRISM Live Studio', path: '/prism-scoreboard', mustContain: 'overlays.uno',
     description: 'Step by step: add a live scoreboard to PRISM Live Studio with overlays.uno or a web widget, and a simpler way to stream matches with the score built in.' },
+  { file: 'stream-football-match.html', component: '/src/components/FootballGuide.tsx', title: 'How to live stream a football match from your phone, with a scoreboard', path: '/stream-football-match', mustContain: 'Football',
+    description: 'Stream a football match to YouTube, Facebook or Twitch from one Android phone, with the score and the clock on screen: what you need, where to put the phone and how to run the scoreboard.' },
 ];
 
 const vite = await createServer({ server: { middlewareMode: true }, appType: 'custom', logLevel: 'error' });

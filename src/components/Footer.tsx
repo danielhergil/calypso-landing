@@ -55,6 +55,11 @@ const Footer = () => {
                   Scoreboard in PRISM
                 </a>
               </li>
+              <li>
+                <a href="/stream-football-match" className="text-fg-muted transition-colors hover:text-fg">
+                  Stream a football match
+                </a>
+              </li>
             </ul>
           </nav>
 

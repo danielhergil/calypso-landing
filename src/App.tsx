@@ -15,6 +15,7 @@ import TermsOfService from './components/TermsOfService';
 import VsCameraFi from './components/VsCameraFi';
 import VsPrism from './components/VsPrism';
 import PrismScoreboard from './components/PrismScoreboard';
+import FootballGuide from './components/FootballGuide';
 
 function App() {
   const [path, setPath] = useState(typeof window !== 'undefined' ? window.location.pathname : '/');
@@ -56,6 +57,15 @@ function App() {
     return (
       <div className="min-h-[100dvh] bg-ink-900 text-fg">
         <PrismScoreboard />
+        <Footer />
+      </div>
+    );
+  }
+
+  if (path === '/stream-football-match' || path === '/stream-football-match/') {
+    return (
+      <div className="min-h-[100dvh] bg-ink-900 text-fg">
+        <FootballGuide />
         <Footer />
       </div>
     );
