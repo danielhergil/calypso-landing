@@ -18,6 +18,7 @@ import PrismScoreboard from './components/PrismScoreboard';
 import FootballGuide from './components/FootballGuide';
 import PadelGuide from './components/PadelGuide';
 import BasketballGuide from './components/BasketballGuide';
+import Guides from './components/Guides';
 
 function App() {
   const [path, setPath] = useState(typeof window !== 'undefined' ? window.location.pathname : '/');
@@ -86,6 +87,15 @@ function App() {
     return (
       <div className="min-h-[100dvh] bg-ink-900 text-fg">
         <BasketballGuide />
+        <Footer />
+      </div>
+    );
+  }
+
+  if (path === '/guides' || path === '/guides/') {
+    return (
+      <div className="min-h-[100dvh] bg-ink-900 text-fg">
+        <Guides />
         <Footer />
       </div>
     );

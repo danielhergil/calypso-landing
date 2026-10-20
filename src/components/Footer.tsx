@@ -41,33 +41,8 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="/vs-camerafi" className="text-fg-muted transition-colors hover:text-fg">
-                  Calypso vs CameraFi
-                </a>
-              </li>
-              <li>
-                <a href="/vs-prism" className="text-fg-muted transition-colors hover:text-fg">
-                  Calypso vs PRISM
-                </a>
-              </li>
-              <li>
-                <a href="/prism-scoreboard" className="text-fg-muted transition-colors hover:text-fg">
-                  Scoreboard in PRISM
-                </a>
-              </li>
-              <li>
-                <a href="/stream-football-match" className="text-fg-muted transition-colors hover:text-fg">
-                  Stream a football match
-                </a>
-              </li>
-              <li>
-                <a href="/stream-padel-match" className="text-fg-muted transition-colors hover:text-fg">
-                  Stream a padel match
-                </a>
-              </li>
-              <li>
-                <a href="/stream-basketball-game" className="text-fg-muted transition-colors hover:text-fg">
-                  Stream a basketball game
+                <a href="/guides" className="text-fg-muted transition-colors hover:text-fg">
+                  Guides
                 </a>
               </li>
             </ul>

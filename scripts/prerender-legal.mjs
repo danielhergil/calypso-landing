@@ -8,6 +8,8 @@ import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 
 const pages = [
+  { file: 'guides.html', component: '/src/components/Guides.tsx', title: 'Guides', path: '/guides', mustContain: 'vs-prism',
+    description: 'Guides to stream football, basketball and padel from your phone with a scoreboard, and how Calypso compares with PRISM and CameraFi.' },
   { file: 'privacy.html', component: '/src/components/PrivacyPolicy.tsx', title: 'Privacy Policy', path: '/privacy', mustContain: 'YouTube' },
   { file: 'terms.html', component: '/src/components/TermsOfService.tsx', title: 'Terms of Service', path: '/terms', mustContain: 'YouTube' },
   { file: 'vs-camerafi.html', component: '/src/components/VsCameraFi.tsx', title: 'Calypso vs CameraFi Live', path: '/vs-camerafi', mustContain: 'CameraFi' },
