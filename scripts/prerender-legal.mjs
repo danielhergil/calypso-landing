@@ -1,4 +1,4 @@
-// Después de `vite build`: escribe /privacy, /terms, /vs-camerafi, /vs-prism y las guías como HTML ya renderizado.
+// Después de `vite build`: escribe /privacy, /terms, /vs-camerafi, /vs-prism las guías y los tutoriales como HTML ya renderizado.
 // Los revisores de Google (YouTube API Services) y cualquier crawler sin JavaScript
 // veían solo el <div id="root"> vacío de la SPA. El texto sale de los mismos
 // componentes, así que no hay una segunda copia que mantener.
@@ -10,6 +10,8 @@ import { renderToStaticMarkup } from 'react-dom/server';
 const pages = [
   { file: 'guides.html', component: '/src/components/Guides.tsx', title: 'Guides', path: '/guides', mustContain: 'vs-prism',
     description: 'Guides to stream football, basketball and padel from your phone with a scoreboard, and how Calypso compares with PRISM and CameraFi.' },
+  { file: 'tutorials.html', component: '/src/components/Tutorials.tsx', title: 'Video tutorials', path: '/tutorials', mustContain: 'one minute at a time',
+    description: 'Learn Calypso in short videos: your first stream, teams and lineups, a scoreboard for every sport, match graphics, replays and recording.' },
   { file: 'privacy.html', component: '/src/components/PrivacyPolicy.tsx', title: 'Privacy Policy', path: '/privacy', mustContain: 'YouTube' },
   { file: 'terms.html', component: '/src/components/TermsOfService.tsx', title: 'Terms of Service', path: '/terms', mustContain: 'YouTube' },
   { file: 'vs-camerafi.html', component: '/src/components/VsCameraFi.tsx', title: 'Calypso vs CameraFi Live', path: '/vs-camerafi', mustContain: 'CameraFi' },

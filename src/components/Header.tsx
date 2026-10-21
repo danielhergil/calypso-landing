@@ -50,6 +50,9 @@ const Header = () => {
               {item.label}
             </button>
           ))}
+          <a href="/tutorials" className="text-sm text-fg-muted transition-colors duration-200 hover:text-fg">
+            Tutorials
+          </a>
           {showCta && <PlayStoreButton campaign="header" size="md" />}
         </nav>
 
@@ -80,6 +83,12 @@ const Header = () => {
                 {item.label}
               </button>
             ))}
+            <a
+              href="/tutorials"
+              className="block w-full rounded-card px-3 py-3 text-left text-base text-fg-muted hover:bg-white/5 hover:text-fg"
+            >
+              Tutorials
+            </a>
             <PlayStoreButton campaign="header-menu" size="md" className="mt-2 w-full" />
           </div>
         </motion.div>
