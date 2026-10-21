@@ -19,6 +19,7 @@ import FootballGuide from './components/FootballGuide';
 import PadelGuide from './components/PadelGuide';
 import BasketballGuide from './components/BasketballGuide';
 import Guides from './components/Guides';
+import Tutorials from './components/Tutorials';
 
 function App() {
   const [path, setPath] = useState(typeof window !== 'undefined' ? window.location.pathname : '/');
@@ -87,6 +88,15 @@ function App() {
     return (
       <div className="min-h-[100dvh] bg-ink-900 text-fg">
         <BasketballGuide />
+        <Footer />
+      </div>
+    );
+  }
+
+  if (path === '/tutorials' || path === '/tutorials/') {
+    return (
+      <div className="min-h-[100dvh] bg-ink-900 text-fg">
+        <Tutorials />
         <Footer />
       </div>
     );
