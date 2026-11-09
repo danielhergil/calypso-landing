@@ -4,8 +4,8 @@ import { PlayStoreButton } from './ui';
 
 // Vídeos cortos de cada función, grabados en la app (calypso-rootencoder/docs/SHORTS_TUTORIALES.md).
 // Los archivos están en public/tutorials: NN-nombre.mp4 (720×1280, sin sonido) y NN-nombre.webp (portada).
-// ponytail: el pádel (#11) y el tenis (#12) enseñan los interruptores de la versión 48; se añaden aquí
-// cuando la 48 esté en producción.
+// ponytail: el pádel (#11) y el tenis (#12) siguen grabados con el salón del emulador; se añaden aquí si se
+// regraban con un partido de fondo.
 
 type Tutorial = { id: string; file: string; title: string; text: string; secs: number; pro?: boolean };
 type Chapter = { id: string; title: string; text: string; items: Tutorial[] };
@@ -16,9 +16,9 @@ const CHAPTERS: Chapter[] = [
     title: 'Get started',
     text: 'Connect your channel and go live for the first time.',
     items: [
-      { id: 'first-stream', file: '01-first-stream', title: 'Your first live stream on YouTube', text: 'Paste the stream key from YouTube Studio and you are ready.', secs: 38 },
-      { id: 'other-platforms', file: '03-other-platforms', title: 'Twitch and Facebook', text: 'Create a profile, tap Twitch and the server address fills in.', secs: 70 },
-      { id: 'stream-profiles', file: '24-stream-profiles', title: 'Stream profiles', text: 'Weak signal at the ground? Lower the quality and load the profile.', secs: 55 },
+      { id: 'first-stream', file: '01-first-stream', title: 'Your first live stream on YouTube', text: 'Paste the stream key from YouTube Studio and you are ready.', secs: 37 },
+      { id: 'other-platforms', file: '03-other-platforms', title: 'Twitch and Facebook', text: 'Create a profile, tap Twitch and the server address fills in.', secs: 65 },
+      { id: 'stream-profiles', file: '24-stream-profiles', title: 'Stream profiles', text: 'Weak signal at the ground? Lower the quality and load the profile.', secs: 57 },
     ],
   },
   {
@@ -27,7 +27,7 @@ const CHAPTERS: Chapter[] = [
     text: 'Badges, names and players, ready for every match.',
     items: [
       { id: 'create-team', file: '04-create-team', title: 'Create a team', text: 'Badge, name and a three-letter alias for the scoreboard.', secs: 52 },
-      { id: 'lineup', file: '05-lineup', title: 'Players and lineup', text: 'Add the players with their numbers and show both lineups.', secs: 63 },
+      { id: 'lineup', file: '05-lineup', title: 'Players and lineup', text: 'Add the players with their numbers and show both lineups.', secs: 62 },
     ],
   },
   {
@@ -35,13 +35,10 @@ const CHAPTERS: Chapter[] = [
     title: 'A scoreboard for your sport',
     text: 'Pick the sport and the scoreboard counts the way it is played.',
     items: [
-      { id: 'football', file: '06-football', title: 'Football', text: 'Goals, the match clock and the half.', secs: 66 },
-      { id: 'futsal', file: '07-futsal', title: 'Futsal', text: 'Goals, accumulated fouls, half and clock.', secs: 67 },
-      { id: 'basketball', file: '08-basketball', title: 'Basketball', text: '+1, +2 and +3, team fouls, quarters and a countdown.', secs: 76 },
-      { id: 'handball', file: '09-handball', title: 'Handball', text: 'Goals, half and the match clock.', secs: 61 },
-      { id: 'volleyball', file: '10-volleyball', title: 'Volleyball', text: 'Points and sets: tap SET and the team ahead wins it.', secs: 54 },
-      { id: 'roller-hockey', file: '13-roller-hockey', title: 'Roller hockey', text: 'Goals, team fouls and the half.', secs: 60 },
-      { id: 'other-sport', file: '14-other-sport', title: 'Any other sport', text: 'Teams, badges and the score, for everything else.', secs: 49 },
+      { id: 'football', file: '06-football', title: 'Football', text: 'Goals, the match clock and the half. Futsal, handball and any other sport work the same way.', secs: 60 },
+      { id: 'basketball', file: '08-basketball', title: 'Basketball', text: '+1, +2 and +3, team fouls, quarters and a countdown.', secs: 72 },
+      { id: 'volleyball', file: '10-volleyball', title: 'Volleyball', text: 'Points and sets: tap SET and the team ahead wins it.', secs: 50 },
+      { id: 'roller-hockey', file: '13-roller-hockey', title: 'Roller hockey', text: 'Goals, team fouls and the half.', secs: 68 },
     ],
   },
   {
@@ -49,9 +46,9 @@ const CHAPTERS: Chapter[] = [
     title: 'Match graphics',
     text: 'Look like a TV broadcast before, during and after the match.',
     items: [
-      { id: 'scoreboard-styles', file: '15-scoreboard-styles', title: 'Scoreboard styles', text: 'Grafito, Marino or Claro, and change it mid-match.', secs: 53, pro: true },
-      { id: 'cover', file: '16-cover', title: 'Match cover', text: 'Both badges and the matchday, before kick-off.', secs: 30 },
-      { id: 'lower-third', file: '17-lower-third', title: 'Lower third', text: 'Teams, score and your own label along the bottom.', secs: 29 },
+      { id: 'scoreboard-styles', file: '15-scoreboard-styles', title: 'Scoreboard styles', text: 'Grafito, Marino or Claro, and change it mid-match.', secs: 48, pro: true },
+      { id: 'cover', file: '16-cover', title: 'Match cover', text: 'Both badges and the matchday, before kick-off.', secs: 34 },
+      { id: 'lower-third', file: '17-lower-third', title: 'Lower third', text: 'Teams, score and your own label along the bottom.', secs: 35 },
     ],
   },
   {
@@ -59,10 +56,10 @@ const CHAPTERS: Chapter[] = [
     title: 'During the match',
     text: 'Replays, recordings and changes without stopping the stream.',
     items: [
-      { id: 'replays', file: '20-replays', title: 'Live replays', text: 'Show the last 10 seconds again. Every replay is saved.', secs: 72, pro: true },
-      { id: 'live-quality', file: '25-live-quality', title: 'Change the quality live', text: 'Lower the bitrate if the connection struggles. The stream never stops.', secs: 28 },
-      { id: 'record-match', file: '26-record-match', title: 'Record the match', text: 'Keep the whole match on your phone, no internet needed.', secs: 37 },
-      { id: 'video-in-stream', file: '29-video-in-stream', title: 'Play a video live', text: 'Put a sponsor or halftime video on the stream and come back.', secs: 40, pro: true },
+      { id: 'replays', file: '20-replays', title: 'Live replays', text: 'Show the last 10 seconds again. Every replay is saved.', secs: 69, pro: true },
+      { id: 'live-quality', file: '25-live-quality', title: 'Change the quality live', text: 'Lower the bitrate if the connection struggles. The stream never stops.', secs: 35 },
+      { id: 'record-match', file: '26-record-match', title: 'Record the match', text: 'Keep the whole match on your phone, no internet needed.', secs: 41 },
+      { id: 'video-in-stream', file: '29-video-in-stream', title: 'Play a video live', text: 'Put a sponsor or halftime video on the stream and come back.', secs: 52, pro: true },
     ],
   },
 ];
