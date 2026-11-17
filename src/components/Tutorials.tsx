@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { ArrowLeft, ChevronLeft, ChevronRight, Play, X } from 'lucide-react';
-import { PlayStoreButton } from './ui';
+import { StoreButtons } from './ui';
 
 // Vídeos cortos de cada función, grabados en la app (calypso-rootencoder/docs/SHORTS_TUTORIALES.md).
 // Los archivos están en public/tutorials: NN-nombre.mp4 (720×1280, sin sonido) y NN-nombre.webp (portada).
@@ -323,7 +323,7 @@ const Tutorials = () => {
             setting up a whole match, read the <a href="/guides" className="font-semibold text-brand-light underline-offset-4 hover:underline">guides</a>.
           </p>
           <div className="mt-8">
-            <PlayStoreButton campaign="tutorials" />
+            <StoreButtons campaign="tutorials" />
           </div>
         </section>
       </div>

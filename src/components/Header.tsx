@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
-import { PlayStoreButton } from './ui';
+import { StoreButtons } from './ui';
 
 const NAV = [
   { id: 'features', label: 'Features' },
@@ -53,7 +53,7 @@ const Header = () => {
           <a href="/tutorials" className="text-sm text-fg-muted transition-colors duration-200 hover:text-fg">
             Tutorials
           </a>
-          {showCta && <PlayStoreButton campaign="header" size="md" />}
+          {showCta && <StoreButtons campaign="header" size="md" />}
         </nav>
 
         <button
@@ -89,7 +89,7 @@ const Header = () => {
             >
               Tutorials
             </a>
-            <PlayStoreButton campaign="header-menu" size="md" className="mt-2 w-full" />
+            <StoreButtons campaign="header-menu" size="md" className="mt-2 w-full" />
           </div>
         </motion.div>
       )}
