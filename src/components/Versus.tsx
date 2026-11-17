@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowLeft, Check, Minus } from 'lucide-react';
-import { PlayStoreButton } from './ui';
+import { StoreButtons } from './ui';
 
 // Plantilla común de las páginas «Calypso vs …». Cada página solo pone sus datos.
 export type Cell = { text: string; good?: boolean };
@@ -98,7 +98,7 @@ const Versus = ({
       </div>
 
       <div className="mt-12 flex flex-col items-start gap-4">
-        <PlayStoreButton campaign={campaign} />
+        <StoreButtons campaign={campaign} />
         <p className="text-sm text-fg-faint">Free to install. Pro and Max are bought inside the app.</p>
       </div>
 

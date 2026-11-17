@@ -1,5 +1,5 @@
 import React from 'react';
-import { PlayStoreButton, Reveal } from './ui';
+import { StoreButtons, Reveal } from './ui';
 
 const Download = () => {
   return (
@@ -26,13 +26,13 @@ const Download = () => {
             Your next match, live.
           </h2>
           <p className="mx-auto mt-6 max-w-[44ch] text-lg leading-relaxed text-fg-muted">
-            Free on Android, no card. Upgrade only when your season needs more streams.
+            Free on Android and iPhone, no card. Upgrade only when your season needs more streams.
           </p>
           <div className="mt-9 flex justify-center">
-            <PlayStoreButton campaign="download" />
+            <StoreButtons campaign="download" />
           </div>
           <p className="mt-6 text-sm text-fg-faint">
-            Android 6.0 and up. By installing Calypso you accept the{' '}
+            Android 6.0 and iOS 16 and up. By installing Calypso you accept the{' '}
             <a href="/terms" className="underline underline-offset-4 transition-colors hover:text-fg">
               terms
             </a>{' '}

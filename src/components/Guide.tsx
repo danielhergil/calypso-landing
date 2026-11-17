@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowLeft } from 'lucide-react';
-import { PlayStoreButton } from './ui';
+import { StoreButtons } from './ui';
 
 // Piezas comunes de las guías (/prism-scoreboard, /stream-football-match…). Cada guía solo pone su texto.
 type Children = { children: React.ReactNode };
@@ -60,7 +60,7 @@ const Guide = ({
       {children}
 
       <div className="mt-12 flex flex-col items-start gap-4">
-        <PlayStoreButton campaign={campaign} />
+        <StoreButtons campaign={campaign} />
         <p className="text-sm text-fg-faint">Free to install. Pro and Max are bought inside the app.</p>
       </div>
 
