@@ -157,3 +157,22 @@ export function StoreButtons({
     </div>
   );
 }
+
+/** Insignias oficiales de Google Play y App Store (mismo alto visible), para el hero. */
+export function StoreBadges({ campaign, className = '' }: { campaign: string; className?: string }) {
+  return (
+    <div className={`flex flex-wrap items-center gap-3 ${className}`}>
+      <a href={playUrl(campaign)} target="_blank" rel="noopener noreferrer" className="transition-opacity hover:opacity-85">
+        <img src="/badge_google_play.png" alt="Get it on Google Play" className="h-14 w-auto" />
+      </a>
+      <a
+        href={`${APP_STORE_URL}?ct=${encodeURIComponent(campaign)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="transition-opacity hover:opacity-85"
+      >
+        <img src="/badge_app_store.svg" alt="Download on the App Store" className="h-14 w-auto" />
+      </a>
+    </div>
+  );
+}

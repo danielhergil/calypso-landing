@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Play } from 'lucide-react';
-import { PhoneFrame, StoreButtons } from './ui';
+import { PhoneFrame, StoreBadges } from './ui';
 
 // YouTube's icon has to be the official full-colour one, at least 20px tall (YouTube API Services
 // branding guidelines, III.F.2); the others use their brand colours so the row stays consistent.
@@ -73,7 +73,7 @@ const Hero = () => {
             </motion.p>
 
             <motion.div {...rise(0.28)} className="mt-10 flex flex-col items-start gap-3">
-              <StoreButtons campaign="hero" />
+              <StoreBadges campaign="hero" />
               <button
                 onClick={scrollToVideo}
                 className="inline-flex items-center justify-center gap-2.5 rounded-full border border-white/15 px-7 py-4 text-base font-semibold text-fg backdrop-blur-sm transition-colors duration-200 hover:border-white/40 active:translate-y-[1px]"
